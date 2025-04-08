@@ -23,6 +23,8 @@ Your Swagger definition lives here:
 ```
 http://localhost:8080/swagger.json
 ```
+## Docker
+Future implementation as a docker container.
 
 ## Config Files
 
