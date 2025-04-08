@@ -1,0 +1,414 @@
+openapi: 3.0.0
+info:
+  title: API - Institute of Geophysics and Meteorology (UzK)
+  description: Beschreibung
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: https://api.meteo.uni-koeln.de
+- url: http://127.0.0.1:8080
+- url: http://134.95.211.110:8080
+tags:
+- name: sites
+- name: visualizations
+- name: live
+paths:
+  /sites:
+    get:
+      tags:
+      - sites
+      summary: list all sites
+      description: Returns a list of all sites
+      operationId: sites_get
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SiteList"
+      x-openapi-router-controller: swagger_server.controllers.sites_controller
+  /sites/{siteId}:
+    get:
+      tags:
+      - sites
+      summary: get details for site
+      description: Returns information on a single site
+      operationId: sites_site_id_get
+      parameters:
+      - name: siteId
+        in: path
+        description: ID of site to return
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: jue
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SiteDetails"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Site not found
+      x-openapi-router-controller: swagger_server.controllers.sites_controller
+  /visualizations:
+    get:
+      tags:
+      - visualizations
+      summary: list all visualizations
+      operationId: visualizations_get
+      responses:
+        "200":
+          description: list all visualizations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VisualizationList"
+        "400":
+          description: Invalid instrumentHumanReadable supplied
+        "404":
+          description: visualisation not found
+      x-openapi-router-controller: swagger_server.controllers.visualizations_controller
+  /visualizations/byQuery/{siteId}/{instrumentID}/{productID}/{aggregation}/{dateStr}:
+    get:
+      tags:
+      - visualizations
+      summary: get quicklooks
+      description: get quicklooks
+      operationId: sites_site_id_visualization_instrument_id_product_id_aggregation_date_str_get
+      parameters:
+      - name: aggregation
+        in: path
+        description: ID of site to return
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: daily
+      - name: siteId
+        in: path
+        description: ID of site to return
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: jue
+      - name: instrumentID
+        in: path
+        description: ID of site to return
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: ceilo_chm15k
+      - name: productID
+        in: path
+        description: ID of site to return
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: raw_backscatter
+      - name: dateStr
+        in: path
+        description: ID of site to return
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 2025-01-07T00:00:00.000Z
+      responses:
+        "200":
+          description: a jpeg quicklook
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+                x-content-type: image/jpeg
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Site not found
+      x-openapi-router-controller: swagger_server.controllers.visualizations_controller
+  /visualizations/byID/{visualizationID}/{dateStr}:
+    get:
+      tags:
+      - visualizations
+      summary: get quicklooks
+      description: get quicklooks
+      operationId: visualizations_by_id_visualization_id_date_str_get
+      parameters:
+      - name: visualizationID
+        in: path
+        description: ID of site to return
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+          example: 4711
+      - name: dateStr
+        in: path
+        description: ID of site to return
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 2025-01-07T00:00:00.000Z
+      responses:
+        "200":
+          description: a jpeg quicklook
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+                x-content-type: image/jpeg
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Site not found
+      x-openapi-router-controller: swagger_server.controllers.visualizations_controller
+  /live/{siteId}:
+    get:
+      tags:
+      - live
+      summary: get information for visualization
+      operationId: live_site_id_get
+      parameters:
+      - name: siteId
+        in: path
+        description: ID of visualisation
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: jue
+      responses:
+        "200":
+          description: get live details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LiveData"
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: site ID not found
+      x-openapi-router-controller: swagger_server.controllers.live_controller
+components:
+  schemas:
+    Visualisation:
+      type: object
+      properties:
+        visualisationID:
+          type: integer
+          format: int32
+          example: 4711
+        siteID:
+          type: string
+          example: jue
+        instrumentID:
+          type: string
+          example: ceilo_chm15k
+        productID:
+          type: string
+          example: Ceilo_chm15k_raw
+        siteHumanReadable:
+          type: string
+          example: JOYCE Jülich
+        instrumentHumanReadable:
+          type: string
+          example: Lufft CHM15k
+        productHumanReadable:
+          type: string
+          example: raw signal
+        datetime:
+          type: string
+          format: date
+          example: 2024-11-19
+        baseURL:
+          type: string
+          example: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/chm15k/l0/2024/11/17/
+        visualisationFileName:
+          type: string
+          example: 20241117_JOYCE_CHM120109_000.nc.png
+        fullURL:
+          type: string
+          example: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/chm15k/l0/2024/11/17/20241117_JOYCE_CHM120109_000.nc.png
+    LiveData:
+      type: object
+      properties:
+        siteID:
+          type: string
+          example: jue
+        siteHumanReadable:
+          type: string
+          example: JOYCE Jülich
+        datetime:
+          type: string
+          format: date
+        data:
+          $ref: "#/components/schemas/LiveData_data"
+      example:
+        datetime: 2000-01-23
+        data:
+          dewpoint:
+            unit: °C
+            value: 9.6
+          temperature:
+            unit: °C
+            value: 12.7
+        siteHumanReadable: JOYCE Jülich
+        siteID: jue
+    SiteList:
+      type: array
+      items:
+        $ref: "#/components/schemas/SiteList_inner"
+    SiteDetails:
+      type: object
+      properties:
+        siteID:
+          type: string
+          example: jue
+        siteHumanReadable:
+          type: string
+          example: JOYCE Jülich
+        description:
+          type: string
+          example: "The Jülich ObservatorY for Cloud Evolution (JOYCE) is operated\
+            \ jointly by the University of Cologne, the Research Centre Jülich. JOYCE\
+            \ was originally operated in the frame of the Transregional Collaborative\
+            \ Research Centre “Patterns in Soil-Vegetation-Atmosphere-Systems: Monitoring,\
+            \ Modelling and Data Assimilation” (TR32). Today, JOYCE is part of the\
+            \ Cloud and Precipitation Exploration Laboratory (CPEX-LAB), a competence\
+            \ centre within the Geoverbund ABC/J."
+      example:
+        siteHumanReadable: JOYCE Jülich
+        siteID: jue
+        description: "The Jülich ObservatorY for Cloud Evolution (JOYCE) is operated\
+          \ jointly by the University of Cologne, the Research Centre Jülich. JOYCE\
+          \ was originally operated in the frame of the Transregional Collaborative\
+          \ Research Centre “Patterns in Soil-Vegetation-Atmosphere-Systems: Monitoring,\
+          \ Modelling and Data Assimilation” (TR32). Today, JOYCE is part of the Cloud\
+          \ and Precipitation Exploration Laboratory (CPEX-LAB), a competence centre\
+          \ within the Geoverbund ABC/J."
+    VisualizationList:
+      type: array
+      items:
+        $ref: "#/components/schemas/VisualizationList_inner"
+    LiveData_data_temperature:
+      type: object
+      properties:
+        value:
+          type: number
+          example: 12.7
+        unit:
+          type: string
+          example: °C
+      example:
+        unit: °C
+        value: 12.7
+    LiveData_data_dewpoint:
+      type: object
+      properties:
+        value:
+          type: number
+          example: 9.6
+        unit:
+          type: string
+          example: °C
+      example:
+        unit: °C
+        value: 9.6
+    LiveData_data:
+      type: object
+      properties:
+        temperature:
+          $ref: "#/components/schemas/LiveData_data_temperature"
+        dewpoint:
+          $ref: "#/components/schemas/LiveData_data_dewpoint"
+      example:
+        dewpoint:
+          unit: °C
+          value: 9.6
+        temperature:
+          unit: °C
+          value: 12.7
+    SiteList_inner:
+      type: object
+      properties:
+        siteID:
+          type: string
+          example: jue
+        siteHumanReadable:
+          type: string
+          example: JOYCE Jülich
+      example:
+        siteHumanReadable: JOYCE Jülich
+        siteID: jue
+    VisualizationList_inner:
+      type: object
+      properties:
+        visualisationID:
+          type: integer
+          format: int32
+          example: 4711
+        siteID:
+          type: string
+          example: jue
+        instrumentID:
+          type: string
+          example: ceilo_chm15k
+        productID:
+          type: string
+          example: ceilo_chm15k_raw
+        aggregations:
+          type: array
+          example:
+          - daily
+          - monthly
+        siteHumanReadable:
+          type: string
+          example: JOYCE Jülich
+        instrumentHumanReadable:
+          type: string
+          example: Lufft CHM15k
+        productHumanReadable:
+          type: string
+          example: raw signal
+      example:
+        productHumanReadable: raw signal
+        productID: ceilo_chm15k_raw
+        instrumentID: ceilo_chm15k
+        siteHumanReadable: JOYCE Jülich
+        siteID: jue
+        visualisationID: 4711
+        instrumentHumanReadable: Lufft CHM15k
+        aggregations:
+        - daily
+        - monthly
+
