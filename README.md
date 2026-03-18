@@ -25,6 +25,9 @@ http://localhost:8080/swagger.json
 ```
 ## Docker
 Future implementation as a docker container.
+```
+docker build -t igmk_api .
+```
 
 ## Config Files
 
