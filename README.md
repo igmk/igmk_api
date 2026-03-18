@@ -28,6 +28,18 @@ Future implementation as a docker container.
 ```
 docker build -t igmk_api .
 ```
+```
+version: "3.8"
+services:
+  igmk_api:
+    image: igmk_api
+    container_name: igmk_api
+    restart: unless-stopped
+    volumes:
+      - ./igmk_api:/data
+    ports:
+      - 80:80
+```
 
 ## Config Files
 
