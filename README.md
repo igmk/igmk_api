@@ -10,6 +10,7 @@ To run the server, please execute the following from the root directory:
 
 ```
 pip3 install -r requirements.txt
+cd app
 uvicorn run:app
 ```
 For development purposes, you can use `uvicorn run:app --reload` for hot-reloading.
