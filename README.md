@@ -26,7 +26,9 @@ Your Swagger definition lives here:
 http://localhost:8080/swagger.json
 ```
 ## Docker
-Future implementation as a docker container.
+```BASH
+docker run -p 8000:8000 ghcr.io/igmk/api:latest
+```
 
 ## Config Files
 
