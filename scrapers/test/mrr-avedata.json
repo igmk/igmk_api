@@ -1,0 +1,11 @@
+{
+    "id": "mrr-avedata",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "mrr-avedata"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/mrr/level1/%Y/%m/%Y%m%d_nya_mrr_ave.png"
+}

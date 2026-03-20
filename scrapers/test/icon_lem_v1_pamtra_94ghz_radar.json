@@ -1,0 +1,11 @@
+{
+    "id": "icon_lem_v1_pamtra_94ghz_radar",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "icon"
+    ],
+    "description": "",
+    "path": "http://atmos.meteo.uni-koeln.de/~hatpro/pamtra_awipev/%Y%m%dall_hydropamtra94nya_v1.png"
+}

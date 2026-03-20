@@ -1,0 +1,11 @@
+{
+    "id": "grawac_overview",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "grawac"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/grawac/level1/%y%m/%y%m%d_nya_l1_grawac.png"
+}

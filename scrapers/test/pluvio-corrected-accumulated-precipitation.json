@@ -1,0 +1,11 @@
+{
+    "id": "pluvio-corrected-accumulated-precipitation",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "pluvio-corrected-accumulated-precipitation"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/pluvio/level1/%y%m/pluvio_nya_accum_corrected_%Y%m%d.png"
+}

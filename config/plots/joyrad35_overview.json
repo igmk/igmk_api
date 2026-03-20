@@ -1,0 +1,11 @@
+{
+    "id": "joyrad35_overview",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "joyrad35"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/tophat/l2/%Y/%m/%d/%y%m%d_jue_l2_radar.png"
+}

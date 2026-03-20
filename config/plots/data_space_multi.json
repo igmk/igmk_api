@@ -1,0 +1,11 @@
+{
+    "id": "data_space_multi",
+    "sites": [
+        ""
+    ],
+    "instruments": [
+        ""
+    ],
+    "description": "",
+    "path": "http://atmos.meteo.uni-koeln.de/~hatpro/jue/data_space/%Y/%m/%d/space_multi_%Y%m%d.png"
+}

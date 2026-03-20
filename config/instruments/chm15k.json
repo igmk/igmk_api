@@ -1,0 +1,13 @@
+{
+    "name": "chm15k",
+    "description": "Jenoptik/Lufft CHM15k Ceilometer",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2013-03-01"]
+            ]
+        }
+    ],
+    "wiki":"https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:ceilo:ceilometer_jen"
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Data Browser - University of Cologne: Research Group Integrated Remote Sensing</title>
+		<head>
+			<link rel="icon" href="img/plot_favicon.svg" type="image/svg">
+			<link rel="shortcut icon" href="img/plot_favicon.svg" type="image/svg">
+		</head>
+		<script type="application/javascript" src="dataBrowser.js"></script>
+		<link rel="stylesheet" href="dataBrowser.css">
+	</head>
+	<body>
+		<div class="global-controls">
+			<a href="https://uni-koeln.sciebo.de/apps/forms/pRFdHmaFq5qw9xSS" style="color: #ea564f;  font-weight: bold;">FEEDBACK FORM</a>
+			<button type="button" id="treeNavBack" onclick="treeNavBack()">Go Back</button>
+			<button type="button" id="mapButton" onclick="mapButton()">Show Map</button>
+			<button type="button" id="o" onclick="newPanel()">Add Panel</button>
+			<a class="prev arrow" onclick="updateDate(-1)">&#10094;</a>
+			
+			<input type="date" id="datePicker" name="date">
+			
+			
+			<a class="next arrow" onclick="updateDate(1)">&#10095;</a>
+			<button type="button" id="treeNavClose" onclick="treeNavClose()">Close Interface</button>
+			<img src="./img/logo.png" id="logo">
+		</div>
+		<div class="wrapper" id="plotsWrapper">
+			<div class="panel" id="p1">
+				<div class="panel-controls">
+					<button type="button" class="changeButton" id="select1" onclick="changePlot('p1')">Change Plot</button>
+					<a id="header1"></a>
+					<a id="info1">More Information &#9432;</a>
+					<button type="button" id="b1" onclick="closePanel('b1')">X</button>
+					
+				</div>
+				<img src="https://localhost:8000/visualizations/byID/weatherstation_temperature">
+			</div>
+			<div class="panel" id="p2">
+				<div class="panel-controls">
+					<button type="button" class="changeButton" id="select2" onclick="changePlot('p2')">Change Plot</button>
+					<a id="header2"></a>
+					<a id="info2">More Information &#9432;</a>
+					<button type="button" id="b2" onclick="closePanel('b2')">X</button>
+				</div>
+				<img src="https://localhost:8000/visualizations/byID/meteo_tower_ec_spectra">
+			</div>
+			<div class="panel" id="p3">
+				<div class="panel-controls">
+					<button type="button" class="changeButton" id="select3" onclick="changePlot('p3')">Change Plot</button>
+					<a id="header3"></a>
+					<a id="info3">More Information &#9432;</a>
+					<button type="button" id="b3" onclick="closePanel('b3')">X</button>
+				</div>
+				<img src="https://localhost:8000/visualizations/byID/ceilo_chm15k_raw">
+			</div>
+			<div class="panel" id="p4">
+				<div class="panel-controls">
+					<button type="button" class="changeButton" id="select4" onclick="changePlot('p4')">Change Plot</button>
+					<a id="header4"></a>
+					<a id="info4">More Information &#9432;</a>
+					<button type="button" id="b4" onclick="closePanel('b4')">X</button>
+				</div>
+				<img src="https://localhost:8000/visualizations/byID/mrr_improtoo">
+			</div>
+		</div>
+		<div id="selectionMenu"></div>
+		<iframe src="map/leaflet/map.html" id="mapFrame" style="width: 100vw; height: 96vh;"></iframe>
+	</body>
+</html>
+

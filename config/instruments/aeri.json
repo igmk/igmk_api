@@ -1,0 +1,13 @@
+{
+    "name": "aeri",
+    "description": "AERI",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2011-05-13"]
+            ]
+        }
+    ],
+    "wiki":"https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:aeri:aeri"
+}

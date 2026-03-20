@@ -1,0 +1,231 @@
+openapi: 3.0.4
+info:
+  title: API
+  version: '0.2'
+  x-logo:
+    url: '/favicon.ico'
+servers:
+  - url: http://127.0.0.1:8080
+tags:
+  - name: Sites
+    description: List sites, details, live data etc.
+  - name: General
+    description: Greeter, help, etc.
+  - name: Visualizations
+    description: Plots, maps, etc.
+  - name: Instruments
+    description: Information about Instruments
+  - name: Map
+    description: A World Map visualization
+paths:
+  /:
+    get:
+      summary: 'Greeter'
+      description: 'Displays general information on the API'
+      operationId: run.greeter
+      responses:
+        '200':
+          description: "A small text"
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+        - General
+  /favicon.ico:
+    get:
+      summary: 'Returns favicon'
+      description: ''
+      operationId: run.serve_favicon
+      responses: 
+        '200':
+          description: ''
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+
+  /map:
+    get:
+      summary: 'Shows a world map with sites and further information'
+      description: ''
+      operationId: run.map_redirect
+      responses:
+        '200':
+          description: ''
+          content: 
+            text/html:
+              schema:
+                type: string
+      tags:
+        - Visualizations
+        - Map
+  /sites:
+    get:
+      summary: 'Lists all sites'
+      description: ''
+      operationId: run.return_sites
+      responses:
+        '200':
+          description: A JSON array of site strings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  siteID:
+                    type: string
+                  siteHumanReadable:
+                    type: string
+      tags:
+        - Sites
+  /sites/{siteID}:
+    get:
+      summary: 'Detailed information about a site'
+      description: ''
+      operationId: run.return_site_info
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  siteID:
+                    type: string
+                  siteHumanReadable:
+                    type: string
+                  description:
+                    type: string
+                  liveDataPath:
+                    type: string
+                  lat:
+                    type: number
+                  lon:
+                    type: number
+                  altitude:
+                    type: number
+      tags:
+        - Sites
+  /sites/{siteID}/instruments:
+    get:
+      summary: 'List all instruments currently at the site'
+      description: ''
+      operationId: run.return_instruments
+      responses:
+        '200':
+          description: ''
+          content:
+              application/json:
+                schema:
+                  type: object
+      tags:
+        - Sites
+        - Instruments
+  /sites/{siteID}/instruments/history:
+    get:
+      summary: 'List all instruments (with timespan) ever at the site'
+      description: ''
+      operationId: run.return_instruments_history
+      responses:
+        '200':
+          description: ''
+          content:
+              application/json:
+                schema:
+                  type: object
+      tags:
+        - Sites
+        - Instruments
+
+  /live/{siteID}:
+      get:
+        summary: 'Live data from the site'
+        description: ''
+        operationId: run.return_live_data
+        responses:
+          '200':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  type: object
+        tags:
+          - Sites
+  /visualizations/byID/{visID}:
+    get:
+      summary: 'Get the current plot'
+      description: ''
+      operationId: run.return_current_image
+      responses:
+        '200':
+          description: ''
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+      tags:
+        - Visualizations
+  /visualizations/byID/{visID}/{dateString}:
+    get:
+      summary: 'Get a plot of a specified date'
+      description: ''
+      operationId: run.return_image
+      responses:
+        '200':
+          description: ''
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+      tags:
+        - Visualizations
+  /visualizations/byInstrument/{instrumentID}:
+    get:
+      summary: 'List available plots by instrument'
+      description: ''
+      operationId: run.return_plots_by_instrument
+      responses:
+        '200':
+          description: ''
+          content:
+              application/json:
+                schema:
+                  type: object
+      tags:
+        - Visualizations
+  /instruments:
+    get:
+      summary: 'List all instruments'
+      description: ''
+      operationId: run.list_instruments
+      responses:
+        '200':
+          description: ''
+          content:
+              application/json:
+                schema:
+                  type: object
+      tags:
+        - Instruments  
+  /instruments/{instrumentID}:
+    get:
+      summary: 'Get details on a specific instrument'
+      description: ''
+      operationId: run.instrument_details
+      responses:
+        '200':
+          description: ''
+          content:
+              application/json:
+                schema:
+                  type: object
+      tags:
+        - Instruments  
+
+
+    

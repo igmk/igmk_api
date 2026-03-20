@@ -1,0 +1,11 @@
+{
+    "id": "tsi_axis_stripe",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi_axis"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img_axis/%Y/%m/%d/stripe_%Y%m%d.png"
+}

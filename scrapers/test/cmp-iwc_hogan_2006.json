@@ -1,0 +1,11 @@
+{
+    "id": "cmp-iwc_hogan_2006",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "cmp-iwc"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/cloud_microphysics/%y%m/%Y%m%d_IWC_Hogan_2006.png"
+}

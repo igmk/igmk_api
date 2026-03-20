@@ -1,0 +1,13 @@
+{
+    "id": "parsivel_pluvio_mrr_accumulated_precipitation",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "parsivel_jue",
+        "pluvio_jue",
+        "mrr_jue"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/parsivel/l1/%Y/%m/%d/accum_pars_plu_mrr_%Y%m%d.png"
+}

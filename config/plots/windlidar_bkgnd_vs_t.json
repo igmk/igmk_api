@@ -1,0 +1,11 @@
+{
+    "id": "windlidar_bkgnd_vs_t",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "windlidar"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l0/%Y/%m/%d/bkgnd_vs_t_%Y%m%d.png"
+}

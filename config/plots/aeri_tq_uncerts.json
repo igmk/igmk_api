@@ -1,0 +1,11 @@
+{
+    "id": "aeri_tq_uncerts",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "aeri"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/aeri/%Y/%m/%d/aerioe.%Y%m%d.fig03_tq_uncerts.png"
+}

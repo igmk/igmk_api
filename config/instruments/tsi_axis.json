@@ -1,0 +1,13 @@
+{
+    "name": "tsi_axis",
+    "description": "AXIS Total Sky Imager",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2015-11-06"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=tsi"
+}

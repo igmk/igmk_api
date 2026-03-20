@@ -1,0 +1,11 @@
+{
+    "id": "pvm_cumulativeenergy",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "photov"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/pvm/l1/%Y/%m/%d/%Y-%m-%d_CumulativeEnergy.png"
+}

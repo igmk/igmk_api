@@ -1,0 +1,11 @@
+{
+    "id": "awi-gruan_12sonde_wind",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "awi-gruan"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/radiosonde/level1/%y%m/NYA_RS_wind_%Y%m%d_12.png"
+}

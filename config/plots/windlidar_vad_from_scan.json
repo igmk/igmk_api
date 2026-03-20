@@ -1,0 +1,11 @@
+{
+    "id": "windlidar_vad_from_scan",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "windlidar"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l1/%Y/%m/%d/vad_scan_%Y%m%d.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "cloud-radar-webcam",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "joyrad_94"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/cam_comp_joyrad94/%Y/%m/%d/%Y%m%d_nya_joyrad94_camComposite.jpg"
+}

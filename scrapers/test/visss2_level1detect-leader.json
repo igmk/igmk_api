@@ -1,0 +1,11 @@
+{
+    "id": "visss2_level1detect-leader",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "visss2"
+    ],
+    "description": "",
+    "path": "https://monsun.meteo.uni-leipzig.de/~drops/quicklooks/nyaalesund/visss/level1detect/%Y/level1detect_V2023.1.6_nyaalesund_leader_S1242799_%Y%m%d.png"
+}

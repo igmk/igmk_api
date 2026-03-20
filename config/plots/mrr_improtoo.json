@@ -1,0 +1,11 @@
+{
+    "id": "mrr_improtoo",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "mrr_jue"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/mrr/level1/%Y/%m/%Y%m%d_jue_mrr_improtoo.png"
+}

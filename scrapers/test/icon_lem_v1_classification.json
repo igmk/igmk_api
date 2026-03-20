@@ -1,0 +1,11 @@
+{
+    "id": "icon_lem_v1_classification",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "icon"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/icon_lem/nya_v1/%Y-%m-%d_r600f2_Classification.png"
+}

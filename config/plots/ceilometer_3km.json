@@ -1,0 +1,11 @@
+{
+    "id": "ceilometer_3km",
+    "sites": [
+        "cgn_city"
+    ],
+    "instruments": [
+        "cl51"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/cl51/l0/%Y/%m/%d/%y%m%d_cl51_cgn_l0b_3km.png"
+}

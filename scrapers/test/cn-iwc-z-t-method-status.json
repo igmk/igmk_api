@@ -1,0 +1,11 @@
+{
+    "id": "cn-iwc-z-t-method-status",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "cn-iwc-z-t-method-status"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/cloudnet/iwc-Z-T-method/%y%m/%Y%m%d_ny-alesund_iwc-Z-T-method_status.png"
+}

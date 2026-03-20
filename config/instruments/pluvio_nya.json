@@ -1,0 +1,13 @@
+{
+    "name": "pluvio_nya",
+    "description": "OTT Pluvio 2 L",
+    "locations": [
+        {
+            "site": "nya",
+            "dates": [
+                ["2017-08-02"]
+            ]
+        }
+    ],
+    "wiki":"https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:pluvionya:pluvionya"
+}

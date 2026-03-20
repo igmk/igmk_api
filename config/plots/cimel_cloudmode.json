@@ -1,0 +1,11 @@
+{
+    "id": "cimel_cloudmode",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "cimel"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cimel_cloudmode/%y%m/%y%m%d_cimel_jue_cloud_ret.png"
+}

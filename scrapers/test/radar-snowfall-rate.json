@@ -1,0 +1,11 @@
+{
+    "id": "radar-snowfall-rate",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "radar-snowfall-rate"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/snowfallrate/%y%m/radar_snowfallrate_nya_%Y%m%d.png"
+}

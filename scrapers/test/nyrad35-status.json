@@ -1,0 +1,11 @@
+{
+    "id": "nyrad35-status",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "nyrad35-status"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/nya/nyrad35/l0/%Y/%m/%d/%Y%m%d_Ny-RAD35_status.png"
+}

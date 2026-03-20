@@ -1,0 +1,11 @@
+{
+    "id": "joyrad94_overview",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "joyrad94"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/joyrad94/level1/%y%m/%y%m%d_jue_l1_joyrad94.png"
+}

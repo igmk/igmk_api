@@ -1,0 +1,11 @@
+{
+    "id": "mirac-a_overview",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "mirac-a"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/mirac-a/level1/%y%m/%y%m%d_nya_l1_mirac-a.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "wind_ppi_radar_lidar_bl",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "wind"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/VAPs/mira_ppi/%y%m/%Y%m%d_radarlidar_combined_BL.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "ceilo_ct25k_calibrated",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "ct25k"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/ct25k/l1/%Y/%m/%d/%Y%m%d_jue_ceilo_readin_ceilo_version1.png"
+}

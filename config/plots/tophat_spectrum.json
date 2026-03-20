@@ -1,0 +1,11 @@
+{
+    "id": "tophat_spectrum",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tophat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/tophat/l1/%Y/%m/%d/%y%m%d_jue_l1_sp.png"
+}

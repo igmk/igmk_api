@@ -1,0 +1,13 @@
+{
+    "name": "cl51",
+    "description": "Ceilometer CL51",
+    "locations": [
+        {
+            "site": "cgn_city",
+            "dates": [
+                ["2022-08-16"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=citystation#ceilometer"
+}

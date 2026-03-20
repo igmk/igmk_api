@@ -1,0 +1,11 @@
+{
+    "id": "tsi_12utc",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img/%Y/%m/%d/%y%m%d_120000.jpg"
+}

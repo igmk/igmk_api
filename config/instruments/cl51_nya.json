@@ -1,0 +1,13 @@
+{
+    "name": "cl51_nya",
+    "description": "Ceilometer CL51",
+    "locations": [
+        {
+            "site": "nya",
+            "dates": [
+                ["2011-08-28"]
+            ]
+        }
+    ],
+    "wiki":""
+}

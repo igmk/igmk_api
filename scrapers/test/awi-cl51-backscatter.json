@@ -1,0 +1,11 @@
+{
+    "id": "awi-cl51-backscatter",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "cl51_nya"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/cl51/level1/%y%m/%Y%m%d_ny-alesund_cl51.png"
+}

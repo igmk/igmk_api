@@ -1,0 +1,11 @@
+{
+    "id": "tsi_cld_cov_45",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/data/%Y/%m/plot/tsi_cld_cov_45_%y%m%d.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "tophat_vband_spec_check",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tophat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/TB_spec_check/%Y/%Y%m%d_check_vband.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "weatherstation_humidity",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "meteo_joyce"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dRH.png"
+}

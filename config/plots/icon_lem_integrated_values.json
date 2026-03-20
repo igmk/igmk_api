@@ -1,0 +1,11 @@
+{
+    "id": "icon_lem_integrated_values",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "icon"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/icon_lem/joyce/%Y-%m-%d_integrated_values.png"
+}

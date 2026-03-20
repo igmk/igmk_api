@@ -1,0 +1,11 @@
+{
+    "id": "awi-bsrn_wind",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "awi-bsrn"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/bsrn/level1/%y%m/%Y%m%d_bsrn_wind_nya_l1.png"
+}

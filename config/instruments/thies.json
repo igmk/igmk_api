@@ -1,0 +1,13 @@
+{
+    "name": "thies",
+    "description": "Thies Disdrometer",
+    "locations": [
+        {
+            "site": "cgn_city",
+            "dates": [
+                ["2023-01-26"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=citystation#niederschlag"
+}

@@ -1,0 +1,19 @@
+{
+    "name": "tophat",
+    "description": "TOPHAT HATPRO",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2010-07-22", "2024-07-16"]
+            ] 
+        },
+        {
+            "site": "cgn_bio",
+            "dates": [
+                ["2024-07-24", "2024-10-17"]
+            ]
+        }
+    ],
+    "wiki":"https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:tophat:tophat"
+}

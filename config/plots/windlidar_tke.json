@@ -1,0 +1,11 @@
+{
+    "id": "windlidar_tke",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "windlidar"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/bl-classification/epsilon/%Y/%Y%m%d_juelich_halo-doppler-lidar-04-17-TKE.png"
+}

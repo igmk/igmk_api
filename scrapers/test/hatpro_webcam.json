@@ -1,0 +1,11 @@
+{
+    "id": "hatpro_webcam",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "hatpro"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/cam_comp_nyhat/%Y/%m/%d/%Y%m%d_nya_nyhat_camComposite.jpg"
+}

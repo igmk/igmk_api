@@ -1,0 +1,13 @@
+{
+    "name": "mfrsr",
+    "description": "Multi filter rotating shadow-band radiometer",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2015-07-06"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=mfrsr"
+}

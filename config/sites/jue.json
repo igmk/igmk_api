@@ -1,0 +1,9 @@
+{
+    "siteID": "jue",
+    "siteHumanReadable": "JOYCE Jülich",
+    "description": "The Jülich ObservatorY for Cloud Evolution (JOYCE) is operated jointly by the University of Cologne, the Research Centre Jülich. JOYCE was originally operated in the frame of the Transregional Collaborative Research Centre “Patterns in Soil-Vegetation-Atmosphere-Systems: Monitoring, Modelling and Data Assimilation” (TR32). Today, JOYCE is part of the Cloud and Precipitation Exploration Laboratory (CPEX-LAB), a competence centre within the Geoverbund ABC/J.",
+    "liveDataPath": "https://atmos.meteo.uni-koeln.de/~citystation/jueWebDashboard/data.json",
+    "lat": 50.908547,
+    "lon": 6.413536,
+    "altitude": 111
+}

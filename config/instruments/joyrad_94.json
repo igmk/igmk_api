@@ -1,0 +1,27 @@
+{
+    "name": "joyrad_94",
+    "description": "JOYRAD-94",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2015-10-16", "2016-03-23"]
+            ] 
+        },
+        {
+            "site": "nya",
+            "dates": [
+                ["2016-06-10", "2017-07-26"],
+                ["2019-06-14", "2022-06-22"],
+                ["2023-03-02"]
+            ]
+        },
+        {
+            "site": "iqu",
+            "dates": [
+                ["2018-03-23", "2019-03-06"]
+            ] 
+        }
+    ],
+    "wiki":"https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:joyrad94:joyrad94"
+}

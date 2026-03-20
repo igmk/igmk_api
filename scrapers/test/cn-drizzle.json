@@ -1,0 +1,11 @@
+{
+    "id": "cn-drizzle",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "cn-drizzle"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/cloudnet/drizzle/%y%m/%Y%m%d_ny-alesund_drizzle.png"
+}

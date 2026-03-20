@@ -1,0 +1,11 @@
+{
+    "id": "ceilo_chm15k_alpha_aerosol",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "chm15k"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/chm15k/aerosol/%Y/%Y%m%d_aerosol_extinction.png"
+}

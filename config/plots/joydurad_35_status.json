@@ -1,0 +1,11 @@
+{
+    "id": "joydurad_35_status",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "joyrad35"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joydurado/%Y/%m/%d/%Y%m%d_Joydurado_35_status.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "awi-hatpro_tbx_ret",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "awi_hatpro"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/nya/nyhat/tbx_ret/%y%m/%Y%m%d_tbx_ret_nyhat.png"
+}

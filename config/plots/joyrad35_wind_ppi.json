@@ -1,0 +1,11 @@
+{
+    "id": "joyrad35_wind_ppi",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "joyrad35"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/VAPs/mira_ppi/%y%m/%Y%m%d_joyrad35_wind_profile.png"
+}

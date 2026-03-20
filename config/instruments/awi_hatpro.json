@@ -1,0 +1,13 @@
+{
+    "name": "awi_hatpro",
+    "description": "AWI HATPRO",
+    "locations": [
+        {
+            "site": "nya",
+            "dates": [
+                ["2011-08-24"]
+            ]
+        }
+    ],
+    "wiki":""
+}

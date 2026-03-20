@@ -1,0 +1,11 @@
+{
+    "id": "ceilo_ct25k_strat_blh",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "ct25k"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/ct25k/l1/strat/%Y/%m/%d/_MLDlr_%Y%m%d_30min.png"
+}

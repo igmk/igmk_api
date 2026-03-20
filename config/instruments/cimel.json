@@ -1,0 +1,13 @@
+{
+    "name": "cimel",
+    "description": "CIMEL Sun Photometer",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2012-06-04"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=cimel"
+}

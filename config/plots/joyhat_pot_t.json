@@ -1,0 +1,11 @@
+{
+    "id": "joyhat_pot_t",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "joyhat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level2/%Y/%m/%d/%Y%m%d_joyhat_potential_temperature.png"
+}

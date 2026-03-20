@@ -1,0 +1,11 @@
+{
+    "id": "niederschlag",
+    "sites": [
+        "cgn_city"
+    ],
+    "instruments": [
+        "thies"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/thies/l2/%Y/%m/%d/%Y%m%dthies.png"
+}

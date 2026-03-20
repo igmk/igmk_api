@@ -1,0 +1,11 @@
+{
+    "id": "icon_2km_classification",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "icon"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/icon_lem/joyce/%Y-%m-%d_r2f13_Classification.png"
+}

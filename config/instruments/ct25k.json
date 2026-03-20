@@ -1,0 +1,13 @@
+{
+    "name": "ct25k",
+    "description": "Vaisala CT25k Ceilometer",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2010-10-01"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=ct25k"
+}

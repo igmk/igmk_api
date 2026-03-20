@@ -1,0 +1,11 @@
+{
+    "id": "joyrad35_cn_scaled_adiabatic_status",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "joyrad35"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/lwc-scaled-adiabatic/%y%m/%Y%m%d_juelich_lwc-scaled-adiabatic_status.png"
+}

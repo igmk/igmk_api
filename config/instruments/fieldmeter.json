@@ -1,0 +1,13 @@
+{
+    "name": "fieldmeter",
+    "description": "Electric Field Meter",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2019-07-03"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

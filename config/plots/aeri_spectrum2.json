@@ -1,0 +1,11 @@
+{
+    "id": "aeri_spectrum2",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "aeri"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/aeri/%Y/%m/%d/AERI_jue_%y%m%d_2.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "ozon",
+    "sites": [
+        "cgn_city"
+    ],
+    "instruments": [
+        "aqm"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/aqm/l2/%Y/%m/%d/%Y%m%dO3.png"
+}

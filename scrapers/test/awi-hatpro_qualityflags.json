@@ -1,0 +1,11 @@
+{
+    "id": "awi-hatpro_qualityflags",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "awi_hatpro"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/TB/%y%m/%y%m%d_nya_flag.png"
+}

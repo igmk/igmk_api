@@ -1,0 +1,11 @@
+{
+    "id": "tsi_axis_cld_amount",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi_axis"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img_axis/%Y/%m/%d/cld_amount_%Y%m%d.png"
+}

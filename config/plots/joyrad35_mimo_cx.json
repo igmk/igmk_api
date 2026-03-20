@@ -1,0 +1,11 @@
+{
+    "id": "joyrad35_mimo_cx",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "joyrad35"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/mimo/%y%m/%y%m%d_jue_mimo_cx.png"
+}

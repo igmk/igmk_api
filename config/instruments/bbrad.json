@@ -1,0 +1,13 @@
+{
+    "name": "bbrad",
+    "description": "Broadband Radiometer",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2014-04-01"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=radiation"
+}

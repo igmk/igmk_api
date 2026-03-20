@@ -1,0 +1,13 @@
+{
+    "name": "tsi",
+    "description": "Total Sky Imager",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2008-09-10", "2015-06-15"]
+            ]
+        }
+    ],
+    "wiki":""
+}

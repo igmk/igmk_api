@@ -1,0 +1,11 @@
+{
+    "id": "windlidar_w_prof_12utc",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "windlidar"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l0/%Y/%m/%d/doppler_profile_%Y%m%d_12.png"
+}

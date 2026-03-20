@@ -1,0 +1,11 @@
+{
+    "id": "parsivel-overview",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "parsivel-overview"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/parsivel/level1/%Y/%m/parsivel_overview_%Y%m%d_nya.png"
+}

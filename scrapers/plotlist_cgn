@@ -1,0 +1,15 @@
+dataStrings["CITYSTATION"]["Temperatur"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'AirTC_2_Avg.png'";
+dataStrings["CITYSTATION"]["Feuchte"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'RH_2.png'";
+dataStrings["CITYSTATION"]["Windgeschwindigkeit"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'wind_maximums.png'";
+dataStrings["CITYSTATION"]["Druck"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'BP_mbar_sl_Avg.png'";
+dataStrings["CITYSTATION"]["Bodentemperatur"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'Profile_Temp5_Avg.png'";
+dataStrings["CITYSTATION"]["UV-Index"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'UVind_Avg.png'";
+dataStrings["CITYSTATION"]["Windrichtung"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'WindDir_D1_WVT.png'";
+dataStrings["CITYSTATION"]["Windrose"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'windrose.png'";
+dataStrings["CITYSTATION"]["Windrose (Animation)"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'windrose.gif'";
+dataStrings["CITYSTATION"]["Niederschlag"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/thies/l2/'yy'/'mm'/'dd'/'yymmdd'thies.png'";
+dataStrings["CITYSTATION"]["Strahlung"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'SWUpper_Avg.png'";
+dataStrings["CITYSTATION"]["Albedo"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/'yy'/'mm'/'dd'/'yymmdd'Albedo_Avg.png'";
+dataStrings["CITYSTATION"]["Ozon"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/aqm/l2/'yy'/'mm'/'dd'/'yymmdd'O3.png'";
+dataStrings["CITYSTATION"]["Ceilometer_all"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/cl51/l0/'yy'/'mm'/'dd'/'ymmdd'_cl51_cgn_l0b.png'";
+dataStrings["CITYSTATION"]["Ceilometer_3km"] = "'https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/cl51/l0/'yy'/'mm'/'dd'/'ymmdd'_cl51_cgn_l0b_3km.png'";

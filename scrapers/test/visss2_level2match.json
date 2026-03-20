@@ -1,0 +1,11 @@
+{
+    "id": "visss2_level2match",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "visss2"
+    ],
+    "description": "",
+    "path": "https://monsun.meteo.uni-leipzig.de/~drops/quicklooks/nyaalesund/visss/level2match/%Y/\tlevel2match_V2023.1.6_nyaalesund_%Y%m%d.png"
+}
