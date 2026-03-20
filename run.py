@@ -58,9 +58,9 @@ def create_map_javascript():
             ]
 
             current_instruments_string = str(list_of_keys).replace("'", "\\'")[1:-1]
-            f.write(
-                f"let {str(site["siteID"])} =L.marker([{site["lat"]},{site["lon"]}]).addTo(map).bindPopup('{site["siteHumanReadable"]} ({site["altitude"]} m ASL)<br><a href=\\'http://127.0.0.1:8000/sites/{site["siteID"]}\\'>Site details</a><br>Instruments currently on site:{current_instruments_string}');\n"
-            )
+            #f.write(
+            #    f"let {str(site["siteID"])} =L.marker([{site["lat"]},{site["lon"]}]).addTo(map).bindPopup('{site["siteHumanReadable"]} ({site["altitude"]} m ASL)<br><a href=\\'http://127.0.0.1:8000/sites/{site["siteID"]}\\'>Site details</a><br>Instruments currently on site:{current_instruments_string}');\n"
+            #)
 
 
 def map_redirect():
