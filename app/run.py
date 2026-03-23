@@ -46,8 +46,8 @@ def create_map_javascript():
         f.write(
             "L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: '&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>'}).addTo(map);\n"
         )
-        for filename in os.listdir("./config/sites"):
-            with open(os.path.join("./config/sites", filename)) as site_file:
+        for filename in os.listdir("/config/sites"):
+            with open(os.path.join("/config/sites", filename)) as site_file:
                 site = json.load(site_file)
             list_of_keys = [
                 (
@@ -71,20 +71,20 @@ def map_redirect():
 
 def return_sites():
     sites_dict = dict()
-    for filename in os.listdir("./config/sites"):
-        if os.path.isfile(os.path.join("./config/sites", filename)):
-            with open(os.path.join("./config/sites", filename)) as site_file:
+    for filename in os.listdir("/config/sites"):
+        if os.path.isfile(os.path.join("/config/sites", filename)):
+            with open(os.path.join("/config/sites", filename)) as site_file:
                 site = json.load(site_file)
             sites_dict.update({site["siteID"]: site["siteHumanReadable"]})
     return sites_dict
 
 
 def return_site_info(siteID):
-    return send_file("./config/sites/" + siteID + ".json")
+    return send_file("/config/sites/" + siteID + ".json")
 
 
 def return_live_data(siteID):
-    with open("./config/sites.json") as sites_file:
+    with open("/config/sites.json") as sites_file:
         sites = json.load(sites_file)
     if siteID not in sites.keys():
         return {}, 400
@@ -108,7 +108,7 @@ def return_live_data(siteID):
 
 def return_image(visID, dateString):
     date = datetime.datetime.strptime(dateString, "%Y%m%d")
-    with open(f"./config/plots/{visID}.json") as f:
+    with open(f"/config/plots/{visID}.json") as f:
         file = json.load(f)
     image_path = date.strftime(file["path"])
     response = requests.get(image_path)
@@ -121,7 +121,7 @@ def return_current_image(visID):
 
 def return_instruments(siteID, showHistoric=False):
     instruments = dict()
-    dir = "./config/instruments"
+    dir = "/config/instruments"
     for filename in os.listdir(dir):
         f = os.path.join(dir, filename)
         with open(f) as instrument_config_file:
@@ -144,17 +144,17 @@ def return_instruments_history(siteID):
 
 
 def list_instruments():
-    dir = "./config/instruments"
+    dir = "/config/instruments"
     return [name[:-5] for name in os.listdir(dir)]
 
 
 def instrument_details(instrumentID):
-    return send_file(f"./config/instruments/{instrumentID}.json")
+    return send_file(f"/config/instruments/{instrumentID}.json")
 
 
 def return_plots_by_instrument(instrumentID):
     plots = []
-    dir = "./config/plots"
+    dir = "/config/plots"
     for filename in os.listdir(dir):
         f = os.path.join(dir, filename)
         with open(f) as plots_config_file:
