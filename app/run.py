@@ -14,6 +14,17 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = FlaskApp(__name__)
 app.add_api("./openapi.yaml")
+
+app.app.wsgi_app = ProxyFix(app.app.wsgi_app, x_proto=1, x_host=1)
+
+CORS(app.app,
+     origins=["https://browser.herz-campaigns.de"],
+     supports_credentials=True)
+
+
+app.app.url_map.strict_slashes = False
+app.app.config['PREFERRED_URL_SCHEME'] = 'https'
+
 #app.add_middleware(
 #    CORSMiddleware,
 #    position=MiddlewarePosition.BEFORE_EXCEPTION,
@@ -22,11 +33,8 @@ app.add_api("./openapi.yaml")
 #    allow_methods=["*"],
 #    allow_headers=["*"],
 #)
-CORS(app.app,
-     origins=["https://browser.herz-campaigns.de"],
-     supports_credentials=True)
-app.app.wsgi_app = ProxyFix(app.app.wsgi_app, x_proto=1, x_host=1)
-app.app.url_map.strict_slashes = False
+
+
 
 if __name__ == "__main__":
     app.run(f"{Path(__file__).stem}:app",
