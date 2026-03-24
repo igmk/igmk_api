@@ -8,19 +8,19 @@ from connexion import FlaskApp
 from pathlib import Path
 from flask import redirect, send_file
 from connexion.middleware import MiddlewarePosition
-from starlette.middleware.cors import CORSMiddleware
+#from starlette.middleware.cors import CORSMiddleware
 from flask_cors import CORS
 
 app = FlaskApp(__name__)
 app.add_api("./openapi.yaml")
-app.add_middleware(
-    CORSMiddleware,
-    position=MiddlewarePosition.BEFORE_EXCEPTION,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+#app.add_middleware(
+#    CORSMiddleware,
+#    position=MiddlewarePosition.BEFORE_EXCEPTION,
+#    allow_origins=["*"],
+#    allow_credentials=True,
+#    allow_methods=["*"],
+#    allow_headers=["*"],
+#)
 CORS(app,
      origins=["https://browser.herz-campaigns.de"],
      supports_credentials=True)
