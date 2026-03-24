@@ -21,7 +21,7 @@ app.add_api("./openapi.yaml")
 #    allow_methods=["*"],
 #    allow_headers=["*"],
 #)
-CORS(app,
+CORS(app.app,
      origins=["https://browser.herz-campaigns.de"],
      supports_credentials=True)
 
