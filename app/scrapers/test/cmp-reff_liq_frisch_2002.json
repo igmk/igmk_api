@@ -1,0 +1,11 @@
+{
+    "id": "cmp-reff_liq_frisch_2002",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "cmp-reff"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/cloud_microphysics/%y%m/%Y%m%d_reffliq_Frisch_2002.png"
+}

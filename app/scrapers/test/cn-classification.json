@@ -1,0 +1,11 @@
+{
+    "id": "cn-classification",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "cn-classification"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/cloudnet/classification/%y%m/%Y%m%d_ny-alesund_classification.png"
+}

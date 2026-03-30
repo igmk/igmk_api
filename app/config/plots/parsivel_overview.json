@@ -1,0 +1,11 @@
+{
+    "id": "parsivel_overview",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "parsivel_jue"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/parsivel/l1/%Y/%m/%d/parsivel_overview_%Y%m%d.png"
+}

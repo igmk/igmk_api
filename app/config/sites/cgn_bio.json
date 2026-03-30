@@ -1,0 +1,53 @@
+{
+    "siteID": "cgn_bio",
+    "siteHumanReadable": "Köln Biozentrum",
+    "description": "TODO",
+    "liveDataPath": "",
+    "lat": 50.927432,
+    "lon": 6.935088,
+    "altitude": 18,
+    "instruments": {
+        "bcohat2": {
+            "description": "",
+            "availability":[
+                ["2025-01-01"]
+            ]
+        },
+        "foghat": {
+            "description": "",
+            "availability":[
+                ["2025-01-01"]
+            ]
+        },
+        "icehat": {
+            "description": "",
+            "availability":[
+                ["2025-01-01"]
+            ]
+        },
+        "joyhat": {
+            "description": "",
+            "availability":[
+                ["2025-01-01"]
+            ]
+        },
+        "sunhat": {
+            "description": "",
+            "availability":[
+                ["2025-01-01"]
+            ]
+        },
+        "tophat": {
+            "description": "",
+            "operatingTimes":[
+                ["2025-01-01"]
+            ]
+        },
+        "windcube": {
+            "description": "",
+            "operatingTimes":[
+                ["2025-01-01"]
+            ]
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "id": "icon_lem_v0_meteogram",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "icon"
+    ],
+    "description": "",
+    "path": "http://atmos.meteo.uni-koeln.de/~hatpro/icon_lem/nya/meteograms/METEOGRAM_r600f2_%Y%m%d_v0.png"
+}

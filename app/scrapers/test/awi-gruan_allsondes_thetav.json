@@ -1,0 +1,11 @@
+{
+    "id": "awi-gruan_allsondes_thetav",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "awi-gruan"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/radiosonde/level1/%y%m/rs_thetav_nya_%Y%m%d.png"
+}

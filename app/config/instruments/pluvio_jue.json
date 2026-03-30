@@ -1,0 +1,13 @@
+{
+    "name": "pluvio_jue",
+    "description": "OTT Pluvio 2",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2014-06-01"]
+            ]
+        }
+    ],
+    "wiki":"https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:pluvio:pluvio"
+}

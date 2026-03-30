@@ -1,0 +1,14 @@
+{
+    "name": "joyrad_35",
+    "description": "JOYRAD-35",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2011-03-01", "2011-11-07"],
+                ["2012-03-09"]
+            ] 
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=joyrad35"
+}

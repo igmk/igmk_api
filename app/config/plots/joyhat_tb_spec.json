@@ -1,0 +1,11 @@
+{
+    "id": "joyhat_tb_spec",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "joyhat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level1/%Y/%m/%d/%Y%m%d_joyhat_tb_spectrum.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "tsi_axis_exp_gain_brr",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi_axis"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img_axis/%Y/%m/%d/exp_113000/test_axis_exposure_br_ratio_exp_gain.png"
+}

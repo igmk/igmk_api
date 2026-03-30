@@ -1,0 +1,11 @@
+{
+    "id": "meteo_tower_ec_w",
+    "sites": [
+        "jue_tower"
+    ],
+    "instruments": [
+        "meteo_tower"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/met/ec_station/%Y/%m/%d/plot/ec_data_day_w_%Y%m%d.png"
+}

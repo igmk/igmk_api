@@ -1,0 +1,11 @@
+{
+    "id": "joyrad94-status",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "joyrad94-status"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/joyrad94/level1/%y%m/joyrad94_status%Y%m%d.png"
+}

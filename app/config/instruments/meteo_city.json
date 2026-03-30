@@ -1,0 +1,13 @@
+{
+    "name": "meteo_city",
+    "description": "Citystation Cologne",
+    "locations": [
+        {
+            "site": "cgn_city",
+            "dates": [
+                ["2022-09-08"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=citystation"
+}

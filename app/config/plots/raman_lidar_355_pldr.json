@@ -1,0 +1,11 @@
+{
+    "id": "raman_lidar_355_pldr",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "raman"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/raman_lidar/l2/%Y/%m/%d/%Y%m%d_355pldr.png"
+}

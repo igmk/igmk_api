@@ -1,0 +1,11 @@
+{
+    "id": "radiation_downwelling_fluxes",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "bbrad"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/radiation/%Y/%Y%m%d_jue_radiation_v00.png"
+}

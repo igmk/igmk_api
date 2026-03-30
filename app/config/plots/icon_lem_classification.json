@@ -1,0 +1,11 @@
+{
+    "id": "icon_lem_classification",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "icon"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/icon_lem/joyce/%Y-%m-%d_Classification.png"
+}

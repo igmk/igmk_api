@@ -1,0 +1,13 @@
+{
+    "name": "aqm",
+    "description": "Aeroqual AQS 1 Ozone",
+    "locations": [
+        {
+            "site": "cgn_city",
+            "dates": [
+                ["2025-01-01"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=citystation#ozon"
+}

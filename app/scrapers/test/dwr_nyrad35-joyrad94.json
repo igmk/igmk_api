@@ -1,0 +1,11 @@
+{
+    "id": "dwr_nyrad35-joyrad94",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "dwr"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/nya/dwr/l1/%Y/%m/%d/nya_ka_w_DWR_%Y%m%d.png"
+}

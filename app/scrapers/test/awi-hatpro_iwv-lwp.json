@@ -1,0 +1,11 @@
+{
+    "id": "awi-hatpro_iwv-lwp",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "awi_hatpro"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/IWV_LWP/%y%m/%y%m%d_nya_l2a.png"
+}

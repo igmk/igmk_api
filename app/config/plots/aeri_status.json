@@ -1,0 +1,11 @@
+{
+    "id": "aeri_status",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "aeri"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/aeri/%Y/%m/%d/AERI_jue_%y%m%d_3.png"
+}

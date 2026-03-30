@@ -1,0 +1,11 @@
+{
+    "id": "tsi_lwp_vs_red_blue",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/data/%Y/%m/plot/LWP_vs_red_blue_030_%y%m%d.png"
+}

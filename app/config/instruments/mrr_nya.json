@@ -1,0 +1,13 @@
+{
+    "name": "mrr_nya",
+    "description": "Micro Rain Radar",
+    "locations": [
+        {
+            "site": "nya",
+            "dates": [
+                ["2017-04-27"]
+            ]
+        }
+    ],
+    "wiki":"https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:mrrnya:mrrnya"
+}

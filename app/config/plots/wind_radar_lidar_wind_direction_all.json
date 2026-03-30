@@ -1,0 +1,11 @@
+{
+    "id": "wind_radar_lidar_wind_direction_all",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "wind"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_profiles/l3/%Y/%m/%d/merge_winddirection_fullheight_%Y%m%d.png"
+}

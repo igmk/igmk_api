@@ -1,0 +1,11 @@
+{
+    "id": "awi-bsrn_radiation",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "awi-bsrn"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/bsrn/level1/%y%m/%Y%m%d_bsrn_rad_nya_l1.png"
+}

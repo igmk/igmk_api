@@ -1,0 +1,14 @@
+{
+    "name": "halo",
+    "description": "HALO Photonics Doppler Wind Lidar",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2012-09-12", "2025-01-22"],
+                ["2011-11-07", "2012-07-26"]
+            ] 
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=windlidar"
+}

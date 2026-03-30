@@ -1,0 +1,11 @@
+{
+    "id": "tsi_axis_stereo_stripe",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi_axis"
+    ],
+    "description": "",
+    "path": "http://atmos.meteo.uni-koeln.de/~jschween/tsi/test_axis/stereo/stripe_%Y%m%d.png"
+}

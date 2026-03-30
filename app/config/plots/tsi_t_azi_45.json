@@ -1,0 +1,11 @@
+{
+    "id": "tsi_t_azi_45",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/data/%Y/%m/plot/tsi_t_azi_045_%y%m%d.png"
+}

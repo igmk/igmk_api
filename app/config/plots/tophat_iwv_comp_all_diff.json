@@ -1,0 +1,11 @@
+{
+    "id": "tophat_iwv_comp_all_diff",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tophat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/iwv_comp/%Y/IWV_all_Diff_%Y%m%d.png"
+}

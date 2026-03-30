@@ -1,0 +1,13 @@
+{
+    "name": "joyrad",
+    "description": "JOYRAD-10",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2018-10-01", "2023-10-16"]
+            ] 
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=joyrad10"
+}

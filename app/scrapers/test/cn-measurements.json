@@ -1,0 +1,11 @@
+{
+    "id": "cn-measurements",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "cn-measurements"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/cloudnet/measurements/%y%m/%Y%m%d_ny-alesund_measurements.png"
+}

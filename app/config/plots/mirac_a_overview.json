@@ -1,0 +1,11 @@
+{
+    "id": "mirac_a_overview",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "mirac_a"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/mirac/l1/%Y/%m/%d/%Y%m%d_mirac_moments_overview.png"
+}

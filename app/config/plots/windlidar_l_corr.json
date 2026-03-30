@@ -1,0 +1,11 @@
+{
+    "id": "windlidar_l_corr",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "windlidar"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l0/%Y/%m/%d/L_corr_%Y%m%d.png"
+}

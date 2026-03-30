@@ -1,0 +1,11 @@
+{
+    "id": "cmp-reff_ice_delanoe_2007",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "cmp-reff"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/cloud_microphysics/%y%m/%Y%m%d_reffice_Delanoe_2007.png"
+}

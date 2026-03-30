@@ -1,0 +1,11 @@
+{
+    "id": "parsivel-pluvio-mrr-accumulated-precipitation",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "parsivel-pluvio-mrr-accumulated-precipitation"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/parsivel/level1/%Y/%m/accum_pars_plu_mrr_%Y%m%d_nya.png"
+}

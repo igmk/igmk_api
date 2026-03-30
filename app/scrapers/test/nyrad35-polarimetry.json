@@ -1,0 +1,11 @@
+{
+    "id": "nyrad35-polarimetry",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "nyrad35-polarimetry"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/nya/nyrad35/l1/%Y/%m/%d/%Y%m%d_Ny-RAD35_polarimetry_overview.png"
+}

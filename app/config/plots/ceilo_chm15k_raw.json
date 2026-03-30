@@ -1,0 +1,11 @@
+{
+    "id": "ceilo_chm15k_raw",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "chm15k"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/chm15k/l0/%Y/%m/%d/%Y%m%d_JOYCE_CHM120109_000.nc.png"
+}

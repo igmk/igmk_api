@@ -1,0 +1,11 @@
+{
+    "id": "tsi_axis_stereo_contour",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi_axis"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img_axis/stereo/stp/%Y/%m/%d/contour_%Y%m%d_113800.jpg"
+}

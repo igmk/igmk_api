@@ -1,0 +1,11 @@
+{
+    "id": "tsi_iwv-30",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/data/%Y/%m/plot/tsi_t_azi_IWV_030_%y%m%d.png"
+}

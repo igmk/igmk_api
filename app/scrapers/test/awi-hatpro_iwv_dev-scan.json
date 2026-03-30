@@ -1,0 +1,11 @@
+{
+    "id": "awi-hatpro_iwv_dev-scan",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "awi_hatpro"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/scans/%y%m/%Y%m%d_IWVdevmean.png"
+}

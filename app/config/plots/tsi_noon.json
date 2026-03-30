@@ -1,0 +1,11 @@
+{
+    "id": "tsi_noon",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img/%Y/%m/%d/%y%m%d113800.jpg"
+}

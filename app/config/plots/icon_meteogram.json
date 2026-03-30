@@ -1,0 +1,11 @@
+{
+    "id": "icon_meteogram",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "icon"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/icon_lem/joyce/METEOGRAM_r600f2_%Y%m%d.png"
+}

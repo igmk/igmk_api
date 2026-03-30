@@ -1,0 +1,14 @@
+{
+    "name": "parsivel_jue",
+    "description": "OTT Parsivel 2",
+    "locations": [
+
+        {
+            "site": "jue",
+            "dates": [
+                ["2013-08-01"]
+            ]
+        }
+    ],
+    "wiki":"https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:parzivel:parzivel"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "aeri_temp_wvmr",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "aeri"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/aeri/%Y/%m/%d/aerioe.%Y%m%d.fig02_temp_wvmr.png"
+}

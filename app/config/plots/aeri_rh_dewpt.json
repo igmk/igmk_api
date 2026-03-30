@@ -1,0 +1,11 @@
+{
+    "id": "aeri_rh_dewpt",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "aeri"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/aeri/%Y/%m/%d/aerioe.%Y%m%d.fig05_rh_dewpt.png"
+}

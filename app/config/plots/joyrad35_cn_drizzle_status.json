@@ -1,0 +1,11 @@
+{
+    "id": "joyrad35_cn_drizzle_status",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "joyrad35"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/drizzle/%y%m/%Y%m%d_juelich_drizzle_status.png"
+}

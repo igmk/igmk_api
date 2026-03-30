@@ -1,0 +1,11 @@
+{
+    "id": "cn-scaled-adiabatic-lwc-status",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "cn-scaled-adiabatic-lwc-status"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/cloudnet/lwc-scaled-adiabatic/%y%m/%Y%m%d_ny-alesund_lwc-scaled-adiabatic_status.png"
+}

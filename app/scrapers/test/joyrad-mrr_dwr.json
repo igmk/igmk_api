@@ -1,0 +1,11 @@
+{
+    "id": "joyrad-mrr_dwr",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "joyrad-mrr"
+    ],
+    "description": "",
+    "path": "http://atmos.meteo.uni-koeln.de/~hatpro/nya/joyrad_MRR_DWR/Joyrad_MRR_DWR_%Y%m%d.png"
+}

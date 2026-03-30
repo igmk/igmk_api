@@ -1,0 +1,11 @@
+{
+    "id": "cmp-lwc_frisch_1998",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "cmp-lwc"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/cloud_microphysics/%y%m/%Y%m%d_LWC_Frisch_1998.png"
+}

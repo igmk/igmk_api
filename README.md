@@ -4,16 +4,21 @@ Backend for new QL-Browser &amp; WebDashboard
 ## Requirements
 Python 3.5.2+
 
+
 ## Usage
+
+## Run local (only for dev)
 To run the server, please execute the following from the root directory:
 
 ```
 pip3 install -r requirements.txt
-python3 -m swagger_server
+cd app
+uvicorn run:app
 ```
+- adjust all `/config` paths in `app/run.py` (remember to undo this change beofore commiting to github)
+- For development purposes, you can use `uvicorn run:app --reload` for hot-reloading.
 
-and open your browser to here:
-
+API is available at:
 ```
 http://localhost:8080/ui/
 ```
@@ -24,22 +29,19 @@ Your Swagger definition lives here:
 http://localhost:8080/swagger.json
 ```
 ## Docker
-build container
-```
-docker build -t igmk_api .
-```
-run container with docker-compose
-```
+```YAML
 version: "3.8"
+
 services:
-  igmk_api:
-    image: igmk_api
-    container_name: igmk_api
-    restart: unless-stopped
+  api:
+    image: ghcr.io/igmk/api:latest
+    container_name: api
     volumes:
-      - ./igmk_api:/data
+      - /data/obs/api_config/default:/config:ro
+      - /data/obs:/data/obs:ro
     ports:
-      - 80:80
+      - "8000:8000"
+    restart: unless-stopped
 ```
 
 ## Config Files

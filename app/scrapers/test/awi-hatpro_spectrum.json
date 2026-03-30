@@ -1,0 +1,11 @@
+{
+    "id": "awi-hatpro_spectrum",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "awi_hatpro"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/TB/%y%m/%y%m%d_nya_l1_sp.png"
+}

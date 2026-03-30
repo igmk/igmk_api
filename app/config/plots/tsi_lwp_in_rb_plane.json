@@ -1,0 +1,11 @@
+{
+    "id": "tsi_lwp_in_rb_plane",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "tsi"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/data/%Y/%m/plot/LWP_in_rb_plane_030_%y%m%d.png"
+}

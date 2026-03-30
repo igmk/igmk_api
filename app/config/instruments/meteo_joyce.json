@@ -1,0 +1,13 @@
+{
+    "name": "meteo_joyce",
+    "description": "Meteorological Station at Jülich",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2023-10-20"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

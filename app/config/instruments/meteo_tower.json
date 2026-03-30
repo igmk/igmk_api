@@ -1,0 +1,13 @@
+{
+    "name": "meteo_tower",
+    "description": "Meteorological Tower at Jülich",
+    "locations": [
+        {
+            "site": "jue_tower",
+            "dates": [
+                ["2006-01-01"]
+            ] 
+        }
+    ],
+    "wiki":"https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:tower:tower"
+}

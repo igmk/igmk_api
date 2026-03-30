@@ -1,0 +1,11 @@
+{
+    "id": "meteo_tower_ec_aw_flux_spectrum_lin",
+    "sites": [
+        "jue_tower"
+    ],
+    "instruments": [
+        "meteo_tower"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/met/ec_station/%Y/%m/%d/plot/ec_data_day_pow_aH2O_%Y%m%d.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "awi-hatpro_rh-prof",
+    "sites": [
+        "nya"
+    ],
+    "instruments": [
+        "awi_hatpro"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/nya/VAPs/Tq_profiles/%y%m/%y%m%d_nya_l2c_rhlwp.png"
+}

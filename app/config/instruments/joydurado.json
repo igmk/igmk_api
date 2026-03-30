@@ -1,0 +1,13 @@
+{
+    "name": "joydurado",
+    "description": "Dual-frequency cloud radar",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2024-06-20"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=joydurado"
+}
