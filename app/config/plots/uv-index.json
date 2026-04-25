@@ -6,6 +6,6 @@
     "instruments": [
         "meteo_city"
     ],
-    "description": "",
+    "description": "UV Index",
     "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dUVind_Avg.png"
 }

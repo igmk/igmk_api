@@ -1,6 +1,6 @@
 {
     "name": "meteo_city",
-    "description": "Citystation Cologne",
+    "description": "Citystation",
     "locations": [
         {
             "site": "cgn_city",

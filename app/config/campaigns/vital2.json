@@ -1,0 +1,17 @@
+{
+    "name": "vital2",
+    "description": "VITAL II Campaign",
+    "date": ["2026-06-01", "2026-08-31"],
+    "sites": [
+        "aac",
+        "cgn_airport",
+        "cgn_bio",
+        "cgn_city",
+        "gwu",
+        "jue_tower",
+        "jue",
+        "rpg",
+        "sint",
+        "vett"
+    ]
+}

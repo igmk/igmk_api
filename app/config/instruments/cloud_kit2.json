@@ -1,0 +1,13 @@
+{
+    "name": "cloud_kit2",
+    "description": "Cloud Camera",
+    "locations": [
+        {
+            "site": "sint",
+            "dates": [
+                ["2026-06-01"]
+            ]
+        }
+    ],
+    "wiki":""
+}

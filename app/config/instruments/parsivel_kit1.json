@@ -1,0 +1,14 @@
+{
+    "name": "parsivel_kit1",
+    "description": "Parsivel KIT1",
+    "locations": [
+
+        {
+            "site": "vett",
+            "dates": [
+                ["2026-06-01"]
+            ]
+        }
+    ],
+    "wiki":""
+}

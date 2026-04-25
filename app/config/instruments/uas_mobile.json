@@ -1,0 +1,13 @@
+{
+    "name": "uas_mobile",
+    "description": "UAS Mobile",
+    "locations": [
+        {
+            "site": "cgn_bio",
+            "dates": [
+                ["2026-06-01"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

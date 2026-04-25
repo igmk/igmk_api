@@ -1,0 +1,13 @@
+{
+    "name": "kithat2",
+    "description": "KITHAT2 HATPRO",
+    "locations": [
+        {
+            "site": "sint",
+            "dates": [
+                ["2026-06-01"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

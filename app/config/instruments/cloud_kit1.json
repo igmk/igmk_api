@@ -1,0 +1,13 @@
+{
+    "name": "cloud_kit1",
+    "description": "Cloud Camera",
+    "locations": [
+        {
+            "site": "vett",
+            "dates": [
+                ["2026-06-01"]
+            ]
+        }
+    ],
+    "wiki":""
+}

@@ -1,6 +1,6 @@
 {
     "name": "chm15k",
-    "description": "Jenoptik/Lufft CHM15k Ceilometer",
+    "description": "Ceilometer CHM15k",
     "locations": [
         {
             "site": "jue",

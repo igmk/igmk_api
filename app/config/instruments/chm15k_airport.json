@@ -1,0 +1,13 @@
+{
+    "name": "chm15k_airport",
+    "description": "Ceilometer CHM15k",
+    "locations": [
+        {
+            "site": "cgn_airport",
+            "dates": [
+                ["2026-06-01"]
+            ]
+        }
+    ],
+    "wiki":""
+}

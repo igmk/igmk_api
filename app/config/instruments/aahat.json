@@ -1,0 +1,13 @@
+{
+    "name": "aahat",
+    "description": "Aachen HATPRO",
+    "locations": [
+        {
+            "site": "aac",
+            "dates": [
+                ["2026-06-01"]
+            ]
+        }
+    ],
+    "wiki":""
+}

@@ -1,0 +1,13 @@
+{
+    "name": "wls_aac",
+    "description": "Doppler Wind LIDAR WLS400",
+    "locations": [
+        {
+            "site": "aac",
+            "dates": [
+                ["2026-06-01"]
+            ]
+        }
+    ],
+    "wiki":""
+}

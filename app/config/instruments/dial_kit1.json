@@ -1,0 +1,13 @@
+{
+    "name": "dial_kit1",
+    "description": "DIAL KIT1",
+    "locations": [
+        {
+            "site": "vett",
+            "dates": [
+                ["2026-06-01"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

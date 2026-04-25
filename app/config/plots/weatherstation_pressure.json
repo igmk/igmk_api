@@ -6,6 +6,6 @@
     "instruments": [
         "meteo_joyce"
     ],
-    "description": "",
+    "description": "Pressure",
     "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dBV_BP_SL_Avg.png"
 }

@@ -1,6 +1,6 @@
 {
     "name": "aqm",
-    "description": "Aeroqual AQS 1 Ozone",
+    "description": "Ozone AQS 1",
     "locations": [
         {
             "site": "cgn_city",

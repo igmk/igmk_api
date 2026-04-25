@@ -1,0 +1,13 @@
+{
+    "name": "rs_cgn",
+    "description": "Radiosonde",
+    "locations": [
+        {
+            "site": "cgn_bio",
+            "dates": [
+                ["2026-06-01"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

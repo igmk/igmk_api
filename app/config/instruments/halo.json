@@ -1,12 +1,13 @@
 {
     "name": "halo",
-    "description": "HALO Photonics Doppler Wind Lidar",
+    "description": "HALO Doppler Wind Lidar",
     "locations": [
         {
             "site": "jue",
             "dates": [
                 ["2012-09-12", "2025-01-22"],
-                ["2011-11-07", "2012-07-26"]
+                ["2011-11-07", "2012-07-26"],
+                ["2026-06-01"]
             ] 
         }
     ],

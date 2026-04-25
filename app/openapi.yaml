@@ -45,7 +45,20 @@ paths:
               schema:
                 type: string
                 format: binary
-
+  /search/{query}:
+    get:
+        summary: 'Search'
+        description: ''
+        operationId: run.search
+        responses:
+          '200':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  type: object
+        tags:
+          - Sites
   /map:
     get:
       summary: 'Shows a world map with sites and further information'

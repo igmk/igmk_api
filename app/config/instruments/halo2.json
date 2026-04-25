@@ -1,0 +1,13 @@
+{
+    "name": "halo2",
+    "description": "HALO Doppler Wind Lidar",
+    "locations": [
+        {
+            "site": "cgn_bio",
+            "dates": [
+                ["2026-06-01"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

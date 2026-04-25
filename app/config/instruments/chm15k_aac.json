@@ -1,0 +1,13 @@
+{
+    "name": "chm15k_aac",
+    "description": "Ceilometer CHM15k",
+    "locations": [
+        {
+            "site": "aac",
+            "dates": [
+                ["2026-06-01"]
+            ]
+        }
+    ],
+    "wiki":""
+}

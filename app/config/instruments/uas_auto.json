@@ -1,0 +1,13 @@
+{
+    "name": "uas_auto",
+    "description": "UAS Automated",
+    "locations": [
+        {
+            "site": "sint",
+            "dates": [
+                ["2026-06-01"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

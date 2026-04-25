@@ -1,0 +1,13 @@
+{
+    "name": "icehat",
+    "description": "ICEHAT HATPRO",
+    "locations": [
+        {
+            "site": "gwu",
+            "dates": [
+                ["2026-03-10"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

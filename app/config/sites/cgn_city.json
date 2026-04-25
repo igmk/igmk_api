@@ -1,6 +1,6 @@
 {
     "siteID": "cgn_city",
-    "siteHumanReadable": "Köln Citystation",
+    "siteHumanReadable": "Citystation",
     "description": "TODO",
     "liveDataPath": "https://atmos.meteo.uni-koeln.de/~citystation/webDashboard/data.json",
     "lat": 50.929671,

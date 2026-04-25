@@ -1,0 +1,13 @@
+{
+    "name": "rs_vaisala",
+    "description": "Radiosonde",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2026-06-01"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

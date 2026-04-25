@@ -6,6 +6,6 @@
     "instruments": [
         "meteo_joyce"
     ],
-    "description": "",
+    "description": "Wind Speed",
     "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dwind_maximums.png"
 }
