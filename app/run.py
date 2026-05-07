@@ -25,14 +25,6 @@ CORS(app.app,
 app.app.url_map.strict_slashes = False
 app.app.config['PREFERRED_URL_SCHEME'] = 'https'
 
-#app.add_middleware(
-#    CORSMiddleware,
-#    position=MiddlewarePosition.BEFORE_EXCEPTION,
-#    allow_origins=["*"],
-#    allow_credentials=True,
-#    allow_methods=["*"],
-#    allow_headers=["*"],
-#)
 
 
 
