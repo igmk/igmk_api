@@ -1,0 +1,15 @@
+{
+    "id": "multi_temp",
+    "sites": [
+        "jue",
+        "cgn",
+        "sint"
+    ],
+    "instruments": [
+        "meteo_joyce",
+        "meteo_city",
+        "meteo_sint"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_multi/l2/%Y/%m/%d/%Y%m%dAirTC_Avg.png"
+}

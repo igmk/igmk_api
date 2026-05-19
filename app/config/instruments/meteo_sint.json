@@ -1,0 +1,13 @@
+{
+    "name": "meteo_sint",
+    "description": "Meteo Station Sinthern",
+    "locations": [
+        {
+            "site": "sint",
+            "dates": [
+                ["2025-11-22"]
+            ]
+        }
+    ],
+    "wiki":""
+}
