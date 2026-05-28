@@ -238,7 +238,22 @@ paths:
                 schema:
                   type: object
       tags:
-        - Instruments  
+        - Instruments
+
+  /local_test:
+    get:
+      summary: 'Local test image'
+      description: 'Returns a local test PNG image'
+      operationId: run.local_test
+      responses:
+        '200':
+          description: ''
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+      tags:
+        - General
 
 
-    

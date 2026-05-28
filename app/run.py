@@ -44,6 +44,10 @@ def serve_favicon():
     return send_file("./static/favicon.ico")
 
 
+def local_test():
+    return send_file("/data/obs/campaigns/vital2/site/vettweiss/dial/l2/2026/05/17/vettweiss_WV-DIAL_wv_20260517.png", mimetype="image/png")
+
+
 def create_map_javascript():
     js_file_path = "./static/map.js"
     if os.path.isfile(js_file_path):
