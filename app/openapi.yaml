@@ -239,20 +239,3 @@ paths:
                   type: object
       tags:
         - Instruments
-
-  /local_test:
-    get:
-      summary: 'Local test'
-      description: 'Tests if local test image file is accessible'
-      operationId: run.local_test
-      responses:
-        '200':
-          description: 'ok if file is accessible, not ok otherwise'
-          content:
-            text/plain:
-              schema:
-                type: string
-      tags:
-        - General
-
-

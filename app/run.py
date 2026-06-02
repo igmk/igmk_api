@@ -44,15 +44,6 @@ def serve_favicon():
     return send_file("./static/favicon.ico")
 
 
-def local_test():
-    try:
-        with open("/data/obs/campaigns/vital2/site/vettweiss/dial/l2/2026/05/17/vettweiss_WV-DIAL_wv_20260517.png", "rb") as f:
-            f.read()
-        return "ok"
-    except (FileNotFoundError, IOError, OSError):
-        return "not ok"
-
-
 def create_map_javascript():
     js_file_path = "./static/map.js"
     if os.path.isfile(js_file_path):
