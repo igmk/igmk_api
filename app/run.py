@@ -45,8 +45,12 @@ def serve_favicon():
 
 
 def local_test():
-    with open("/data/obs/campaigns/vital2/site/vettweiss/dial/l2/2026/05/17/vettweiss_WV-DIAL_wv_20260517.png", "rb") as f:
-        return send_file(BytesIO(f.read()), mimetype="image/png")
+    try:
+        with open("/data/obs/campaigns/vital2/site/vettweiss/dial/l2/2026/05/17/vettweiss_WV-DIAL_wv_20260517.png", "rb") as f:
+            f.read()
+        return "ok"
+    except (FileNotFoundError, IOError, OSError):
+        return "not ok"
 
 
 def create_map_javascript():
