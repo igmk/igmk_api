@@ -242,17 +242,16 @@ paths:
 
   /local_test:
     get:
-      summary: 'Local test image'
-      description: 'Returns a local test PNG image'
+      summary: 'Local test'
+      description: 'Tests if local test image file is accessible'
       operationId: run.local_test
       responses:
         '200':
-          description: ''
+          description: 'ok if file is accessible, not ok otherwise'
           content:
-            image/png:
+            text/plain:
               schema:
                 type: string
-                format: binary
       tags:
         - General
 
