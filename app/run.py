@@ -45,7 +45,8 @@ def serve_favicon():
 
 
 def local_test():
-    return send_file("/data/obs/campaigns/vital2/site/vettweiss/dial/l2/2026/05/17/vettweiss_WV-DIAL_wv_20260517.png", mimetype="image/png")
+    with open("/data/obs/campaigns/vital2/site/vettweiss/dial/l2/2026/05/17/vettweiss_WV-DIAL_wv_20260517.png", "rb") as f:
+        return send_file(BytesIO(f.read()), mimetype="image/png")
 
 
 def create_map_javascript():
@@ -127,7 +128,8 @@ def return_image(visID, dateString):
         response = requests.get(image_path)
         return send_file(BytesIO(response.content), mimetype="image/png")
     else:
-        return send_file(image_path, mimetype="image/png")
+        with open(image_path, "rb") as f:
+            return send_file(BytesIO(f.read()), mimetype="image/png")
 
 
 def return_current_image(visID):
