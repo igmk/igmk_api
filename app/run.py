@@ -122,8 +122,12 @@ def return_image(visID, dateString):
     with open(f"/config/plots/{visID}.json") as f:
         file = json.load(f)
     image_path = date.strftime(file["path"])
-    response = requests.get(image_path)
-    return send_file(BytesIO(response.content), mimetype="image/png")
+
+    if image_path.startswith("http://") or image_path.startswith("https://"):
+        response = requests.get(image_path)
+        return send_file(BytesIO(response.content), mimetype="image/png")
+    else:
+        return send_file(image_path, mimetype="image/png")
 
 
 def return_current_image(visID):
