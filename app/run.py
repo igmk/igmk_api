@@ -139,15 +139,15 @@ def return_instruments(siteID, showHistoric=False):
         with open(f) as instrument_config_file:
             inst_file = json.load(instrument_config_file)
         for location in inst_file["locations"]:
-            if location["site"] == siteID:
+            if location["site"] != siteID:
+                continue
+            dates = location["dates"]
+            currently_on_site = len(dates) > 0 and len(dates[-1]) == 1
+            if showHistoric or currently_on_site:
                 instruments[inst_file["name"]] = dict(
-                    description=inst_file["description"]
+                    description=inst_file["description"],
+                    timespans=dates,
                 )
-                if len(location["dates"]) > 0:
-                    if showHistoric or len(location["dates"][-1]) == 1:
-                        instruments[inst_file["name"]]["timespans"] = location["dates"]
-                else:
-                    instruments[inst_file["name"]]["timespans"] = location["dates"]
     return instruments
 
 
