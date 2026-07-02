@@ -123,13 +123,19 @@ GRANULARITY_FORMATS = {
 
 def _serve_plot(visID, granularity, dateString):
     if granularity not in GRANULARITY_FORMATS:
-        return {}, 400
+        return {"error": f"Unknown granularity '{granularity}', expected one of {list(GRANULARITY_FORMATS)}"}, 400
     with open(f"/config/plots/{visID}.json") as f:
         config = json.load(f)
     paths = config.get("paths") or {"daily": config["path"]}
     if granularity not in paths:
-        return {}, 404
-    date = datetime.datetime.strptime(dateString, GRANULARITY_FORMATS[granularity])
+        return {"error": f"Plot '{visID}' does not support granularity '{granularity}'"}, 404
+    try:
+        date = datetime.datetime.strptime(dateString, GRANULARITY_FORMATS[granularity])
+    except ValueError:
+        return {
+            "error": f"dateString '{dateString}' does not match expected format "
+            f"'{GRANULARITY_FORMATS[granularity]}' for granularity '{granularity}'"
+        }, 400
     image_path = date.strftime(paths[granularity])
 
     if image_path.startswith("http://") or image_path.startswith("https://"):
