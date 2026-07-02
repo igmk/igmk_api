@@ -1,0 +1,11 @@
+{
+    "id": "ceilo_chm15k_ceiloclass",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "chm15k"
+    ],
+    "description": "",
+    "path": "/data/obs/site/jue/cloudnet/clu_processing/classification/%Y/%Y%m%d_juelich_ceiloclass.png"
+}

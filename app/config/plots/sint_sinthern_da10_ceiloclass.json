@@ -1,0 +1,11 @@
+{
+    "id": "sint_sinthern_da10_ceiloclass",
+    "sites": [
+        "sint"
+    ],
+    "instruments": [
+        "dial_kit2"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/dial/l1/%Y/%m/%d/%Y%m%d_sinthern_da10-ceiloclass.png"
+}

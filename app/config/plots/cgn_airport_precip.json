@@ -1,0 +1,11 @@
+{
+    "id": "cgn_airport_precip",
+    "sites": [
+        "cgn_airport"
+    ],
+    "instruments": [
+        "meteo_airport"
+    ],
+    "description": "",
+    "path": "/data/obs/site/cgn/meteo_airport_dwd/l2/%Y/%m/%d/%Y%m%dprecip.png"
+}

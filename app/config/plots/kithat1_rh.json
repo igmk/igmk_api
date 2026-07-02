@@ -1,0 +1,11 @@
+{
+    "id": "kithat1_rh",
+    "sites": [
+        "vett"
+    ],
+    "instruments": [
+        "kithat1"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level2/%Y/%m/%d/%Y%m%d_vettweiss_relative_humidity.png"
+}

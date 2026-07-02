@@ -1,0 +1,11 @@
+{
+    "id": "lhumpro_q",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "lhumpro"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/lhumpro/actris/level2/%Y/%m/%d/%Y%m%d_lhumpro_absolute_humidity.png"
+}

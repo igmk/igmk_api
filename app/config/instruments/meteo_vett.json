@@ -1,0 +1,13 @@
+{
+    "name": "meteo_vett",
+    "description": "Meteo Tower Vettweiß",
+    "locations": [
+        {
+            "site": "vett",
+            "dates": [
+                ["2026-06-01"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

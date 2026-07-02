@@ -1,0 +1,13 @@
+{
+    "name": "grawac",
+    "description": "GRaWAC",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2026-05-21"]
+            ]
+        }
+    ],
+    "wiki":""
+}

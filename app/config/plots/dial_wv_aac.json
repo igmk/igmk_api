@@ -1,0 +1,11 @@
+{
+    "id": "dial_wv_aac",
+    "sites": [
+          "aac"
+    ],
+    "instruments": [
+        "dial_aac"
+    ],
+    "description": "Water Vapor Differential Absorption Lidar",
+    "path": "/data/obs/campaigns/vital2/site/aachen/dial/l2/%Y/%m/%d/aachen_WV-DIAL_wv_%Y%m%d.png"
+}

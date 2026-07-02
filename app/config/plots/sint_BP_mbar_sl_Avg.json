@@ -1,0 +1,11 @@
+{
+    "id": "sint_BP_mbar_sl_Avg",
+    "sites": [
+        "sint"
+    ],
+    "instruments": [
+        "meteo_sint"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sinthern/l2/%Y/%m/%d/%Y%m%dBP_mbar_sl_Avg.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "aahat_hkd",
+    "sites": [
+        "aac"
+    ],
+    "instruments": [
+        "aahat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level1/%Y/%m/%d/%Y%m%d_aachen_hkd.png"
+}

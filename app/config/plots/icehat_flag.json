@@ -1,0 +1,11 @@
+{
+    "id": "icehat_flag",
+    "sites": [
+        "gwu"
+    ],
+    "instruments": [
+        "icehat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/mwr/level1/%Y/%m/%d/%Y%m%d_erftstadt_quality_flag.png"
+}

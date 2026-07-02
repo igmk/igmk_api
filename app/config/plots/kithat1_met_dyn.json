@@ -1,0 +1,11 @@
+{
+    "id": "kithat1_met_dyn",
+    "sites": [
+        "vett"
+    ],
+    "instruments": [
+        "kithat1"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level1/%Y/%m/%d/%Y%m%d_vettweiss_met2.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "dial_wv_vett",
+    "sites": [
+          "vett"
+    ],
+    "instruments": [
+        "dial_kit1"
+    ],
+    "description": "",
+    "path": "/data/obs/campaigns/vital2/site/vettweiss/dial/l2/%Y/%m/%d/vettweiss_WV-DIAL_wv_%Y%m%d.png"
+}

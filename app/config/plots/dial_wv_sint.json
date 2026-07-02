@@ -1,0 +1,11 @@
+{
+    "id": "dial_wv_sint",
+    "sites": [
+          "sint"
+    ],
+    "instruments": [
+        "dial_kit2"
+    ],
+    "description": "Water Vapor Differential Absorption Lidar",
+    "path": "/data/obs/campaigns/vital2/site/sinthern/dial/l2/%Y/%m/%d/sinthern_WV-DIAL_wv_%Y%m%d.png"
+}

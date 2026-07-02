@@ -1,0 +1,11 @@
+{
+    "id": "vett_vettweiss_da10_beta",
+    "sites": [
+        "vett"
+    ],
+    "instruments": [
+        "dial_kit1"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/dial/l1/%Y/%m/%d/%Y%m%d_vettweiss_da10-beta.png"
+}

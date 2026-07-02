@@ -1,0 +1,11 @@
+{
+    "id": "aac_radiation_global",
+    "sites": [
+        "aac"
+    ],
+    "instruments": [
+        "meteo_aac"
+    ],
+    "description": "",
+    "path": "/data/obs/site/aac/meteo_orsbach_dwd/l2/%Y/%m/%d/%Y%m%dradiation_global.png"
+}

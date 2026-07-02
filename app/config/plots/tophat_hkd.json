@@ -1,0 +1,11 @@
+{
+    "id": "tophat_hkd",
+    "sites": [
+        "cgn_airport"
+    ],
+    "instruments": [
+        "tophat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/mwr/level1/%Y/%m/%d/%Y%m%d_airport_hkd.png"
+}

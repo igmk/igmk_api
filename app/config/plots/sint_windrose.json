@@ -1,0 +1,11 @@
+{
+    "id": "sint_windrose",
+    "sites": [
+        "sint"
+    ],
+    "instruments": [
+        "meteo_sint"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sinthern/l2/%Y/%m/%d/%Y%m%dwindrose.png"
+}

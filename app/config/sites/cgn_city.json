@@ -1,6 +1,6 @@
 {
     "siteID": "cgn_city",
-    "siteHumanReadable": "Citystation",
+    "siteHumanReadable": "UniSport",
     "description": "TODO",
     "liveDataPath": "https://atmos.meteo.uni-koeln.de/~citystation/webDashboard/data.json",
     "lat": 50.929671,

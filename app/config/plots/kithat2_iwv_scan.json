@@ -1,0 +1,11 @@
+{
+    "id": "kithat2_iwv_scan",
+    "sites": [
+        "sint"
+    ],
+    "instruments": [
+        "kithat2"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/mwr/level2/%Y/%m/%d/%Y%m%d_sinthern_iwv_scan.png"
+}

@@ -1,0 +1,13 @@
+{
+    "name": "raman",
+    "description": "Raman Lidar",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2024-04-01"]
+            ]
+        }
+    ],
+    "wiki":"https://obs.meteo.uni-koeln.de/doku.php?id=ramanlidar"
+}

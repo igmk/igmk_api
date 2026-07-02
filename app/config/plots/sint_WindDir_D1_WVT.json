@@ -1,0 +1,11 @@
+{
+    "id": "sint_WindDir_D1_WVT",
+    "sites": [
+        "sint"
+    ],
+    "instruments": [
+        "meteo_sint"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sinthern/l2/%Y/%m/%d/%Y%m%dWindDir_D1_WVT.png"
+}

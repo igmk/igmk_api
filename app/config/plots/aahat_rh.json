@@ -1,0 +1,11 @@
+{
+    "id": "aahat_rh",
+    "sites": [
+        "aac"
+    ],
+    "instruments": [
+        "aahat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level2/%Y/%m/%d/%Y%m%d_aachen_relative_humidity.png"
+}

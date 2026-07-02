@@ -1,0 +1,11 @@
+{
+    "id": "cloudnet_classification",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "cloudnet"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/classification/%y%m/%Y%m%d_juelich_classification.png"
+}

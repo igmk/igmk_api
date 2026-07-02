@@ -1,0 +1,11 @@
+{
+    "id": "icehat_iwv",
+    "sites": [
+        "gwu"
+    ],
+    "instruments": [
+        "icehat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/mwr/level2/%Y/%m/%d/%Y%m%d_erftstadt_iwv.png"
+}

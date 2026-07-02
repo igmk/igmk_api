@@ -1,0 +1,11 @@
+{
+    "id": "aahat_eqpot_t",
+    "sites": [
+        "aac"
+    ],
+    "instruments": [
+        "aahat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level2/%Y/%m/%d/%Y%m%d_aachen_equivalent_potential_temperature.png"
+}

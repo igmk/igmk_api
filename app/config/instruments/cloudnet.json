@@ -1,0 +1,13 @@
+{
+    "name": "cloudnet",
+    "description": "Cloudnet",
+    "locations": [
+        {
+            "site": "jue",
+            "dates": [
+                ["2012-03-13"]
+            ]
+        }
+    ],
+    "wiki":"https://cloudnet.fmi.fi/"
+}

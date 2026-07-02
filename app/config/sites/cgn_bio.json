@@ -19,30 +19,6 @@
                 ["2025-01-01"]
             ]
         },
-        "icehat": {
-            "description": "",
-            "availability":[
-                ["2025-01-01"]
-            ]
-        },
-        "joyhat": {
-            "description": "",
-            "availability":[
-                ["2025-01-01"]
-            ]
-        },
-        "sunhat": {
-            "description": "",
-            "availability":[
-                ["2025-01-01"]
-            ]
-        },
-        "tophat": {
-            "description": "",
-            "operatingTimes":[
-                ["2025-01-01"]
-            ]
-        },
         "windcube": {
             "description": "",
             "operatingTimes":[

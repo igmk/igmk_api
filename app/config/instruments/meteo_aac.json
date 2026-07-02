@@ -1,0 +1,13 @@
+{
+    "name": "meteo_aac",
+    "description": "DWD Station 15000 - Aachen Orsbach",
+    "locations": [
+        {
+            "site": "aac",
+            "dates": [
+                ["2026-06-01"]
+            ] 
+        }
+    ],
+    "wiki":""
+}

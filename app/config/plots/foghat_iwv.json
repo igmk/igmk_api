@@ -1,0 +1,11 @@
+{
+    "id": "foghat_iwv",
+    "sites": [
+        "cgn_bio"
+    ],
+    "instruments": [
+        "foghat"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/cgn/foghat/actris/level2/%Y/%m/%d/%Y%m%d_cologne_iwv.png"
+}

@@ -1,0 +1,11 @@
+{
+    "id": "vett_temp",
+    "sites": [
+        "vett"
+    ],
+    "instruments": [
+        "meteo_vett"
+    ],
+    "description": "",
+    "path": "/data/obs/site/cgn/meteo_vett/l2/%Y/%m/%d/%Y%m%dtemp.png"
+}

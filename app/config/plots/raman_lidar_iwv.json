@@ -1,0 +1,11 @@
+{
+    "id": "raman_lidar_iwv",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "raman"
+    ],
+    "description": "",
+    "path": "/data/obs/site/jue/raman_lidar/l3/%Y/%m/%d/%Y%m%d_iwv.png"
+}

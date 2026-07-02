@@ -1,0 +1,11 @@
+{
+    "id": "aac_aachen_dwl-l2a_vad-chart-dw",
+    "sites": [
+        "aac"
+    ],
+    "instruments": [
+        "wls_aac"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/dwl/l2/%Y/%m/%d/aachen_dwl-l2a_vad-chart-dw_%Y%m%d.png"
+}

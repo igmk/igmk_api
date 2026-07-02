@@ -1,0 +1,11 @@
+{
+    "id": "aac_aachen_da10_beta",
+    "sites": [
+        "aac"
+    ],
+    "instruments": [
+        "dial_aac"
+    ],
+    "description": "",
+    "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/dial/l1/%Y/%m/%d/%Y%m%d_aachen_da10-beta.png"
+}

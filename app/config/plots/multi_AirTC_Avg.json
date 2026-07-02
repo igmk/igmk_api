@@ -1,0 +1,21 @@
+{
+    "id": "multi_AirTC_Avg",
+    "sites": [
+        "aac",
+        "jue",
+        "sint",
+        "vett",
+        "cgn_city",
+        "cgn_airport"
+    ],
+    "instruments": [
+        "meteo_aac",
+        "meteo_joyce",
+        "meteo_sint",
+        "meteo_vett",
+        "meteo_city",
+        "meteo_airport"
+    ],
+    "description": "",
+    "path": "/data/obs/site/cgn/meteo_multi/l2/%Y/%m/%d/%Y%m%dAirTC_Avg.png"
+}
