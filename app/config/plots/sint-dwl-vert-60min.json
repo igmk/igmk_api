@@ -1,0 +1,7 @@
+{
+  "id": "sint-dwl-vert-60min",
+  "sites": [ "sint" ],
+  "instruments": [ "wls_sint" ],
+  "description": "",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/dwl/l1/%Y/%m/%d/plot/wind_w_cont_%Y%m%d.png"
+}

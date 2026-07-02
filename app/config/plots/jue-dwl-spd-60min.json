@@ -1,0 +1,7 @@
+{
+  "id": "jue-dwl-spd-60min",
+  "sites": [ "jue" ],
+  "instruments": [ "wls_jue" ],
+  "description": "",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/wind_spd_cont_%Y%m%d.png"
+}

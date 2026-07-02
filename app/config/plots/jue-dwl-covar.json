@@ -1,0 +1,7 @@
+{
+  "id": "jue-dwl-covar",
+  "sites": [ "jue" ],
+  "instruments": [ "wls_jue" ],
+  "description": "Time height sections of the six unique components of the reynolds stress tensor from the turbulence retrieval of the 6beam scan (Sathe et al. 2014).",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/wind_v_cov_cont_%Y%m%d.png"
+}

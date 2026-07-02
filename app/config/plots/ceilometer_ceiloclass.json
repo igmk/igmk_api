@@ -1,0 +1,11 @@
+{
+    "id": "ceilometer_ceiloclass",
+    "sites": [
+        "cgn_city"
+    ],
+    "instruments": [
+        "cl51"
+    ],
+    "description": "",
+    "path": "/data/obs/site/cgn/cl51/l2/%Y/%m/%d/%Y%m%d_cologne_cl51_ceiloclass.png"
+}

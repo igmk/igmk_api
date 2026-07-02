@@ -1,0 +1,7 @@
+{
+  "id": "cgn_bio-dwl-vec-40sec",
+  "sites": [ "cgn_bio" ],
+  "instruments": [ "wls_cgn_bio" ],
+  "description": "Time height section of wind speed (gray shading) and horizontal wind vectors from every single 6Beam scan.",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/cologne/dwl/l1/%Y/%m/%d/plot/wind_vector_instant_%Y%m%d.png"
+}

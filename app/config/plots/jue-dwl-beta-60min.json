@@ -1,0 +1,7 @@
+{
+  "id": "jue-dwl-beta-60min",
+  "sites": [ "jue" ],
+  "instruments": [ "wls_jue" ],
+  "description": "",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/beta_cont_%Y%m%d.png"
+}

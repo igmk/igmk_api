@@ -1,0 +1,7 @@
+{
+  "id": "sint-dwl-dir-60min",
+  "sites": [ "sint" ],
+  "instruments": [ "wls_sint" ],
+  "description": "",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/dwl/l1/%Y/%m/%d/plot/wind_dir_cont_%Y%m%d.png"
+}

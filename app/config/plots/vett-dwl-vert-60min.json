@@ -1,0 +1,7 @@
+{
+  "id": "vett-dwl-vert-60min",
+  "sites": [ "vett" ],
+  "instruments": [ "wls_vett" ],
+  "description": "",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/dwl/l1/%Y/%m/%d/plot/wind_w_cont_%Y%m%d.png"
+}

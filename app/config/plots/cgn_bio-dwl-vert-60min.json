@@ -1,0 +1,7 @@
+{
+  "id": "cgn_bio-dwl-vert-60min",
+  "sites": [ "cgn_bio" ],
+  "instruments": [ "wls_cgn_bio" ],
+  "description": "",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/cologne/dwl/l1/%Y/%m/%d/plot/wind_w_cont_%Y%m%d.png"
+}

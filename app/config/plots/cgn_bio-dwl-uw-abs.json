@@ -1,0 +1,7 @@
+{
+  "id": "cgn_bio-dwl-uw-abs",
+  "sites": [ "cgn_bio" ],
+  "instruments": [ "wls_cgn_bio" ],
+  "description": "Time height section of the absolutum of the (uw,vw) vector from the turbulence retrieval of the 6beam scan (Sathe et al. 2014).",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/cologne/dwl/l1/%Y/%m/%d/plot/uw_abs_cont_%Y%m%d.png"
+}

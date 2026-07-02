@@ -1,0 +1,7 @@
+{
+  "id": "gwu-dwl-spd-40sec",
+  "sites": [ "gwu" ],
+  "instruments": [ "wls_gwu" ],
+  "description": "",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/dwl/l1/%Y/%m/%d/plot/wind_spd_cont_instant_%Y%m%d.png"
+}

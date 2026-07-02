@@ -1,0 +1,7 @@
+{
+  "id": "vett-dwl-vec-40sec",
+  "sites": [ "vett" ],
+  "instruments": [ "wls_vett" ],
+  "description": "Time height section of wind speed (gray shading) and horizontal wind vectors from every single 6Beam scan.",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/dwl/l1/%Y/%m/%d/plot/wind_vector_instant_%Y%m%d.png"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "cgn_airport-dwl-vert-60min",
+  "sites": [ "cgn_airport" ],
+  "instruments": [ "wls_cgn_airport" ],
+  "description": "",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/dwl/l1/%Y/%m/%d/plot/wind_w_cont_%Y%m%d.png"
+}
