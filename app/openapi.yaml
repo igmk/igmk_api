@@ -197,6 +197,21 @@ paths:
                 format: binary
       tags:
         - Visualizations
+  /visualizations/byID/{visID}/{granularity}/{dateString}:
+    get:
+      summary: 'Get a plot at a given granularity and date'
+      description: ''
+      operationId: run.return_image_granular
+      responses:
+        '200':
+          description: ''
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+      tags:
+        - Visualizations
   /visualizations/byInstrument/{instrumentID}:
     get:
       summary: 'List available plots by instrument'

@@ -113,11 +113,24 @@ def return_live_data(siteID):
         return {}, 501
 
 
-def return_image(visID, dateString):
-    date = datetime.datetime.strptime(dateString, "%Y%m%d")
+GRANULARITY_FORMATS = {
+    "daily": "%Y%m%d",
+    "monthly": "%Y%m",
+    "seasonal": "%Y%m",
+    "yearly": "%Y",
+}
+
+
+def _serve_plot(visID, granularity, dateString):
+    if granularity not in GRANULARITY_FORMATS:
+        return {}, 400
     with open(f"/config/plots/{visID}.json") as f:
-        file = json.load(f)
-    image_path = date.strftime(file["path"])
+        config = json.load(f)
+    paths = config.get("paths") or {"daily": config["path"]}
+    if granularity not in paths:
+        return {}, 404
+    date = datetime.datetime.strptime(dateString, GRANULARITY_FORMATS[granularity])
+    image_path = date.strftime(paths[granularity])
 
     if image_path.startswith("http://") or image_path.startswith("https://"):
         response = requests.get(image_path)
@@ -127,8 +140,16 @@ def return_image(visID, dateString):
             return send_file(BytesIO(f.read()), mimetype="image/png")
 
 
+def return_image(visID, dateString):
+    return _serve_plot(visID, "daily", dateString)
+
+
+def return_image_granular(visID, granularity, dateString):
+    return _serve_plot(visID, granularity, dateString)
+
+
 def return_current_image(visID):
-    return return_image(visID, datetime.date.today().strftime("%Y%m%d"))
+    return _serve_plot(visID, "daily", datetime.date.today().strftime("%Y%m%d"))
 
 
 def return_instruments(siteID, showHistoric=False):
