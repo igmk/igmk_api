@@ -7,5 +7,10 @@
         "thies"
     ],
     "description": "",
-    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/thies/l2/%Y/%m/%d/%Y%m%dthies.png"
+    "paths": {
+        "daily": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/thies/l2/%Y/%m/%d/%Y%m%dthies.png",
+        "monthly": "/data/obs/site/cgn/thies/l2/%Y/%m/%Y%mthies.png",
+        "yearly": "/data/obs/site/cgn/thies/l2/%Y/%Ythies.png",
+        "seasonal": "/data/obs/site/cgn/thies/l2/%Y/%m/seasonal_thies.png"
+    }
 }

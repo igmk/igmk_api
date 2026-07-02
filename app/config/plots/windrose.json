@@ -7,5 +7,10 @@
         "meteo_city"
     ],
     "description": "",
-    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dwindrose.png"
+    "paths": {
+        "daily": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dwindrose.png",
+        "monthly": "/data/obs/site/cgn/meteo_sport/l2/%Y/%m/%Y%mwindrose.png",
+        "yearly": "/data/obs/site/cgn/meteo_sport/l2/%Y/%Ywindrose.png",
+        "seasonal": "/data/obs/site/cgn/meteo_sport/l2/%Y/%m/seasonal_windrose.png"
+    }
 }

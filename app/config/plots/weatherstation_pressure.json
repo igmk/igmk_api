@@ -7,5 +7,10 @@
         "meteo_joyce"
     ],
     "description": "Pressure",
-    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dBV_BP_SL_Avg.png"
+    "paths": {
+        "daily": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dBV_BP_SL_Avg.png",
+        "monthly": "/data/obs/site/jue/meteo_joyce/l2/%Y/%m/%Y%mBV_BP_SL_Avg.png",
+        "yearly": "/data/obs/site/jue/meteo_joyce/l2/%Y/%YBV_BP_SL_Avg.png",
+        "seasonal": "/data/obs/site/jue/meteo_joyce/l2/%Y/%m/seasonal_BV_BP_SL_Avg.png"
+    }
 }

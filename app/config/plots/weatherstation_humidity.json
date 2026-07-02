@@ -7,5 +7,10 @@
         "meteo_joyce"
     ],
     "description": "Humidity",
-    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dRH.png"
+    "paths": {
+        "daily": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dRH.png",
+        "monthly": "/data/obs/site/jue/meteo_joyce/l2/%Y/%m/%Y%mRH.png",
+        "yearly": "/data/obs/site/jue/meteo_joyce/l2/%Y/%YRH.png",
+        "seasonal": "/data/obs/site/jue/meteo_joyce/l2/%Y/%m/seasonal_RH.png"
+    }
 }

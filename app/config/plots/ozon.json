@@ -7,5 +7,10 @@
         "aqm"
     ],
     "description": "",
-    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/aqm/l2/%Y/%m/%d/%Y%m%dO3.png"
+    "paths": {
+        "daily": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/aqm/l2/%Y/%m/%d/%Y%m%dO3.png",
+        "monthly": "/data/obs/site/cgn/aqm/l2/%Y/%m/%Y%mO3.png",
+        "yearly": "/data/obs/site/cgn/aqm/l2/%Y/%YO3.png",
+        "seasonal": "/data/obs/site/cgn/aqm/l2/%Y/%m/seasonal_O3.png"
+    }
 }

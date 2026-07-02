@@ -7,5 +7,10 @@
         "meteo_city"
     ],
     "description": "",
-    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dProfile_Temp5_Avg.png"
+    "paths": {
+        "daily": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dProfile_Temp5_Avg.png",
+        "monthly": "/data/obs/site/cgn/meteo_sport/l2/%Y/%m/%Y%mProfile_Temp5_Avg.png",
+        "yearly": "/data/obs/site/cgn/meteo_sport/l2/%Y/%YProfile_Temp5_Avg.png",
+        "seasonal": "/data/obs/site/cgn/meteo_sport/l2/%Y/%m/seasonal_Profile_Temp5_Avg.png"
+    }
 }

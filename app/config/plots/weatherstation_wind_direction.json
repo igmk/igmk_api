@@ -7,5 +7,9 @@
         "meteo_joyce"
     ],
     "description": "Wind Direction",
-    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dWindDir_D1_WVT.png"
+    "paths": {
+        "daily": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dWindDir_D1_WVT.png",
+        "monthly": "/data/obs/site/jue/meteo_joyce/l2/%Y/%m/%Y%mWindDir_D1_WVT.png",
+        "seasonal": "/data/obs/site/jue/meteo_joyce/l2/%Y/%m/seasonal_WindDir_D1_WVT.png"
+    }
 }

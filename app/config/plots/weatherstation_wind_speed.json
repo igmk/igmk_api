@@ -7,5 +7,10 @@
         "meteo_joyce"
     ],
     "description": "Wind Speed",
-    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dwind_maximums.png"
+    "paths": {
+        "daily": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dwind_maximums.png",
+        "monthly": "/data/obs/site/jue/meteo_joyce/l2/%Y/%m/%Y%mwind_maximums.png",
+        "yearly": "/data/obs/site/jue/meteo_joyce/l2/%Y/%Ywind_maximums.png",
+        "seasonal": "/data/obs/site/jue/meteo_joyce/l2/%Y/%m/seasonal_wind_maximums.png"
+    }
 }

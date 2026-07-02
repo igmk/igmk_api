@@ -7,5 +7,10 @@
         "meteo_city"
     ],
     "description": "UV Index",
-    "path": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dUVind_Avg.png"
+    "paths": {
+        "daily": "https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dUVind_Avg.png",
+        "monthly": "/data/obs/site/cgn/meteo_sport/l2/%Y/%m/%Y%mUVind_Avg.png",
+        "yearly": "/data/obs/site/cgn/meteo_sport/l2/%Y/%YUVind_Avg.png",
+        "seasonal": "/data/obs/site/cgn/meteo_sport/l2/%Y/%m/seasonal_UVind_Avg.png"
+    }
 }
