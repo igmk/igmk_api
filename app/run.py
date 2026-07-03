@@ -58,7 +58,7 @@ def create_map_javascript():
                 site = json.load(site_file)
             list_of_keys = [
                 (
-                    f"<a href='https://127.0.0.1:8000/visualizations/byID/{return_plots_by_instrument(x)[0]}'>{x}</a>"
+                    f"<a href='https://127.0.0.1:8000/visualizations/byID/{return_plots_by_instrument(x)[0]['id']}'>{x}</a>"
                     if len(return_plots_by_instrument(x)) > 0
                     else x
                 )
@@ -121,12 +121,21 @@ GRANULARITY_FORMATS = {
 }
 
 
+def _plot_paths(config):
+    return config.get("paths") or {"daily": config["path"]}
+
+
+def _plot_granularities(config):
+    paths = _plot_paths(config)
+    return [g for g in GRANULARITY_FORMATS if g in paths]
+
+
 def _serve_plot(visID, granularity, dateString):
     if granularity not in GRANULARITY_FORMATS:
         return {"error": f"Unknown granularity '{granularity}', expected one of {list(GRANULARITY_FORMATS)}"}, 400
     with open(f"/config/plots/{visID}.json") as f:
         config = json.load(f)
-    paths = config.get("paths") or {"daily": config["path"]}
+    paths = _plot_paths(config)
     if granularity not in paths:
         return {"error": f"Plot '{visID}' does not support granularity '{granularity}'"}, 404
     try:
@@ -200,7 +209,10 @@ def return_plots_by_instrument(instrumentID):
             plots_file = json.load(plots_config_file)
         for instrument in plots_file["instruments"]:
             if instrument == instrumentID:
-                plots.append(plots_file["id"])
+                plots.append({
+                    "id": plots_file["id"],
+                    "granularities": _plot_granularities(plots_file),
+                })
     return plots
 
 

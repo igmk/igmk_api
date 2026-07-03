@@ -223,7 +223,16 @@ paths:
           content:
               application/json:
                 schema:
-                  type: object
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      granularities:
+                        type: array
+                        items:
+                          type: string
       tags:
         - Visualizations
   /instruments:
