@@ -1,0 +1,15 @@
+{
+    "id": "rs_jue_skewt",
+    "sites": [
+        "jue"
+    ],
+    "instruments": [
+        "rs_vaisala"
+    ],
+    "description": "Radiosonde Skew-T",
+    "multi": true,
+    "paths": {
+        "daily": "/data/obs/campaigns/vital2/site/juelich/sounding/plots/"
+    },
+    "pattern": "vitII_jue_rs41_comp_v00_%Y%m%d*_skewt.png"
+}

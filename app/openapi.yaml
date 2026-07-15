@@ -233,6 +233,40 @@ paths:
                         type: array
                         items:
                           type: string
+                      multi:
+                        type: boolean
+      tags:
+        - Visualizations
+  /visualizations/byID/{visID}/{granularity}/{dateString}/items:
+    get:
+      summary: 'List how many plot items exist for a multi-item plot on a given date'
+      description: ''
+      operationId: run.return_plot_items
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+      tags:
+        - Visualizations
+  /visualizations/byID/{visID}/{granularity}/{dateString}/items/{itemIndex}:
+    get:
+      summary: 'Get one specific item image from a multi-item plot date'
+      description: ''
+      operationId: run.return_plot_item_image
+      responses:
+        '200':
+          description: ''
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
       tags:
         - Visualizations
   /instruments:

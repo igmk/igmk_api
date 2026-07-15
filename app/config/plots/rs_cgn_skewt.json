@@ -1,0 +1,15 @@
+{
+    "id": "rs_cgn_skewt",
+    "sites": [
+        "cgn_bio"
+    ],
+    "instruments": [
+        "rs_cgn"
+    ],
+    "description": "Radiosonde Skew-T",
+    "multi": true,
+    "paths": {
+        "daily": "/data/obs/campaigns/vital2/site/cologne/sounding/plots/"
+    },
+    "pattern": "vitII_cgn_rs41_comp_v00_%Y%m%d*_skewt.png"
+}
