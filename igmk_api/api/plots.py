@@ -16,7 +16,7 @@ from pathlib import Path
 import requests
 from flask import send_file
 
-from igmk_api.config import iter_configs, read_config
+from igmk_api.config import load_configs, read_config
 from igmk_api.settings import settings
 
 log = logging.getLogger(__name__)
@@ -28,191 +28,176 @@ GRANULARITY_FORMATS = {
     "yearly": "%Y",
 }
 
-#: (connect, read) seconds for fetching a remote plot image. 400 of the 445
-#: plot configs resolve to the same upstream host, so an untimed request there
-#: would let one slow origin exhaust the whole worker pool.
+#: (connect, read) seconds for fetching a remote plot image.
 IMAGE_TIMEOUT = (5, 30)
 
-_REMOTE_PREFIXES = ("http://", "https://")
-
-
-def _error(body, status):
-    """Return a JSON error body, content type spelled out.
-
-    The image routes declare both ``image/png`` and ``application/json``, so
-    Connexion cannot infer which applies and 500s with
-    NonConformingResponseHeaders unless the handler names it in the headers.
-    """
-    return body, status, {"Content-Type": "application/json"}
+#: Nearly every remote plot lives on one host, so keep-alive saves a TCP+TLS
+#: handshake per image.
+_http = requests.Session()
 
 
 class _PlotError(Exception):
-    """Carries the JSON body and status a handler should return."""
+    """A failure to serve a plot, carrying the status to respond with."""
 
-    def __init__(self, body, status):
-        super().__init__(body.get("error", ""))
-        self.body = body
+    def __init__(self, message: str, status: int):
+        super().__init__(message)
+        self.message = message
         self.status = status
 
+    @property
+    def response(self) -> tuple[dict[str, str], int, dict[str, str]]:
+        # The image routes declare both image/png and application/json, so
+        # Connexion cannot infer a content type and 500s unless we name it.
+        return {"error": self.message}, self.status, {"Content-Type": "application/json"}
 
-def _is_remote(path):
-    return path.startswith(_REMOTE_PREFIXES)
+
+def _is_remote(path: str) -> bool:
+    return path.startswith(("http://", "https://"))
 
 
-def _plot_paths(config):
-    """Normalise legacy single-``path`` configs onto the ``paths`` shape."""
+def _plot_paths(config: dict) -> dict[str, str]:
+    """Granularity -> strftime template, normalising legacy single-``path`` configs.
+
+    Unknown granularities are dropped, so any key that survives is safe to look
+    up in ``GRANULARITY_FORMATS``.
+    """
     paths = config.get("paths")
-    if isinstance(paths, dict) and paths:
-        return paths
-    path = config.get("path")
-    return {"daily": path} if isinstance(path, str) else {}
+    if not isinstance(paths, dict):
+        path = config.get("path")
+        paths = {"daily": path} if isinstance(path, str) else {}
+    return {g: p for g, p in paths.items() if g in GRANULARITY_FORMATS and isinstance(p, str)}
 
 
-def _plot_granularities(config):
+def _plot_granularities(config: dict) -> list[str]:
     paths = _plot_paths(config)
     return [g for g in GRANULARITY_FORMATS if g in paths]
 
 
-def _resolve_plot(visID, granularity, dateString):
-    """Validate visID/granularity/dateString and return (config, paths, date).
+def _resolve_plot(
+    visID: str, granularity: str, dateString: str
+) -> tuple[dict, datetime.datetime, str]:
+    """Load the plot config and resolve its template for the requested date.
 
-    Raises :class:`_PlotError` (with a JSON body + status) on any failure.
+    Returns ``(config, date, target)``, where *target* is a local path or a URL.
+    Raises :class:`_PlotError` on any failure.
     """
-    if granularity not in GRANULARITY_FORMATS:
-        raise _PlotError(
-            {
-                "error": f"Unknown granularity '{granularity}', "
-                f"expected one of {list(GRANULARITY_FORMATS)}"
-            },
-            400,
-        )
     config = read_config(settings.plots_dir, visID)
     if config is None:
-        raise _PlotError({"error": f"No plot '{visID}'"}, 404)
+        raise _PlotError(f"No plot '{visID}'", 404)
     paths = _plot_paths(config)
     if not paths:
-        log.warning("plot config %r declares neither 'path' nor 'paths'", visID)
-        raise _PlotError({"error": f"Plot '{visID}' declares no image paths"}, 404)
+        log.warning("plot config %r declares no usable 'path' or 'paths'", visID)
+        raise _PlotError(f"Plot '{visID}' declares no image paths", 404)
     if granularity not in paths:
-        raise _PlotError(
-            {"error": f"Plot '{visID}' does not support granularity '{granularity}'"}, 404
-        )
+        raise _PlotError(f"Plot '{visID}' does not support granularity '{granularity}'", 404)
+    date_format = GRANULARITY_FORMATS[granularity]
     try:
-        date = datetime.datetime.strptime(dateString, GRANULARITY_FORMATS[granularity])
+        date = datetime.datetime.strptime(dateString, date_format)
     except ValueError as exc:
-        raise _PlotError({
-            "error": f"dateString '{dateString}' does not match expected format "
-            f"'{GRANULARITY_FORMATS[granularity]}' for granularity '{granularity}'"
-        }, 400) from exc
-    return config, paths, date
+        raise _PlotError(
+            f"dateString '{dateString}' does not match expected format "
+            f"'{date_format}' for granularity '{granularity}'",
+            400,
+        ) from exc
+    return config, date, date.strftime(paths[granularity])
 
 
-def _send_image(image_path):
+def _send_image(image_path: str):
     """Serve a plot image from a local path or an upstream URL."""
     if _is_remote(image_path):
         try:
-            response = requests.get(image_path, timeout=IMAGE_TIMEOUT)
+            response = _http.get(image_path, timeout=IMAGE_TIMEOUT)
         except requests.RequestException as exc:
             log.warning("plot source %s failed: %s", image_path, exc)
-            raise _PlotError({"error": "Plot source is unavailable"}, 502) from exc
+            raise _PlotError("Plot source is unavailable", 502) from exc
         if response.status_code == 404:
-            raise _PlotError({"error": "No plot image for this date"}, 404)
+            raise _PlotError("No plot image for this date", 404)
         if not response.ok:
             log.warning("plot source %s returned %s", image_path, response.status_code)
-            raise _PlotError({"error": "Plot source is unavailable"}, 502)
+            raise _PlotError("Plot source is unavailable", 502)
         return send_file(BytesIO(response.content), mimetype="image/png")
 
     path = Path(image_path)
     if not path.is_file():
-        raise _PlotError({"error": "No plot image for this date"}, 404)
+        raise _PlotError("No plot image for this date", 404)
     return send_file(path, mimetype="image/png")
 
 
-def _serve_plot(visID, granularity, dateString):
+def _serve_plot(visID: str, granularity: str, dateString: str):
     try:
-        config, paths, date = _resolve_plot(visID, granularity, dateString)
+        config, _date, target = _resolve_plot(visID, granularity, dateString)
         if config.get("multi"):
-            raise _PlotError({
-                "error": f"Plot '{visID}' has multiple items per date; "
-                f"use /visualizations/byID/{visID}/{granularity}/{dateString}/items instead"
-            }, 400)
-        return _send_image(date.strftime(paths[granularity]))
+            raise _PlotError(
+                f"Plot '{visID}' has multiple items per date; use "
+                f"/visualizations/byID/{visID}/{granularity}/{dateString}/items instead",
+                400,
+            )
+        return _send_image(target)
     except _PlotError as e:
-        return _error(e.body, e.status)
+        return e.response
 
 
-def return_image(visID, dateString):
+def plot_image(visID: str, dateString: str):
     return _serve_plot(visID, "daily", dateString)
 
 
-def return_image_granular(visID, granularity, dateString):
+def plot_image_granular(visID: str, granularity: str, dateString: str):
     return _serve_plot(visID, granularity, dateString)
 
 
-def return_current_image(visID):
+def plot_image_today(visID: str):
     return _serve_plot(visID, "daily", datetime.date.today().strftime("%Y%m%d"))
 
 
-def _list_multi_items(config, paths, granularity, date):
-    """Return (directory, sorted item filenames) for a multi-item plot on `date`."""
-    directory = date.strftime(paths[granularity])
+def _multi_items(visID: str, granularity: str, dateString: str) -> tuple[str, list[str]]:
+    """Return (directory, sorted item filenames) for a multi-item plot date."""
+    config, date, directory = _resolve_plot(visID, granularity, dateString)
+    if not config.get("multi"):
+        raise _PlotError(f"Plot '{visID}' is not a multi-item plot", 400)
     if _is_remote(directory):
-        raise _PlotError({"error": "Listing items is not supported for remote plot sources"}, 501)
+        raise _PlotError("Listing items is not supported for remote plot sources", 501)
     pattern = date.strftime(config.get("pattern", "*.png"))
     try:
         filenames = sorted(fnmatch.filter(os.listdir(directory), pattern))
     except OSError:
-        # No data directory for this date yet, or it is not readable -- an
-        # empty day, not an error.
+        # No data directory for this date yet -- an empty day, not an error.
         filenames = []
     return directory, filenames
 
 
-def _resolve_multi(visID, granularity, dateString):
-    config, paths, date = _resolve_plot(visID, granularity, dateString)
-    if not config.get("multi"):
-        raise _PlotError({"error": f"Plot '{visID}' is not a multi-item plot"}, 400)
-    return _list_multi_items(config, paths, granularity, date)
-
-
-def return_plot_items(visID, granularity, dateString):
+def plot_items(visID: str, granularity: str, dateString: str):
     try:
-        _directory, filenames = _resolve_multi(visID, granularity, dateString)
+        _directory, filenames = _multi_items(visID, granularity, dateString)
     except _PlotError as e:
-        return _error(e.body, e.status)
+        return e.response
     return {"count": len(filenames)}, 200
 
 
-def return_plot_item_image(visID, granularity, dateString, itemIndex):
+def plot_item_image(visID: str, granularity: str, dateString: str, itemIndex: int):
     try:
-        index = int(itemIndex)
-    except (TypeError, ValueError):
-        return _error({"error": f"itemIndex must be an integer, got '{itemIndex}'"}, 400)
-    try:
-        directory, filenames = _resolve_multi(visID, granularity, dateString)
-        if not 0 <= index < len(filenames):
+        directory, filenames = _multi_items(visID, granularity, dateString)
+        # itemIndex is coerced to int and bounded below by openapi.yaml.
+        if itemIndex >= len(filenames):
             raise _PlotError(
-                {
-                    "error": f"No item at index {index}; "
-                    f"{len(filenames)} item(s) available for this date"
-                },
+                f"No item at index {itemIndex}; "
+                f"{len(filenames)} item(s) available for this date",
                 404,
             )
-        return _send_image(os.path.join(directory, filenames[index]))
+        return _send_image(os.path.join(directory, filenames[itemIndex]))
     except _PlotError as e:
-        return _error(e.body, e.status)
+        return e.response
 
 
-def return_plots_by_instrument(instrumentID):
+def plots_by_instrument(instrumentID: str) -> list[dict]:
     """Every plot that lists *instrumentID*, as [{id, granularities, multi}]."""
     plots = []
-    for _stem, config in iter_configs(settings.plots_dir):
+    for _stem, config in load_configs(settings.plots_dir):
         plot_id = config.get("id")
         if not plot_id or instrumentID not in (config.get("instruments") or []):
             continue
         plots.append({
             "id": plot_id,
             "granularities": _plot_granularities(config),
-            "multi": bool(config.get("multi", False)),
+            "multi": bool(config.get("multi")),
         })
     return plots

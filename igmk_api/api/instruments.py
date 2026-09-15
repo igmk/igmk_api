@@ -2,28 +2,24 @@
 
 from flask import send_file
 
-from igmk_api.config import config_path, iter_configs
+from igmk_api.config import config_path, load_configs
 from igmk_api.settings import settings
 
 
-def _currently_on_site(dates):
-    """An instrument is still deployed when its last timespan has no end date.
-
-    ``dates`` is a list of timespans; a length-1 entry is a start with no end,
-    a length-2 entry a closed historical span.
-    """
+def _currently_on_site(dates: list) -> bool:
+    """Still deployed when the last timespan is a start with no end date."""
     return bool(dates) and isinstance(dates[-1], list) and len(dates[-1]) == 1
 
 
-def return_instruments(siteID, showHistoric=False):
+def _instruments_at_site(siteID: str, *, include_historic: bool) -> dict[str, dict]:
     """Map instrument ``name`` -> description/timespans for one site.
 
-    Note this keys by the config's ``name`` field, while :func:`list_instruments`
-    and :func:`instrument_details` key by filename stem; the two differ for a
+    Keys by the config's ``name`` field, while :func:`instruments` and
+    :func:`instrument_details` key by filename stem; the two differ for a
     handful of instruments. See CLAUDE.md.
     """
     instruments = {}
-    for _stem, config in iter_configs(settings.instruments_dir):
+    for _stem, config in load_configs(settings.instruments_dir):
         name = config.get("name")
         if not name:
             continue
@@ -31,7 +27,7 @@ def return_instruments(siteID, showHistoric=False):
             if not isinstance(location, dict) or location.get("site") != siteID:
                 continue
             dates = location.get("dates") or []
-            if showHistoric or _currently_on_site(dates):
+            if include_historic or _currently_on_site(dates):
                 instruments[name] = {
                     "description": config.get("description", ""),
                     "timespans": dates,
@@ -39,16 +35,20 @@ def return_instruments(siteID, showHistoric=False):
     return instruments
 
 
-def return_instruments_history(siteID):
-    return return_instruments(siteID, showHistoric=True)
+def site_instruments(siteID: str) -> dict[str, dict]:
+    return _instruments_at_site(siteID, include_historic=False)
 
 
-def list_instruments():
+def site_instruments_history(siteID: str) -> dict[str, dict]:
+    return _instruments_at_site(siteID, include_historic=True)
+
+
+def instruments() -> list[str]:
     """Filename stems of every usable instrument config."""
-    return [stem for stem, _config in iter_configs(settings.instruments_dir)]
+    return [stem for stem, _config in load_configs(settings.instruments_dir)]
 
 
-def instrument_details(instrumentID):
+def instrument_details(instrumentID: str):
     path = config_path(settings.instruments_dir, instrumentID)
     if path is None:
         return {"error": f"No instrument '{instrumentID}'"}, 404

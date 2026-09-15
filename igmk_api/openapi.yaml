@@ -32,6 +32,11 @@ components:
         error:
           type: string
           description: What went wrong.
+    LabelMap:
+      type: object
+      description: Identifier to human-readable label.
+      additionalProperties:
+        type: string
   parameters:
     siteID:
       name: siteID
@@ -117,6 +122,36 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotImplemented:
+      description: Not supported for this plot's source.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    PlotImage:
+      description: The plot image.
+      content:
+        image/png:
+          schema:
+            type: string
+            format: binary
+    InstrumentDeployments:
+      description: Instrument name to description and deployment timespans.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                description:
+                  type: string
+                timespans:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: string
 
 paths:
   /:
@@ -147,6 +182,8 @@ paths:
               schema:
                 type: string
                 format: binary
+        '404':
+          $ref: '#/components/responses/NotFound'
       tags:
         - General
 
@@ -166,17 +203,13 @@ paths:
                 type: object
                 properties:
                   inst:
-                    type: object
-                    additionalProperties:
-                      type: string
+                    $ref: '#/components/schemas/LabelMap'
                   plots:
-                    type: object
-                    additionalProperties:
-                      type: string
+                    $ref: '#/components/schemas/LabelMap'
                   sites:
-                    type: object
-                    additionalProperties:
-                      type: string
+                    $ref: '#/components/schemas/LabelMap'
+        '400':
+          $ref: '#/components/responses/BadRequest'
       tags:
         - Search
 
@@ -184,18 +217,16 @@ paths:
     get:
       summary: 'Lists all sites'
       description: 'Maps each site identifier to its human-readable label.'
-      operationId: igmk_api.api.sites.return_sites
+      operationId: igmk_api.api.sites.sites
       responses:
         '200':
           description: Site identifier to label.
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties:
-                  type: string
-                example:
-                  jue: Jülich
+                $ref: '#/components/schemas/LabelMap'
+              example:
+                jue: Jülich
       tags:
         - Sites
 
@@ -203,7 +234,7 @@ paths:
     get:
       summary: 'Detailed information about a site'
       description: 'Returns the site config verbatim.'
-      operationId: igmk_api.api.sites.return_site_info
+      operationId: igmk_api.api.sites.site_info
       parameters:
         - $ref: '#/components/parameters/siteID'
       responses:
@@ -230,6 +261,8 @@ paths:
                     type: number
         '404':
           $ref: '#/components/responses/NotFound'
+        '400':
+          $ref: '#/components/responses/BadRequest'
       tags:
         - Sites
 
@@ -237,27 +270,14 @@ paths:
     get:
       summary: 'Instruments currently on a site'
       description: 'Keyed by the instrument config''s `name` field.'
-      operationId: igmk_api.api.instruments.return_instruments
+      operationId: igmk_api.api.instruments.site_instruments
       parameters:
         - $ref: '#/components/parameters/siteID'
       responses:
         '200':
-          description: Instrument name to description and deployment timespans.
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties:
-                  type: object
-                  properties:
-                    description:
-                      type: string
-                    timespans:
-                      type: array
-                      items:
-                        type: array
-                        items:
-                          type: string
+          $ref: '#/components/responses/InstrumentDeployments'
+        '400':
+          $ref: '#/components/responses/BadRequest'
       tags:
         - Sites
         - Instruments
@@ -266,27 +286,14 @@ paths:
     get:
       summary: 'All instruments ever on a site'
       description: 'As /sites/{siteID}/instruments, including departed instruments.'
-      operationId: igmk_api.api.instruments.return_instruments_history
+      operationId: igmk_api.api.instruments.site_instruments_history
       parameters:
         - $ref: '#/components/parameters/siteID'
       responses:
         '200':
-          description: Instrument name to description and deployment timespans.
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties:
-                  type: object
-                  properties:
-                    description:
-                      type: string
-                    timespans:
-                      type: array
-                      items:
-                        type: array
-                        items:
-                          type: string
+          $ref: '#/components/responses/InstrumentDeployments'
+        '400':
+          $ref: '#/components/responses/BadRequest'
       tags:
         - Sites
         - Instruments
@@ -295,7 +302,7 @@ paths:
     get:
       summary: 'Live data for a site'
       description: 'Proxies the site config''s `liveDataPath` upstream feed.'
-      operationId: igmk_api.api.sites.return_live_data
+      operationId: igmk_api.api.sites.site_live_data
       parameters:
         - $ref: '#/components/parameters/siteID'
       responses:
@@ -321,6 +328,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+        '400':
+          $ref: '#/components/responses/BadRequest'
       tags:
         - Sites
 
@@ -328,17 +337,12 @@ paths:
     get:
       summary: 'Today''s image for a plot'
       description: 'Equivalent to the daily route with today''s date.'
-      operationId: igmk_api.api.plots.return_current_image
+      operationId: igmk_api.api.plots.plot_image_today
       parameters:
         - $ref: '#/components/parameters/visID'
       responses:
         '200':
-          description: The plot image.
-          content:
-            image/png:
-              schema:
-                type: string
-                format: binary
+          $ref: '#/components/responses/PlotImage'
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
@@ -352,18 +356,13 @@ paths:
     get:
       summary: 'Daily image for a plot'
       description: 'Legacy route; equivalent to granularity `daily`.'
-      operationId: igmk_api.api.plots.return_image
+      operationId: igmk_api.api.plots.plot_image
       parameters:
         - $ref: '#/components/parameters/visID'
         - $ref: '#/components/parameters/dateString'
       responses:
         '200':
-          description: The plot image.
-          content:
-            image/png:
-              schema:
-                type: string
-                format: binary
+          $ref: '#/components/responses/PlotImage'
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
@@ -377,19 +376,14 @@ paths:
     get:
       summary: 'Image for a plot at a given granularity'
       description: 'The plot must declare the requested granularity.'
-      operationId: igmk_api.api.plots.return_image_granular
+      operationId: igmk_api.api.plots.plot_image_granular
       parameters:
         - $ref: '#/components/parameters/visID'
         - $ref: '#/components/parameters/granularity'
         - $ref: '#/components/parameters/dateString'
       responses:
         '200':
-          description: The plot image.
-          content:
-            image/png:
-              schema:
-                type: string
-                format: binary
+          $ref: '#/components/responses/PlotImage'
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
@@ -403,7 +397,7 @@ paths:
     get:
       summary: 'Plots available for an instrument'
       description: 'Every plot config that lists this instrument.'
-      operationId: igmk_api.api.plots.return_plots_by_instrument
+      operationId: igmk_api.api.plots.plots_by_instrument
       parameters:
         - $ref: '#/components/parameters/instrumentID'
       responses:
@@ -425,6 +419,8 @@ paths:
                         enum: [daily, monthly, seasonal, yearly]
                     multi:
                       type: boolean
+        '400':
+          $ref: '#/components/responses/BadRequest'
       tags:
         - Visualizations
 
@@ -432,7 +428,7 @@ paths:
     get:
       summary: 'List how many plot items exist for a multi-item plot on a given date'
       description: 'Only valid for plots flagged `multi` in their config.'
-      operationId: igmk_api.api.plots.return_plot_items
+      operationId: igmk_api.api.plots.plot_items
       parameters:
         - $ref: '#/components/parameters/visID'
         - $ref: '#/components/parameters/granularity'
@@ -452,11 +448,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
         '501':
-          description: Item listing is not supported for remote plot sources.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+          $ref: '#/components/responses/NotImplemented'
       tags:
         - Visualizations
 
@@ -464,7 +456,7 @@ paths:
     get:
       summary: 'Get one specific item image from a multi-item plot date'
       description: 'Index into the sorted item list for that date.'
-      operationId: igmk_api.api.plots.return_plot_item_image
+      operationId: igmk_api.api.plots.plot_item_image
       parameters:
         - $ref: '#/components/parameters/visID'
         - $ref: '#/components/parameters/granularity'
@@ -472,22 +464,13 @@ paths:
         - $ref: '#/components/parameters/itemIndex'
       responses:
         '200':
-          description: The item image.
-          content:
-            image/png:
-              schema:
-                type: string
-                format: binary
+          $ref: '#/components/responses/PlotImage'
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
           $ref: '#/components/responses/NotFound'
         '501':
-          description: Item listing is not supported for remote plot sources.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+          $ref: '#/components/responses/NotImplemented'
         '502':
           $ref: '#/components/responses/BadGateway'
       tags:
@@ -497,7 +480,7 @@ paths:
     get:
       summary: 'Lists all instruments'
       description: 'Filename stems of the instrument configs.'
-      operationId: igmk_api.api.instruments.list_instruments
+      operationId: igmk_api.api.instruments.instruments
       responses:
         '200':
           description: Instrument identifiers.
@@ -535,5 +518,7 @@ paths:
                       type: object
         '404':
           $ref: '#/components/responses/NotFound'
+        '400':
+          $ref: '#/components/responses/BadRequest'
       tags:
         - Instruments

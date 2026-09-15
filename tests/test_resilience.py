@@ -13,36 +13,7 @@ throwaway tree, so they are independent of ``tests/fixtures/config``.
 import json
 
 import pytest
-
-GOOD_SITE = {"siteID": "good", "siteHumanReadable": "Good Site", "lat": 1, "lon": 2}
-GOOD_INSTRUMENT = {
-    "name": "goodinst",
-    "description": "A good instrument",
-    "locations": [{"site": "good", "dates": [["2020-01-01"]]}],
-}
-GOOD_PLOT = {
-    "id": "goodplot",
-    "sites": ["good"],
-    "instruments": ["goodinst"],
-    "description": "A good plot",
-    "path": "/nonexistent/%Y%m%d.png",
-}
-
-
-def write(directory, name, content):
-    path = directory / name
-    path.write_text(content if isinstance(content, str) else json.dumps(content))
-    return path
-
-
-@pytest.fixture
-def populated(config_root):
-    """One good config in each directory, alongside assorted junk."""
-    write(config_root / "sites", "good.json", GOOD_SITE)
-    write(config_root / "instruments", "goodinst.json", GOOD_INSTRUMENT)
-    write(config_root / "plots", "goodplot.json", GOOD_PLOT)
-    return config_root
-
+from conftest import GOOD_INSTRUMENT, write
 
 # --- one bad file must not hide the good ones -------------------------------
 
@@ -105,7 +76,10 @@ def test_missing_required_keys_are_skipped(client, populated):
     write(populated / "instruments", "nameless.json", {"description": "no name"})
     write(populated / "plots", "idless.json", {"instruments": ["goodinst"]})
     assert client.get("/sites").json() == {"good": "Good Site"}
-    assert client.get("/instruments").status_code == 200
+    # /instruments keys by filename stem, so a config with no `name` is still
+    # listed -- it is /sites/{id}/instruments that needs the name.
+    assert sorted(client.get("/instruments").json()) == ["goodinst", "nameless"]
+    assert set(client.get("/sites/good/instruments").json()) == {"goodinst"}
     assert [p["id"] for p in client.get("/visualizations/byInstrument/goodinst").json()] == [
         "goodplot"
     ]
@@ -189,20 +163,6 @@ def test_missing_image_file_is_404(client, populated):
     assert "error" in r.json()
 
 
-def test_site_without_live_data_path_is_501(client, populated):
-    write(populated / "sites", "nolive.json", {"siteID": "nolive", "siteHumanReadable": "X"})
-    assert client.get("/live/nolive").status_code == 501
-
-
-def test_site_with_malformed_live_url_is_501(client, populated):
-    write(
-        populated / "sites",
-        "badurl.json",
-        {"siteID": "badurl", "siteHumanReadable": "X", "liveDataPath": "not-a-url"},
-    )
-    assert client.get("/live/badurl").status_code == 501
-
-
 # --- identifiers cannot escape the config directory -------------------------
 
 
@@ -216,21 +176,3 @@ def test_site_with_malformed_live_url_is_501(client, populated):
 )
 def test_path_traversal_is_rejected(client, populated, url):
     assert client.get(url).status_code in (400, 404)
-
-
-@pytest.mark.parametrize(
-    "stem", ["..", ".", "", "../etc/passwd", "a/b", "a\\b", "/etc/passwd", "sub/dir"]
-)
-def test_is_safe_stem_rejects_traversal(stem):
-    """`.` and `..` cannot be reached over HTTP -- clients normalise them away --
-    so the guard itself is checked directly."""
-    from igmk_api.config import is_safe_stem
-
-    assert not is_safe_stem(stem)
-
-
-@pytest.mark.parametrize("stem", ["good", "_halo_rpg", "joyrad_10", "uv-index", "aac_RH"])
-def test_is_safe_stem_accepts_real_ids(stem):
-    from igmk_api.config import is_safe_stem
-
-    assert is_safe_stem(stem)

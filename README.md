@@ -66,6 +66,10 @@ skipped, and a missing config directory yields an empty result rather than a
 requested date, is a `404` with a JSON body. See `igmk_api/config.py` and
 `tests/test_resilience.py`.
 
+Parsed configs are cached in each worker and revalidated against every file's
+modification time on each request, so editing, adding or removing a config takes
+effect immediately -- no restart, and no stale window.
+
 ## Config files
 
 Production config lives at:

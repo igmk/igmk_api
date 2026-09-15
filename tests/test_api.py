@@ -128,6 +128,12 @@ def test_search_plot_values_are_descriptions(client):
     assert data["plots"] == {"tstrad_legacy": "Legacy single-path plot"}
 
 
+def test_search_is_case_insensitive(client):
+    """openapi.yaml promises `matched case-insensitively`."""
+    assert client.get("/search/TEST").json() == client.get("/search/test").json()
+    assert client.get("/search/TEST").json()["sites"]["tst"] == "Test Site"
+
+
 @pytest.mark.parametrize(
     "granularity,date_string,expected_status",
     [
@@ -148,19 +154,13 @@ def test_plot_date_validation(client, granularity, date_string, expected_status)
         assert r.status_code == expected_status
 
 
-def test_unsupported_granularity_for_plot(client):
-    """The plot exists but declares no monthly path."""
-    r = client.get("/visualizations/byID/tstrad_legacy/monthly/202501")
-    assert r.status_code == 404
-
-
 def test_multi_plot_rejects_direct_image_request(client):
     r = client.get("/visualizations/byID/tstsonde_skewt/daily/20250101")
     assert r.status_code == 400
 
 
 def test_plot_error_bodies_are_json(client):
-    """The plot handlers build ``{"error": ...}`` bodies and they now arrive.
+    """The plot exists but declares no monthly path -- and the error body arrives.
 
     openapi.yaml used to declare only ``image/png`` for these routes, so
     Connexion serialised the dict against that content type and the client

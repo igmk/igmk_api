@@ -1,28 +1,34 @@
 """Runtime configuration, entirely environment-driven.
 
 The defaults reproduce the production bind-mounts exactly, so nothing changes
-unless an environment variable is set. Local development sets
-``IGMK_CONFIG_ROOT`` instead of editing source and reverting before commit.
+unless an environment variable is set.
 """
 
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
+DEFAULT_CORS_ORIGINS = "https://browser.herz-campaigns.de"
 
-@dataclass(frozen=True, slots=True)
+
+def _config_root() -> Path:
+    # Absolute, so that a relative IGMK_CONFIG_ROOT is resolved against the
+    # working directory rather than the Flask app root (igmk_api/), which
+    # send_file would otherwise use.
+    return Path(os.environ.get("IGMK_CONFIG_ROOT", "/config")).resolve()
+
+
+def _cors_origins() -> list[str]:
+    raw = os.environ.get("IGMK_CORS_ORIGINS", DEFAULT_CORS_ORIGINS)
+    return [origin.strip() for origin in raw.split(",") if origin.strip()]
+
+
+@dataclass(slots=True)
 class Settings:
-    #: Root of the config tree; holds plots/, instruments/ and sites/.
-    #: Production bind-mounts /data/obs/api_config/default here.
-    config_root: Path = Path(os.environ.get("IGMK_CONFIG_ROOT", "/config"))
-
-    def __post_init__(self) -> None:
-        # The root is made absolute up front. A relative IGMK_CONFIG_ROOT would
-        # otherwise be resolved by ``send_file`` against the Flask app root
-        # (igmk_api/) rather than the working directory, so
-        # ``IGMK_CONFIG_ROOT=./config`` would 500 on /sites/{id} and
-        # /instruments/{id} while every other route worked.
-        object.__setattr__(self, "config_root", self.config_root.resolve())
+    #: Config tree holding plots/, instruments/ and sites/.
+    config_root: Path = field(default_factory=_config_root)
+    #: Origins allowed to call the API from a browser.
+    cors_origins: list[str] = field(default_factory=_cors_origins)
 
     @property
     def plots_dir(self) -> Path:

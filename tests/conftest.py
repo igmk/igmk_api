@@ -5,37 +5,96 @@ must be set *before* anything imports the package. pytest imports conftest
 first, which makes this the right place for it.
 """
 
+import json
 import os
+import socket
 from pathlib import Path
 
 FIXTURE_CONFIG = Path(__file__).parent / "fixtures" / "config"
-os.environ.setdefault("IGMK_CONFIG_ROOT", str(FIXTURE_CONFIG))
+# Assigned, not setdefault: a developer with IGMK_CONFIG_ROOT exported (which
+# the README recommends for local runs) would otherwise silently run the whole
+# suite against their real config tree.
+os.environ["IGMK_CONFIG_ROOT"] = str(FIXTURE_CONFIG)
 
 import pytest  # noqa: E402
-from starlette.testclient import TestClient  # noqa: E402
 
 from igmk_api.app import app  # noqa: E402
+from igmk_api.config import clear_cache  # noqa: E402
+from igmk_api.settings import settings  # noqa: E402
+
+GOOD_SITE = {"siteID": "good", "siteHumanReadable": "Good Site", "lat": 1, "lon": 2}
+GOOD_INSTRUMENT = {
+    "name": "goodinst",
+    "description": "A good instrument",
+    "locations": [{"site": "good", "dates": [["2020-01-01"]]}],
+}
+GOOD_PLOT = {
+    "id": "goodplot",
+    "sites": ["good"],
+    "instruments": ["goodinst"],
+    "description": "A good plot",
+    "path": "/nonexistent/%Y%m%d.png",
+}
+
+
+def write(directory, name, content):
+    """Write a config file; `content` may be a dict or raw text."""
+    path = directory / name
+    path.write_text(content if isinstance(content, str) else json.dumps(content))
+    return path
 
 
 @pytest.fixture(scope="session")
 def client():
+    """The app under test.
+
+    Session-scoped, which is safe alongside the per-test ``config_root``
+    fixture because handlers read ``settings.config_root`` per request.
+    """
+    from starlette.testclient import TestClient
+
     with TestClient(app) as test_client:
         yield test_client
 
 
+@pytest.fixture(autouse=True)
+def _no_network(monkeypatch):
+    """No test may touch the network.
+
+    Upstream behaviour is exercised with `responses`, which intercepts above
+    the socket layer. Without this guard a fixture pointing at
+    example.invalid silently performs a real DNS lookup on every run.
+    """
+
+    def blocked(*args, **kwargs):
+        raise AssertionError("test attempted a real network connection")
+
+    monkeypatch.setattr(socket, "getaddrinfo", blocked)
+
+
+@pytest.fixture(autouse=True)
+def _isolate_config_cache():
+    """Configs are cached in-process; don't let one test's tree reach another."""
+    clear_cache()
+    yield
+    clear_cache()
+
+
 @pytest.fixture
 def config_root(tmp_path):
-    """Point the app at a throwaway config tree for one test.
-
-    ``settings`` is a frozen module-level singleton that handlers import by
-    value, so rebinding the module attribute would not reach them; the instance
-    is mutated in place and restored afterwards.
-    """
-    from igmk_api.settings import settings
-
+    """Point the app at a throwaway config tree for one test."""
     original = settings.config_root
     for name in ("plots", "instruments", "sites"):
         (tmp_path / name).mkdir()
-    object.__setattr__(settings, "config_root", tmp_path)
+    settings.config_root = tmp_path
     yield tmp_path
-    object.__setattr__(settings, "config_root", original)
+    settings.config_root = original
+
+
+@pytest.fixture
+def populated(config_root):
+    """One good config in each directory, ready for junk to be added."""
+    write(config_root / "sites", "good.json", GOOD_SITE)
+    write(config_root / "instruments", "goodinst.json", GOOD_INSTRUMENT)
+    write(config_root / "plots", "goodplot.json", GOOD_PLOT)
+    return config_root

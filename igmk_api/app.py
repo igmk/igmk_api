@@ -6,7 +6,6 @@ in sync or a route 404s / the app fails to start. ``tests/test_spec.py``
 enforces that.
 """
 
-import os
 from pathlib import Path
 
 from connexion import FlaskApp
@@ -14,15 +13,10 @@ from connexion.middleware import MiddlewarePosition
 from starlette.middleware.cors import CORSMiddleware
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-#: Absolute, so the app can be started from any working directory rather than
-#: only from the Dockerfile's WORKDIR.
-SPEC_PATH = Path(__file__).with_name("openapi.yaml")
+from igmk_api.settings import settings
 
-CORS_ORIGINS = [
-    origin.strip()
-    for origin in os.environ.get("IGMK_CORS_ORIGINS", "https://browser.herz-campaigns.de").split(",")
-    if origin.strip()
-]
+#: Absolute, so the app can be started from any working directory.
+SPEC_PATH = Path(__file__).with_name("openapi.yaml")
 
 
 def create_app() -> FlaskApp:
@@ -32,12 +26,12 @@ def create_app() -> FlaskApp:
 
     # CORS goes on the ASGI stack, outside the exception middleware, so that
     # Connexion's own routing 404s and validation 400s carry the headers too.
-    # Installed on the Flask app it would only cover responses that reach Flask,
-    # and the browser would see those errors as opaque failures.
+    # On the Flask app it would only cover responses that reach Flask, and the
+    # browser would see those errors as opaque failures.
     connexion_app.add_middleware(
         CORSMiddleware,
         position=MiddlewarePosition.BEFORE_EXCEPTION,
-        allow_origins=CORS_ORIGINS,
+        allow_origins=settings.cors_origins,
         allow_credentials=True,
         allow_methods=["GET"],
         allow_headers=["*"],

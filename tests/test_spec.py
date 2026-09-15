@@ -148,3 +148,37 @@ def test_error_statuses_are_json():
             if "application/json" not in response.get("content", {}):
                 missing.append(f"{method.upper()} {path} -> {status}")
     assert not missing, f"error responses that are not JSON: {missing}"
+
+
+def test_components_are_all_referenced():
+    """An unreferenced component is dead weight in the contract."""
+    text = SPEC_PATH.read_text()
+    orphans = [
+        f"{section}/{name}"
+        for section in ("schemas", "parameters", "responses")
+        for name in SPEC.get("components", {}).get(section, {})
+        if text.count(f"#/components/{section}/{name}") == 0
+    ]
+    assert not orphans, f"components never referenced: {orphans}"
+
+
+def test_no_inline_response_duplicates_a_component():
+    """Catches a response block that should have been a $ref."""
+    components = {
+        name: response
+        for name, response in SPEC.get("components", {}).get("responses", {}).items()
+    }
+    duplicates = []
+    for path, method, operation in _operations():
+        for status, response in operation["responses"].items():
+            if "$ref" in response:
+                continue
+            for name, component in components.items():
+                if response == component:
+                    duplicates.append(f"{method.upper()} {path} {status} == {name}")
+    assert not duplicates, f"inline responses that duplicate a component: {duplicates}"
+
+
+def test_spec_is_valid_openapi():
+    openapi_spec_validator = pytest.importorskip("openapi_spec_validator")
+    openapi_spec_validator.validate(SPEC)
