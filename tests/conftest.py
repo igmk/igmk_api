@@ -12,8 +12,9 @@ FIXTURE_CONFIG = Path(__file__).parent / "fixtures" / "config"
 os.environ.setdefault("IGMK_CONFIG_ROOT", str(FIXTURE_CONFIG))
 
 import pytest  # noqa: E402
-from igmk_api.app import app  # noqa: E402
 from starlette.testclient import TestClient  # noqa: E402
+
+from igmk_api.app import app  # noqa: E402
 
 
 @pytest.fixture(scope="session")

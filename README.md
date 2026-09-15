@@ -11,14 +11,13 @@ Python 3.12+
 
 ```bash
 pip3 install -r requirements-dev.txt
-cd app
-IGMK_CONFIG_ROOT=./config uvicorn run:app
+IGMK_CONFIG_ROOT=./config uvicorn igmk_api.app:app
 ```
 
 `IGMK_CONFIG_ROOT` points the app at the config tree. It defaults to `/config`,
 which is where production bind-mounts it; setting it to the checked-in dev copy
 means **no source edits are needed for local development**. Use
-`uvicorn run:app --reload` for hot-reloading.
+`uvicorn igmk_api.app:app --reload` for hot-reloading.
 
 | Variable | Default | Purpose |
 |---|---|---|
@@ -66,4 +65,4 @@ Production config lives at:
 /data/obs/api_config
 ```
 
-A copy for development is checked in at `app/config/`.
+A copy for development is checked in at `config/`.

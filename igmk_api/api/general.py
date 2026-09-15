@@ -10,7 +10,8 @@ from igmk_api.api.instruments import return_instruments
 from igmk_api.api.plots import return_plots_by_instrument
 from igmk_api.settings import settings
 
-# app/static, resolved absolutely so the app can start from any directory.
+# static/ at the repo root, resolved absolutely so the app can start from
+# any directory.
 STATIC_DIR = Path(__file__).parents[2] / "static"
 
 

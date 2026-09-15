@@ -2,16 +2,85 @@ const MAX_PANELS = 9;          // absolute number of panel slots
 const MOBILE_MAX_PANELS = 2;   // narrow-screen cap
 let maxPanels = MAX_PANELS;    // live cap (lowered on narrow screens)
 
+const GRANULARITY_ORDER = ['daily', 'monthly', 'seasonal', 'yearly'];
+
+// Meteorological seasons: MAM (spring, starts March), JJA (summer, starts June),
+// SON (autumn, starts September), DJF (winter, starts December). Maps a month
+// (1-12) to [seasonStartMonth, yearOffset] -- yearOffset is -1 for Jan/Feb, since
+// they belong to the winter that started the previous December.
+const SEASON_START_BY_MONTH = {
+    1: [12, -1], 2: [12, -1], 3: [3, 0], 4: [3, 0], 5: [3, 0],
+    6: [6, 0], 7: [6, 0], 8: [6, 0], 9: [9, 0], 10: [9, 0], 11: [9, 0], 12: [12, 0],
+};
+
+// The YYYYMM of the meteorological season a date falls in, regardless of which
+// month within that season the date itself is (e.g. April and May both resolve
+// to March of the same year, the season's start month).
+function seasonStartYYYYMM(ymd) {
+    const year = parseInt(ymd.slice(0, 4), 10);
+    const month = parseInt(ymd.slice(4, 6), 10);
+    const [startMonth, yearOffset] = SEASON_START_BY_MONTH[month];
+    return String(year + yearOffset) + String(startMonth).padStart(2, '0');
+}
+
+// ymd is the existing YYYYMMDD string (from datePicker.valueAsDate); trim it to
+// match what each granularity's endpoint expects.
+function granularityDateString(ymd, granularity) {
+    if (granularity === 'yearly') return ymd.slice(0, 4);
+    if (granularity === 'daily') return ymd;
+    if (granularity === 'seasonal') return seasonStartYYYYMM(ymd);
+    return ymd.slice(0, 6); // monthly
+}
+
+function plotImageUrl(plotId, granularity, ymd) {
+    return '$APIURL/visualizations/byID/' + plotId + '/' + granularity + '/' + granularityDateString(ymd, granularity);
+}
+
+// Radiosonde-style plots (see the `multi` flag from /visualizations/byInstrument)
+// can have more than one image on a single day, e.g. one per launch. Only the
+// `daily` granularity supports this -- the items endpoints hardcode it.
+function plotItemsCountUrl(plotId, ymd) {
+    return '$APIURL/visualizations/byID/' + plotId + '/daily/' + ymd + '/items';
+}
+function plotItemUrl(plotId, ymd, i) {
+    return '$APIURL/visualizations/byID/' + plotId + '/daily/' + ymd + '/items/' + i;
+}
+async function fetchItemCount(plotId, ymd) {
+    const res = await fetch(plotItemsCountUrl(plotId, ymd));
+    if (!res.ok) throw new Error('Failed to load item count for ' + plotId);
+    const data = await res.json();
+    return data.count || 0;
+}
+
 // Panels are identified by their numeric index (0-based); these helpers map an
 // index to its DOM element / sub-elements / URL param so the rest of the code
 // never has to parse ids out of strings.
 const panelEl     = (i) => document.getElementById('panel-' + i);
 const panelImg    = (i) => panelEl(i).querySelector('img');
 const panelHeader = (i) => panelEl(i).querySelector('.breadcrumb');
+const panelCredit = (i) => panelEl(i).querySelector('.panel-credit');
 const panelParam  = (i) => 'p' + (i + 1);   // URL param name (1-based, back-compat)
+
+// Every plot shown here is published under CC BY 4.0, which requires the
+// attribution and a link to the licence to travel with the image itself -- so it
+// is rendered under each panel plot and under the click-to-enlarge view, not just
+// once in the Impressum.
+const CC_BY_URL = 'https://creativecommons.org/licenses/by/4.0/';
+const IMAGE_CREDIT_HTML =
+      '© Universität zu Köln, IGMK · '
+    + '<a href="' + CC_BY_URL + '" target="_blank" rel="license noopener">CC BY 4.0</a>';
+
+// The credit only applies to an actual plot, so it is hidden while the panel is
+// still showing the placeholder graphic (empty panel, or a day without data).
+function updatePanelCredit(i) {
+    const credit = panelCredit(i);
+    if (!credit) return;
+    credit.style.display = panelImg(i).src.includes('placeholder') ? 'none' : 'block';
+}
 
 const recalcThumbnailsEvent = new CustomEvent('recalcThumbnails',{ detail: { yourData: 'Here is some data' } });
 var openPlots = Array(MAX_PANELS).fill().map(() => Array(3).fill(''));
+var panelPlotMeta = Array(MAX_PANELS).fill(null); // {plotId, granularities, current, multi, itemCount, itemIndex} | null
 var selectedPanel;
 
 let url = new URL(window.location.href);
@@ -58,7 +127,11 @@ function buildPanels() {
             `<div class="panel-controls">`
           + `<nav class="breadcrumb" aria-label="breadcrumb"></nav>`
           + `<button type="button" class="panel-close" onclick="closePanel(${i})" aria-label="Close panel">&times;</button>`
-          + `</div><img src="./img/placeholder.svg">`;
+          + `</div>`
+          + `<nav class="granularity-switcher" style="display:none"></nav>`
+          + `<nav class="granularity-switcher item-switcher" style="display:none"></nav>`
+          + `<img src="./img/placeholder.svg">`
+          + `<div class="panel-credit" style="display:none">${IMAGE_CREDIT_HTML}</div>`;
         wrapper.appendChild(panel);
     }
 }
@@ -78,8 +151,16 @@ document.addEventListener("DOMContentLoaded", function() {
 function initPanelZoom() {
     const overlay = document.createElement('div');
     overlay.id = 'panelZoom';
+    const figure = document.createElement('figure');
     const big = document.createElement('img');
-    overlay.appendChild(big);
+    const credit = document.createElement('figcaption');
+    credit.className = 'zoom-credit';
+    credit.innerHTML = IMAGE_CREDIT_HTML;
+    // The overlay closes on any click, so the licence link needs to survive its own.
+    credit.addEventListener('click', (e) => e.stopPropagation());
+    figure.appendChild(big);
+    figure.appendChild(credit);
+    overlay.appendChild(figure);
     document.body.appendChild(overlay);
 
     const closeZoom = () => overlay.classList.remove('open');
@@ -141,13 +222,18 @@ function applyStateFromUrl() {
     // that panels closed in the target state don't keep showing stale plots.
     for (let i = 0; i < MAX_PANELS; i++) {
         panelImg(i).src = './img/placeholder.svg';
+        updatePanelCredit(i);
+        panelPlotMeta[i] = null;
+        renderGranularitySwitcher(i);
+        renderItemSwitcher(i);
         renderBreadcrumb(i); // empty tree -> just the "Sites" root
     }
 
     panelInfos.forEach((info, i) => {
         if (!info) return;
-        openPlots[i] = info.split(',');
-        populateTile(openPlots[i][2], i, false);
+        const fields = info.split(',');
+        openPlots[i] = fields.slice(0, 3);       // site, instrument, plotId
+        restorePanelPlot(i, fields[3] || null);  // fields[3]: linked granularity, if any
     });
 
     // ---- view selection ----
@@ -171,6 +257,11 @@ document.addEventListener('keydown', function(event) {
         updateDate(-1);
     } else if (event.key === 's'|| event.key === 'ArrowRight'){
         updateDate(1);
+    } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        // Page through open multi-item (radiosonde-style) panels' items, same way
+        // ArrowLeft/Right page every open panel's date. Only prevent the page's
+        // default scroll if something was actually there to step through.
+        if (stepItem(event.key === 'ArrowDown' ? 1 : -1)) event.preventDefault();
     }
   }
 });
@@ -206,6 +297,9 @@ function closePanel(i) {
     }
     // Forget the panel's plot and drop its URL param so it stays closed on reload.
     openPlots[i] = ['', '', ''];
+    panelPlotMeta[i] = null;
+    renderGranularitySwitcher(i);
+    renderItemSwitcher(i);
     params.delete(panelParam(i));
     pushUrl();
     updatePanelPositions();
@@ -244,20 +338,122 @@ function populateGrid(data,state,panel) {
     crumbBar.setAttribute('aria-label', 'breadcrumb');
     grid.appendChild(crumbBar);   // reserve first slot synchronously
     renderMenuBreadcrumb(panel);  // fills crumbBar async; not awaited
-    Object.entries(data).forEach(([key, value]) => {
-        grid.appendChild(createTile(key, value, state, panel));
-    });
+    if (state === 'plots') {
+        renderPlotTiles(data, panel, grid);
+    } else {
+        Object.entries(data).forEach(([key, value]) => {
+            grid.appendChild(createTile(key, value, state, panel));
+        });
+    }
     updateBackButton(state);
 };
+
+// data: [{id, granularities}] from /visualizations/byInstrument/{id}. If every plot
+// has a single granularity, they render as a flat, header-less grid (unchanged from
+// before). As soon as at least one plot has more than one granularity, plots are
+// grouped into one section per granularity (styled like the search-results category
+// headers, and click-to-collapse): each section lists that granularity's tile for
+// every plot supporting it, so picking a tile also picks the granularity to open.
+// Single-granularity plots are folded into the "daily" section alongside the
+// multi-granularity ones rather than sitting in a separate flat area next to it.
+// Only the "daily" section starts expanded; the rest start collapsed and don't load
+// their thumbnails (no request is made) until the user expands them.
+function renderPlotTiles(data, panel, grid) {
+    const single = data.filter(p => !p.granularities || p.granularities.length <= 1);
+    const multi = data.filter(p => p.granularities && p.granularities.length > 1);
+
+    if (!multi.length) {
+        single.forEach((plot, i) => grid.appendChild(createTile(String(i), plot, 'plots', panel)));
+        return;
+    }
+
+    GRANULARITY_ORDER.forEach(gran => {
+        const plots = gran === 'daily'
+            ? single.concat(multi.filter(p => p.granularities.includes(gran)))
+            : multi.filter(p => p.granularities.includes(gran));
+        if (!plots.length) return;
+        const expanded = gran === 'daily';
+
+        const header = document.createElement('h3');
+        header.className = 'search-section section-toggle' + (expanded ? ' expanded' : '');
+        header.textContent = gran;
+
+        const body = document.createElement('div');
+        body.className = 'section-body';
+        body.style.display = expanded ? 'contents' : 'none';
+
+        const tiles = plots.map((plot, i) => createTile(String(i), plot, 'plots', panel, false, gran, !expanded));
+        tiles.forEach(t => body.appendChild(t));
+
+        let loaded = expanded;
+        header.addEventListener('click', () => {
+            const nowExpanded = body.style.display === 'none';
+            body.style.display = nowExpanded ? 'contents' : 'none';
+            header.classList.toggle('expanded', nowExpanded);
+            if (nowExpanded && !loaded) {
+                loaded = true;
+                tiles.forEach(t => t.loadThumbnail && t.loadThumbnail());
+            }
+        });
+
+        grid.appendChild(header);
+        grid.appendChild(body);
+    });
+}
+
+// Open `plotId` (at `gran`, with its known `granularities`/`multi`-ness) into `panel`,
+// switching from the picker back to the plots view. Shared by createTile's plain
+// single-thumbnail click handler and the multi-item click handlers below, which only
+// differ in which `itemIndex` they want to open.
+function openPlotInPanel(panel, fromSearch, plotId, gran, granularities, multi, itemIndex) {
+    // from search there is no site/instrument context: breadcrumb is "Sites > plot"
+    openPlots[panel] = fromSearch ? ['', '', plotId] : [openPlots[panel][0], openPlots[panel][1], plotId];
+    params.delete('ms');
+    // populateTile sets the pN param and pushes a single history entry
+    populateTile(plotId, panel, true, gran, granularities, multi, itemIndex);
+    document.getElementById("selectionMenu").style.display = "none";
+    document.getElementById("plotsWrapper").style.display = "grid";
+    exitMenuMode();
+}
+
+// Build one tile for a single item of a multi-item (radiosonde-style) plot -- same
+// look as a normal plot tile, labeled with its 1-based item number since every item
+// shares the same plotId. Used by createTile's multi+daily branch, which renders
+// one of these per item instead of a single tile with several thumbnails nested
+// inside.
+function buildItemTile(plotId, ymd, idx, panel, fromSearch, gran, granularities, multi) {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+
+    const valueEl = document.createElement('div');
+    valueEl.className = 'tile-value';
+    valueEl.textContent = plotId + ' #' + (idx + 1);
+
+    const img = document.createElement('img');
+    img.className = 'tile-img';
+    img.src = plotItemUrl(plotId, ymd, idx);
+
+    tile.appendChild(valueEl);
+    tile.appendChild(img);
+
+    tile.addEventListener('click', () => openPlotInPanel(panel, fromSearch, plotId, gran, granularities, multi, idx));
+
+    return tile;
+}
 
 // Build a single selection-menu tile. Shared by populateGrid (sites/instruments/plots
 // navigation) and searchItems (search results). `state` drives the click behaviour:
 //   sites       -> value is the display name; opens that site's instruments
 //   instruments -> value is {description} (navigation) or a plain string (search); opens its plots
-//   plots       -> value is the plotName / visualization id; opens the plot in `panel`
+//   plots       -> value is {id, granularities, multi} (navigation) or a plain plot-id
+//                  string (search); opens the plot in `panel`
 // `fromSearch` marks a search result, which carries no parent context: selecting it
 // clears the unknown levels instead of inheriting whatever was previously in the tree.
-function createTile(key, value, state, panel, fromSearch=false) {
+// `granularity` (plots state only) is the granularity this tile represents, when it
+// was rendered inside one of renderPlotTiles' per-granularity sections. `lazy` defers
+// the thumbnail request until `tile.loadThumbnail()` is called (used for sections that
+// start collapsed, so they don't fetch anything until expanded).
+function createTile(key, value, state, panel, fromSearch=false, granularity=null, lazy=false) {
     const tile = document.createElement('div');
     tile.className = 'tile';
 
@@ -295,26 +491,72 @@ function createTile(key, value, state, panel, fromSearch=false) {
             getPlots(key,panel);
         });
     } else if (state==="plots"){
-        const ymd = document.getElementById("datePicker").valueAsDate.toISOString().slice(0, 10).replace(/-/g, '');
-        img.src = '$APIURL/visualizations/byID/'+value+'/'+ymd;
-        img.addEventListener('recalcThumbnails', () => {
+        // navigation passes {id, granularities, multi}; search still passes a plain plot-id string
+        const plotId = (value && typeof value === 'object') ? value.id : value;
+        const granularities = (value && typeof value === 'object' && value.granularities && value.granularities.length)
+            ? value.granularities : ['daily'];
+        const multi = !!(value && typeof value === 'object' && value.multi);
+        const gran = granularity || granularities[0];
+
+        if (multi && gran === 'daily') {
+            // Radiosonde-style plot: can have more than one image (e.g. launch) on this
+            // day. Render each item as its own separate tile rather than nesting several
+            // thumbnails inside one -- grouped under a display:contents wrapper (same
+            // trick renderPlotTiles' collapsible sections use) so each item lays out as
+            // its own grid cell alongside the regular tiles.
+            const group = document.createElement('div');
+            group.className = 'tile-items-group';
+            group.style.display = 'contents';
+
+            const loadItems = async () => {
+                const ymd = document.getElementById("datePicker").valueAsDate.toISOString().slice(0, 10).replace(/-/g, '');
+                group.innerHTML = '';
+                try {
+                    const count = await fetchItemCount(plotId, ymd);
+                    for (let idx = 0; idx < count; idx++) {
+                        group.appendChild(buildItemTile(plotId, ymd, idx, panel, fromSearch, gran, granularities, multi));
+                    }
+                } catch (error) {
+                    // leave the group empty -- nothing to show for this day
+                }
+            };
+            if (lazy) {
+                group.loadThumbnail = () => {
+                    loadItems();
+                    group.addEventListener('recalcThumbnails', loadItems);
+                    group.loadThumbnail = null;
+                };
+            } else {
+                loadItems();
+                group.addEventListener('recalcThumbnails', loadItems);
+            }
+            return group;
+        }
+
+        valueEl.textContent = plotId;
+        const setThumb = () => {
             const ymd = document.getElementById("datePicker").valueAsDate.toISOString().slice(0, 10).replace(/-/g, '');
-            img.src = '$APIURL/visualizations/byID/'+value+'/'+ymd;
+            img.src = plotImageUrl(plotId, gran, ymd);
             tile.style.display = "block";
             img.onerror = function() {
                 tile.style.display = "none";
             };
-        });
-        tile.addEventListener('click', () => {
-            // from search there is no site/instrument context: breadcrumb is "Sites > plot"
-            openPlots[panel] = fromSearch ? ['', '', value] : [openPlots[panel][0], openPlots[panel][1], value];
-            params.delete('ms');
-            // populateTile sets the pN param and pushes a single history entry
-            populateTile(value,panel);
-            document.getElementById("selectionMenu").style.display = "none";
-            document.getElementById("plotsWrapper").style.display = "grid";
-            exitMenuMode();
-        });
+        };
+        if (lazy) {
+            // Collapsed section: don't fetch anything until the section is expanded
+            // (renderPlotTiles calls this), and only start tracking date changes once
+            // it has actually been loaded.
+            tile.loadThumbnail = () => {
+                setThumb();
+                img.addEventListener('recalcThumbnails', setThumb);
+                tile.loadThumbnail = null;
+            };
+        } else {
+            setThumb();
+            img.addEventListener('recalcThumbnails', setThumb);
+        }
+
+        tile.addEventListener('click', () => openPlotInPanel(panel, fromSearch, plotId, gran, granularities, multi, 0));
     } else {alert("unknown state")}
 
     return tile;
@@ -385,12 +627,79 @@ async function instrumentLabel(siteId, instId) {
     return instId;
 }
 
-async function populateTile(plotId, i, changeUrlParams=true){
+// Cached (and request-deduped) per-instrument plot list, used to recover a plot's
+// available granularities when a panel is restored from the URL (the URL only
+// stores the plot id, not its granularities).
+const instPlotsPromises = {};
+function fetchInstrumentPlots(instrumentId) {
+    if (!instPlotsPromises[instrumentId]) {
+        instPlotsPromises[instrumentId] = fetch('$APIURL/visualizations/byInstrument/' + instrumentId).then(r => r.json()).catch(() => []);
+    }
+    return instPlotsPromises[instrumentId];
+}
+
+// Reopen a panel's plot from a parsed URL tree (openPlots[i] already set). Looks up
+// the plot's granularities via its instrument, if known, so the switcher still shows
+// on a direct link / page reload; `urlGranularity` (the link's 4th field, if present)
+// picks which one to open at.
+async function restorePanelPlot(i, urlGranularity) {
+    const [, instrumentId, plotId] = openPlots[i];
+    let granularities = null;
+    let multi = false;
+    if (instrumentId) {
+        const plots = await fetchInstrumentPlots(instrumentId);
+        const match = Array.isArray(plots) ? plots.find(p => p.id === plotId) : null;
+        if (match) {
+            if (match.granularities && match.granularities.length) granularities = match.granularities;
+            multi = !!match.multi;
+        }
+    }
+    populateTile(plotId, i, false, urlGranularity, granularities, multi);
+}
+
+// The pN URL value for a panel: site,instrument,plotId, plus a 4th "current granularity"
+// field so a specific granularity is linkable -- but only when the plot actually has more
+// than one, so single-granularity (the vast majority) links stay exactly as before.
+function panelUrlValue(i) {
+    const meta = panelPlotMeta[i];
+    return (meta && meta.granularities.length > 1) ? [...openPlots[i], meta.current] : openPlots[i];
+}
+
+// Load panel `i`'s image for its current plotId/granularity/date. For a `multi`
+// plot viewed at `daily` granularity, this fetches how many items exist for the
+// day and shows `itemIndex` (clamped to the count); otherwise it's the plain
+// single-image byID URL, unchanged. Always (re)renders the item switcher, since
+// itemCount may have just changed.
+async function loadPanelImage(i, itemIndex) {
+    const meta = panelPlotMeta[i];
     const ymd = document.getElementById("datePicker").valueAsDate.toISOString().slice(0, 10).replace(/-/g, '');
+    if (meta.multi && meta.current === 'daily') {
+        const count = await fetchItemCount(meta.plotId, ymd).catch(() => 0);
+        meta.itemCount = count;
+        meta.itemIndex = count ? Math.min(itemIndex, count - 1) : 0;
+        panelImg(i).src = count ? plotItemUrl(meta.plotId, ymd, meta.itemIndex) : './img/placeholder.svg';
+    } else {
+        meta.itemCount = 0;
+        panelImg(i).src = plotImageUrl(meta.plotId, meta.current, ymd);
+    }
+    updatePanelCredit(i);
+    renderItemSwitcher(i);
+}
+
+// `granularity` is the granularity to open at (defaults to the first of `granularities`,
+// or 'daily' if neither is known); `granularities` is the full list available for this
+// plot, used to populate the panel's switcher (omitted -> no switcher, single 'daily').
+// `multi`/`itemIndex` are for radiosonde-style plots with more than one image per day
+// (see loadPanelImage); `itemIndex` defaults to the first item.
+async function populateTile(plotId, i, changeUrlParams=true, granularity=null, granularities=null, multi=false, itemIndex=null){
+    const list = (granularities && granularities.length) ? granularities : [granularity || 'daily'];
+    const gran = granularity || list[0];
     try {
-        panelImg(i).src = '$APIURL/visualizations/byID/'+plotId+'/'+ymd;
+        panelPlotMeta[i] = { plotId, granularities: list, current: gran, multi, itemCount: 0, itemIndex: 0 };
+        await loadPanelImage(i, itemIndex || 0);
+        renderGranularitySwitcher(i);
         if(changeUrlParams) {
-            params.set(panelParam(i), openPlots[i].join(','));
+            params.set(panelParam(i), panelUrlValue(i).join(','));
             pushUrl();
         }
         await renderBreadcrumb(i);
@@ -398,6 +707,85 @@ async function populateTile(plotId, i, changeUrlParams=true){
         alert('Error: ' + error.message); // display an error message in an alert
     }
 };
+
+// Render the panel's granularity switcher (a small header-bar like the search-results
+// category headers) from panelPlotMeta[i]; hidden when the plot has one granularity.
+function renderGranularitySwitcher(i) {
+    const bar = panelEl(i).querySelector('.granularity-switcher');
+    if (!bar) return;
+    const meta = panelPlotMeta[i];
+    if (!meta || meta.granularities.length <= 1) {
+        bar.innerHTML = '';
+        bar.style.display = 'none';
+        return;
+    }
+    bar.style.display = 'flex';
+    bar.innerHTML = meta.granularities.map((g) =>
+        `<button type="button" class="granularity-btn${g === meta.current ? ' active' : ''}" onclick="selectGranularity(${i}, '${g}')">${g}</button>`
+    ).join('');
+}
+
+// Switch an already-open panel's plot to a different granularity. Delegates to
+// loadPanelImage so switching back to `daily` on a `multi` plot re-triggers the
+// item-count flow instead of just assigning a single-image URL. Also updates the
+// pN URL param so the newly-selected granularity is linkable.
+function selectGranularity(i, gran) {
+    const meta = panelPlotMeta[i];
+    if (!meta || gran === meta.current) return;
+    meta.current = gran;
+    loadPanelImage(i, 0).then(() => {
+        renderGranularitySwitcher(i);
+        params.set(panelParam(i), panelUrlValue(i).join(','));
+        pushUrl();
+    });
+}
+
+// Render the panel's item switcher (radiosonde-style plots with more than one image
+// per day, see loadPanelImage); hidden unless the plot is `multi`, currently viewed
+// at `daily`, and actually has more than one item for the current date. Reuses the
+// granularity switcher's pill-button look via the shared .granularity-btn class.
+function renderItemSwitcher(i) {
+    const bar = panelEl(i).querySelector('.item-switcher');
+    if (!bar) return;
+    const meta = panelPlotMeta[i];
+    if (!meta || !meta.multi || meta.current !== 'daily' || meta.itemCount <= 1) {
+        bar.innerHTML = '';
+        bar.style.display = 'none';
+        return;
+    }
+    bar.style.display = 'flex';
+    bar.innerHTML = Array.from({ length: meta.itemCount }, (_, idx) =>
+        `<button type="button" class="granularity-btn${idx === meta.itemIndex ? ' active' : ''}" onclick="selectItem(${i}, ${idx})">${idx + 1}</button>`
+    ).join('');
+}
+
+// Switch to a different item (e.g. launch) of an already-open multi-item panel.
+// Each item's URL is directly addressable by index, so this is purely client-side.
+function selectItem(i, idx) {
+    const meta = panelPlotMeta[i];
+    if (!meta || idx === meta.itemIndex) return;
+    meta.itemIndex = idx;
+    const ymd = document.getElementById("datePicker").valueAsDate.toISOString().slice(0, 10).replace(/-/g, '');
+    panelImg(i).src = plotItemUrl(meta.plotId, ymd, idx);
+    updatePanelCredit(i);
+    renderItemSwitcher(i);
+}
+
+// Up/Down arrow navigation: step every open multi-item panel's shown item by `delta`
+// (+1/-1), clamped to its available range. Returns whether any panel actually moved,
+// so the caller can decide whether to suppress the arrow key's default page scroll.
+function stepItem(delta) {
+    let stepped = false;
+    for (const i of currentOpenPanels) {
+        const meta = panelPlotMeta[i];
+        if (!meta || !meta.multi || meta.current !== 'daily' || meta.itemCount <= 1) continue;
+        const idx = Math.min(Math.max(meta.itemIndex + delta, 0), meta.itemCount - 1);
+        if (idx === meta.itemIndex) continue;
+        selectItem(i, idx);
+        stepped = true;
+    }
+    return stepped;
+}
 
 // Build the breadcrumb for `panel` from openPlots: an always-present "Sites" root
 // (returns to site selection for this panel) followed by site / instrument links
@@ -529,8 +917,10 @@ function commitDate(){
     }
     selectedDate = datePicker.value;
     updateTiles();
-    document.querySelectorAll('img').forEach((image) => {
-        image.dispatchEvent(recalcThumbnailsEvent);
+    // Multi-item tiles (see createTile) listen on their .tile-items-group wrapper
+    // rather than an <img>, since they render a variable number of separate tiles.
+    document.querySelectorAll('img, .tile-items-group').forEach((el) => {
+        el.dispatchEvent(recalcThumbnailsEvent);
     });
     params.set('date', selectedDate);
     pushUrl();
@@ -538,10 +928,16 @@ function commitDate(){
 
 function updateTiles(){
     // Re-render each open panel's plot for the current date, using the stored plot
-    // id rather than parsing it back out of the image URL.
+    // id rather than parsing it back out of the image URL. Keep whichever granularity
+    // is currently selected instead of resetting to the default. For multi-item plots,
+    // itemIndex is deliberately not carried over -- a new day's items don't correspond
+    // to the previous day's, so populateTile resets to item 0.
     for (const i of currentOpenPanels){
         const plotId = openPlots[i][2];
-        if (plotId) populateTile(plotId, i, false);
+        if (plotId) {
+            const meta = panelPlotMeta[i];
+            populateTile(plotId, i, false, meta ? meta.current : null, meta ? meta.granularities : null, meta ? meta.multi : false);
+        }
     }
 };
 

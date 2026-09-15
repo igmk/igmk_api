@@ -1,11 +1,6 @@
-# Pinned deliberately: the Docker image builds fresh on every push, so an
-# unpinned range means the deployed dependency set drifts without a commit.
-# Bump these on purpose, not by accident.
 connexion[swagger-ui,uvicorn,flask]==3.3.0
 flask==3.1.3
 starlette==0.52.1
 gunicorn==25.3.0
 flask-cors==6.0.2
-# Imported by run.py. Was previously absent and only arrived transitively via
-# connexion -- the app started by luck, not by declaration.
 requests==2.33.1

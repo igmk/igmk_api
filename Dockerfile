@@ -8,7 +8,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN python -m pip install --no-cache-dir -r requirements.txt
 
-COPY ./app /app
+COPY igmk_api /app/igmk_api
+COPY static   /app/static
 
 # The app only ever reads from its bind-mounts (/config, /data/obs), so it can
 # run unprivileged.
@@ -22,4 +23,4 @@ CMD ["gunicorn", \
      "-k", "uvicorn.workers.UvicornWorker", \
      "--workers", "4", \
      "--access-logfile", "-", \
-     "run:app"]
+     "igmk_api.app:app"]

@@ -12,6 +12,7 @@ import re
 
 import pytest
 import yaml
+
 from igmk_api.app import SPEC_PATH
 
 SPEC = yaml.safe_load(SPEC_PATH.read_text())

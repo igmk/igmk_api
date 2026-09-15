@@ -10,10 +10,7 @@ __pycache__/
 .ruff_cache/
 
 # Dev-only config copy
-app/config/
-
-# One-off scrapers
-app/scrapers/
+config/
 
 tests/
 tools/

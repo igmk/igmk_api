@@ -168,9 +168,9 @@ def test_plot_error_bodies_are_not_json_yet(client):
     dict against that content type and the client receives the literal string
     "error" as image/png. Only the status code is usable today.
 
-    Verified identical on the pre-refactor run.py, so this is long-standing
-    behaviour, not refactor fallout. It resolves once the spec declares JSON
-    error responses in the spec-repair round.
+    Verified identical on the pre-refactor single-module app, so this is
+    long-standing behaviour, not refactor fallout. It resolves once the spec
+    declares JSON error responses in the spec-repair round.
     """
     r = client.get("/visualizations/byID/tstrad_legacy/monthly/202501")
     assert r.status_code == 404
