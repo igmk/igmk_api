@@ -22,7 +22,7 @@ means **no source edits are needed for local development**. Use
 | Variable | Default | Purpose |
 |---|---|---|
 | `IGMK_CONFIG_ROOT` | `/config` | Config tree: `plots/`, `instruments/`, `sites/` |
-| `IGMK_DATA_ROOT` | `/data/obs` | Observation data that local plot paths resolve against |
+| `IGMK_CORS_ORIGINS` | `https://browser.herz-campaigns.de` | Comma-separated allowed origins |
 
 The API is then available at:
 
@@ -56,6 +56,15 @@ services:
       - "8000:8000"
     restart: unless-stopped
 ```
+
+## Resilience
+
+Config files are operational data, so a broken one never takes the service down:
+an unreadable, malformed or non-object JSON file is logged at `WARNING` and
+skipped, and a missing config directory yields an empty result rather than a
+500. An unknown identifier, or a plot image that does not exist for the
+requested date, is a `404` with a JSON body. See `igmk_api/config.py` and
+`tests/test_resilience.py`.
 
 ## Config files
 

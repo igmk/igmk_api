@@ -3,36 +3,13 @@ target-version = "py312"
 line-length = 100
 
 [tool.ruff.lint]
-# PTH (os.path -> pathlib) is deliberately left out: it fires ~16 times across
-# handler code that is otherwise correct, and the churn would bury the rules
-# below that flag actual defects.
+# PTH (os.path -> pathlib) is deliberately left out: the remaining os.path use
+# is in plots.py, where paths come from strftime templates as strings and are
+# handed straight to os.listdir/fnmatch.
 select = ["E", "F", "W", "I", "UP", "B", "A", "S", "RUF", "SIM"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101"]  # assert is the point
-
-# Handlers were moved verbatim during the package split; their known defects are
-# scheduled for the bug-fix round and suppressed here so that `ruff check`
-# staying green remains a meaningful signal. Each entry is a real finding, not
-# a style preference -- delete the entry along with the bug.
-"igmk_api/api/general.py" = [
-    "A001",   # `dir`/`file` shadowing builtins
-    "F841",   # `current_instruments_string` computed then discarded; its only
-              # consumer is commented out. The whole function is slated for
-              # deletion along with the /map route.
-    "E501",
-]
-"igmk_api/api/sites.py" = ["SIM118"]  # `in sites.keys()`
-"igmk_api/api/instruments.py" = ["A001"]
-"igmk_api/api/search.py" = ["A002"]  # `dir` as an argument name
-"igmk_api/api/plots.py" = [
-    "A001",   # `dir` shadowing
-    "A002",   # `dir` as an argument name
-    "B904",   # `raise ... from` inside except
-    "S113",   # `requests.get(image_path)` with no timeout -- the code path
-              # 382 of 445 plot configs take.
-    "E501",
-]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -21,3 +21,21 @@ from igmk_api.app import app  # noqa: E402
 def client():
     with TestClient(app) as test_client:
         yield test_client
+
+
+@pytest.fixture
+def config_root(tmp_path):
+    """Point the app at a throwaway config tree for one test.
+
+    ``settings`` is a frozen module-level singleton that handlers import by
+    value, so rebinding the module attribute would not reach them; the instance
+    is mutated in place and restored afterwards.
+    """
+    from igmk_api.settings import settings
+
+    original = settings.config_root
+    for name in ("plots", "instruments", "sites"):
+        (tmp_path / name).mkdir()
+    object.__setattr__(settings, "config_root", tmp_path)
+    yield tmp_path
+    object.__setattr__(settings, "config_root", original)

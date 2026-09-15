@@ -1,22 +1,37 @@
 """Free-text search across instruments, plots and sites."""
 
-import json
-from pathlib import Path
-
+from igmk_api.config import iter_configs
 from igmk_api.settings import settings
 
 
+def _matching(directory, query, match_keys, id_key, label_key):
+    """Return ``{id: label}`` for configs whose *match_keys* contain *query*.
+
+    The keys are named explicitly. This used to read ``file[keys[0]]`` ->
+    ``file[keys[1]]``, i.e. by JSON key *insertion order*, so reordering keys in
+    a config silently changed the API response.
+    """
+    results = {}
+    for _stem, config in iter_configs(directory):
+        if not any(query in str(config.get(key, "")).lower() for key in match_keys):
+            continue
+        identifier = config.get(id_key)
+        if identifier:
+            results[identifier] = config.get(label_key, "")
+    return results
+
+
 def search(query):
-    def search_jsons(query, dir, keys):
-        query = query.lower()
-        results = dict()
-        for path in Path(dir).glob("*.json"):
-            data = json.loads(path.read_text())
-            if any(query in str(data.get(key, "")).lower() for key in keys):
-                file = json.loads(path.read_text())
-                fileKeys = list(file.keys())
-                results[file[fileKeys[0]]] = file[fileKeys[1]]
-        return results
-    return dict(inst=search_jsons(query, settings.instruments_dir, ["name", "description"]), \
-        plots=search_jsons(query, settings.plots_dir, ["id", "description"]), \
-        sites=search_jsons(query, settings.sites_dir, ["siteID", "siteHumanReadable"]))
+    query = query.lower()
+    return {
+        "inst": _matching(
+            settings.instruments_dir, query, ("name", "description"), "name", "description"
+        ),
+        "plots": _matching(
+            settings.plots_dir, query, ("id", "description"), "id", "description"
+        ),
+        "sites": _matching(
+            settings.sites_dir, query, ("siteID", "siteHumanReadable"),
+            "siteID", "siteHumanReadable",
+        ),
+    }

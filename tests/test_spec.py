@@ -80,10 +80,7 @@ def test_every_public_handler_is_routed():
                 continue
             if name not in routed:
                 unrouted.append(f"{module_name}.{name}")
-    # create_map_javascript is deliberately internal: map_redirect calls it.
-    assert unrouted == ["igmk_api.api.general.create_map_javascript"], (
-        f"handlers defined but not routed: {unrouted}"
-    )
+    assert unrouted == [], f"handlers defined but not routed: {unrouted}"
 
 
 @pytest.mark.parametrize("operation_id", _operation_ids())
@@ -96,23 +93,58 @@ def test_handler_signature_matches_path_params(operation_id):
     assert not missing, f"{operation_id} does not accept path params {sorted(missing)}"
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason=(
-        "openapi.yaml declares zero `parameters:` blocks for its 11 parameterised "
-        "routes, so Connexion does no type coercion or validation and Swagger UI "
-        "renders no input boxes. Scheduled for the spec-repair round; this test "
-        "flips to passing for free once parameters land."
-    ),
-)
+def _resolve_ref(node):
+    """Follow a single ``$ref`` into the spec, if this node is one."""
+    ref = node.get("$ref")
+    if not ref:
+        return node
+    target = SPEC
+    for part in ref.removeprefix("#/").split("/"):
+        target = target[part]
+    return target
+
+
 def test_path_params_are_declared():
-    """Every {param} in a path template has a matching `parameters` entry."""
+    """Every {param} in a path template has a matching `parameters` entry.
+
+    Without these Connexion does no coercion or validation and Swagger UI
+    renders no input boxes.
+    """
     undeclared = []
     for path, method, operation in _operations():
         declared = {
-            p["name"] for p in operation.get("parameters", []) if p.get("in") == "path"
+            p["name"]
+            for p in map(_resolve_ref, operation.get("parameters", []))
+            if p.get("in") == "path"
         }
         for name in PATH_PARAM_RE.findall(path):
             if name not in declared:
                 undeclared.append(f"{method.upper()} {path} -> {name}")
     assert not undeclared, f"path params with no `parameters` entry: {undeclared}"
+
+
+def test_path_params_are_typed():
+    """A declared path param without a schema still does no validation."""
+    untyped = []
+    for path, method, operation in _operations():
+        for p in map(_resolve_ref, operation.get("parameters", [])):
+            if p.get("in") == "path" and not p.get("schema"):
+                untyped.append(f"{method.upper()} {path} -> {p['name']}")
+    assert not untyped, f"path params with no `schema`: {untyped}"
+
+
+def test_error_statuses_are_json():
+    """Handlers return {"error": ...} bodies; the spec must declare them.
+
+    When a route declared only image/png, Connexion serialised the dict against
+    that content type and the client received the literal string "error".
+    """
+    missing = []
+    for path, method, operation in _operations():
+        for status, response in operation["responses"].items():
+            if not status.startswith(("4", "5")):
+                continue
+            response = _resolve_ref(response)
+            if "application/json" not in response.get("content", {}):
+                missing.append(f"{method.upper()} {path} -> {status}")
+    assert not missing, f"error responses that are not JSON: {missing}"

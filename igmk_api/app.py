@@ -6,30 +6,46 @@ in sync or a route 404s / the app fails to start. ``tests/test_spec.py``
 enforces that.
 """
 
+import os
 from pathlib import Path
 
 from connexion import FlaskApp
-from flask_cors import CORS
+from connexion.middleware import MiddlewarePosition
+from starlette.middleware.cors import CORSMiddleware
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+#: Absolute, so the app can be started from any working directory rather than
+#: only from the Dockerfile's WORKDIR.
 SPEC_PATH = Path(__file__).with_name("openapi.yaml")
 
-CORS_ORIGINS = ["https://browser.herz-campaigns.de"]
+CORS_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get("IGMK_CORS_ORIGINS", "https://browser.herz-campaigns.de").split(",")
+    if origin.strip()
+]
 
 
 def create_app() -> FlaskApp:
     """Build the Connexion application."""
     connexion_app = FlaskApp(__name__, specification_dir=str(SPEC_PATH.parent))
-    # Absolute, so the app can be started from any working directory rather
-    # than only from app/ (the Dockerfile's WORKDIR).
     connexion_app.add_api(SPEC_PATH)
+
+    # CORS goes on the ASGI stack, outside the exception middleware, so that
+    # Connexion's own routing 404s and validation 400s carry the headers too.
+    # Installed on the Flask app it would only cover responses that reach Flask,
+    # and the browser would see those errors as opaque failures.
+    connexion_app.add_middleware(
+        CORSMiddleware,
+        position=MiddlewarePosition.BEFORE_EXCEPTION,
+        allow_origins=CORS_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["GET"],
+        allow_headers=["*"],
+    )
 
     flask_app = connexion_app.app
     flask_app.wsgi_app = ProxyFix(flask_app.wsgi_app, x_proto=1, x_host=1)
-    flask_app.url_map.strict_slashes = False
     flask_app.config["PREFERRED_URL_SCHEME"] = "https"
-
-    CORS(flask_app, origins=CORS_ORIGINS, supports_credentials=True)
 
     return connexion_app
 

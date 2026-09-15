@@ -18,9 +18,13 @@ USER api
 
 EXPOSE 8000
 
+# --timeout bounds a worker that is stuck despite the per-request timeouts in
+# the handlers; without it a wedged worker is never recycled.
 CMD ["gunicorn", \
      "--bind", "0.0.0.0:8000", \
      "-k", "uvicorn.workers.UvicornWorker", \
      "--workers", "4", \
+     "--timeout", "60", \
+     "--graceful-timeout", "30", \
      "--access-logfile", "-", \
      "igmk_api.app:app"]

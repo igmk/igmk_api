@@ -13,6 +13,5 @@ __pycache__/
 config/
 
 tests/
-tools/
-dataBrowser.js.temp
+docs/
 *.md
