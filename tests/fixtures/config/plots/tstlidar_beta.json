@@ -1,0 +1,7 @@
+{
+    "id": "tstlidar_beta",
+    "sites": ["tst"],
+    "instruments": ["tstlidar"],
+    "description": "",
+    "path": "/data/obs/tst/lidar/%Y/%m/%d/%Y%m%d_beta.png"
+}

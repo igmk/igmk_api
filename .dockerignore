@@ -1,0 +1,25 @@
+# The image previously shipped all of this. Keep it out.
+.git
+.github
+.gitignore
+.claude
+
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Private keys must never enter the published image.
+*.pem
+
+# Dev-only config copy; production bind-mounts /config instead.
+app/config/
+
+# One-off generation scripts, not runtime code.
+app/scrapers/
+
+tests/
+tools/
+dataBrowser.js.temp
+*.md

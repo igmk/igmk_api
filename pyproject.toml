@@ -1,0 +1,41 @@
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+extend-exclude = ["app/scrapers"]
+
+[tool.ruff.lint]
+# PTH (os.path -> pathlib) is deliberately left out: it fires ~16 times across
+# handler code that is otherwise correct, and the churn would bury the rules
+# below that flag actual defects.
+select = ["E", "F", "W", "I", "UP", "B", "A", "S", "RUF", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]  # assert is the point
+
+# Handlers were moved verbatim during the package split; their known defects are
+# scheduled for the bug-fix round and suppressed here so that `ruff check`
+# staying green remains a meaningful signal. Each entry is a real finding, not
+# a style preference -- delete the entry along with the bug.
+"app/igmk_api/api/general.py" = [
+    "A001",   # `dir`/`file` shadowing builtins
+    "F841",   # `current_instruments_string` computed then discarded; its only
+              # consumer is commented out. The whole function is slated for
+              # deletion along with the /map route.
+    "E501",
+]
+"app/igmk_api/api/sites.py" = ["SIM118"]  # `in sites.keys()`
+"app/igmk_api/api/instruments.py" = ["A001"]
+"app/igmk_api/api/search.py" = ["A002"]  # `dir` as an argument name
+"app/igmk_api/api/plots.py" = [
+    "A001",   # `dir` shadowing
+    "A002",   # `dir` as an argument name
+    "B904",   # `raise ... from` inside except
+    "S113",   # `requests.get(image_path)` with no timeout -- the code path
+              # 382 of 445 plot configs take.
+    "E501",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# The package lives under app/ so that `run:app` resolves inside the container.
+pythonpath = ["app"]

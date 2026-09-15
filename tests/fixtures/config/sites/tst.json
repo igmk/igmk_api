@@ -1,0 +1,9 @@
+{
+    "siteID": "tst",
+    "siteHumanReadable": "Test Site",
+    "description": "Fixture site.",
+    "liveDataPath": "https://example.invalid/live.json",
+    "lat": 50.0,
+    "lon": 6.0,
+    "altitude": 100
+}

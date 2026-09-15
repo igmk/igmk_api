@@ -1,0 +1,6 @@
+-r requirements.txt
+
+pytest==9.1.1
+httpx==0.28.1      # starlette.testclient
+responses==0.26.3  # mock upstream plot/live-data HTTP in tests
+ruff==0.16.7

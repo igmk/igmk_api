@@ -1,34 +1,48 @@
 # igmk_api
-Backend for new QL-Browser &amp; WebDashboard
+
+Backend for the QuickLook-Browser &amp; WebDashboard
+(frontend at `browser.herz-campaigns.de`).
 
 ## Requirements
-Python 3.5.2+
 
+Python 3.12+
 
-## Usage
+## Run locally
 
-## Run local (only for dev)
-To run the server, please execute the following from the root directory:
-
-```
-pip3 install -r requirements.txt
+```bash
+pip3 install -r requirements-dev.txt
 cd app
-uvicorn run:app
-```
-- adjust all `/config` paths in `app/run.py` (remember to undo this change beofore commiting to github)
-- For development purposes, you can use `uvicorn run:app --reload` for hot-reloading.
-
-API is available at:
-```
-http://localhost:8080/ui/
+IGMK_CONFIG_ROOT=./config uvicorn run:app
 ```
 
-Your Swagger definition lives here:
+`IGMK_CONFIG_ROOT` points the app at the config tree. It defaults to `/config`,
+which is where production bind-mounts it; setting it to the checked-in dev copy
+means **no source edits are needed for local development**. Use
+`uvicorn run:app --reload` for hot-reloading.
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `IGMK_CONFIG_ROOT` | `/config` | Config tree: `plots/`, `instruments/`, `sites/` |
+| `IGMK_DATA_ROOT` | `/data/obs` | Observation data that local plot paths resolve against |
+
+The API is then available at:
 
 ```
-http://localhost:8080/swagger.json
+http://localhost:8000/ui/        # interactive Swagger UI
+http://localhost:8000/openapi.json   # the raw spec
 ```
+
+(Note: the spec is served at `/openapi.json`, not `/swagger.json`.)
+
+## Tests and linting
+
+```bash
+pytest         # runs against tests/fixtures/config, not the real config tree
+ruff check .
+```
+
 ## Docker
+
 ```YAML
 version: "3.8"
 
@@ -44,10 +58,12 @@ services:
     restart: unless-stopped
 ```
 
-## Config Files
+## Config files
 
-All Config Files for the API are stored at:
+Production config lives at:
 
 ```
 /data/obs/api_config
 ```
+
+A copy for development is checked in at `app/config/`.

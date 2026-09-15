@@ -22,7 +22,7 @@ paths:
     get:
       summary: 'Greeter'
       description: 'Displays general information on the API'
-      operationId: run.greeter
+      operationId: igmk_api.api.general.greeter
       responses:
         '200':
           description: "A small text"
@@ -36,7 +36,7 @@ paths:
     get:
       summary: 'Returns favicon'
       description: ''
-      operationId: run.serve_favicon
+      operationId: igmk_api.api.general.serve_favicon
       responses: 
         '200':
           description: ''
@@ -49,7 +49,7 @@ paths:
     get:
         summary: 'Search'
         description: ''
-        operationId: run.search
+        operationId: igmk_api.api.search.search
         responses:
           '200':
             description: ''
@@ -63,7 +63,7 @@ paths:
     get:
       summary: 'Shows a world map with sites and further information'
       description: ''
-      operationId: run.map_redirect
+      operationId: igmk_api.api.general.map_redirect
       responses:
         '200':
           description: ''
@@ -78,7 +78,7 @@ paths:
     get:
       summary: 'Lists all sites'
       description: ''
-      operationId: run.return_sites
+      operationId: igmk_api.api.sites.return_sites
       responses:
         '200':
           description: A JSON array of site strings
@@ -97,7 +97,7 @@ paths:
     get:
       summary: 'Detailed information about a site'
       description: ''
-      operationId: run.return_site_info
+      operationId: igmk_api.api.sites.return_site_info
       responses:
         '200':
           description: ''
@@ -126,7 +126,7 @@ paths:
     get:
       summary: 'List all instruments currently at the site'
       description: ''
-      operationId: run.return_instruments
+      operationId: igmk_api.api.instruments.return_instruments
       responses:
         '200':
           description: ''
@@ -141,7 +141,7 @@ paths:
     get:
       summary: 'List all instruments (with timespan) ever at the site'
       description: ''
-      operationId: run.return_instruments_history
+      operationId: igmk_api.api.instruments.return_instruments_history
       responses:
         '200':
           description: ''
@@ -157,7 +157,7 @@ paths:
       get:
         summary: 'Live data from the site'
         description: ''
-        operationId: run.return_live_data
+        operationId: igmk_api.api.sites.return_live_data
         responses:
           '200':
             description: ''
@@ -171,7 +171,7 @@ paths:
     get:
       summary: 'Get the current plot'
       description: ''
-      operationId: run.return_current_image
+      operationId: igmk_api.api.plots.return_current_image
       responses:
         '200':
           description: ''
@@ -186,7 +186,7 @@ paths:
     get:
       summary: 'Get a plot of a specified date'
       description: ''
-      operationId: run.return_image
+      operationId: igmk_api.api.plots.return_image
       responses:
         '200':
           description: ''
@@ -201,7 +201,7 @@ paths:
     get:
       summary: 'Get a plot at a given granularity and date'
       description: ''
-      operationId: run.return_image_granular
+      operationId: igmk_api.api.plots.return_image_granular
       responses:
         '200':
           description: ''
@@ -216,7 +216,7 @@ paths:
     get:
       summary: 'List available plots by instrument'
       description: ''
-      operationId: run.return_plots_by_instrument
+      operationId: igmk_api.api.plots.return_plots_by_instrument
       responses:
         '200':
           description: ''
@@ -241,7 +241,7 @@ paths:
     get:
       summary: 'List how many plot items exist for a multi-item plot on a given date'
       description: ''
-      operationId: run.return_plot_items
+      operationId: igmk_api.api.plots.return_plot_items
       responses:
         '200':
           description: ''
@@ -258,7 +258,7 @@ paths:
     get:
       summary: 'Get one specific item image from a multi-item plot date'
       description: ''
-      operationId: run.return_plot_item_image
+      operationId: igmk_api.api.plots.return_plot_item_image
       responses:
         '200':
           description: ''
@@ -273,7 +273,7 @@ paths:
     get:
       summary: 'List all instruments'
       description: ''
-      operationId: run.list_instruments
+      operationId: igmk_api.api.instruments.list_instruments
       responses:
         '200':
           description: ''
@@ -287,7 +287,7 @@ paths:
     get:
       summary: 'Get details on a specific instrument'
       description: ''
-      operationId: run.instrument_details
+      operationId: igmk_api.api.instruments.instrument_details
       responses:
         '200':
           description: ''
