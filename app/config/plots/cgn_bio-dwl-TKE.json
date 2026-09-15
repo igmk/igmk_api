@@ -1,0 +1,7 @@
+{
+  "id": "cgn_bio-dwl-TKE",
+  "sites": [ "cgn_bio" ],
+  "instruments": [ "halo2" ],
+  "description": "Time height sections of TKE (top) and the contribution from vertical wind speed (bottom).",
+  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/cologne/dwl/l1/%Y/%m/%d/plot/TKE_cont_%Y%m%d.png"
+}

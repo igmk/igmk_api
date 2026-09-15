@@ -1,0 +1,25 @@
+{
+    "id": "multi_mwr_iwv",
+    "sites": [
+        "aac",
+        "jue",
+        "sint",
+        "vett",
+        "cgn_city",
+        "cgn_airport",
+	"gwu",
+	"rpg"
+    ],
+    "instruments": [
+        "aahat",
+        "joyhat",
+        "kithat2",
+        "kithat1",
+        "foghat",
+        "tophat",
+	"icehat",
+	"rpghat"
+    ],
+    "description": "",
+    "path": "/data/campaigns/vital2/site/multi/mwr_iwv/IWV_statistics_vital_%Y%m%d.png"
+}

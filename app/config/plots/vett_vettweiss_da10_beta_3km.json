@@ -1,0 +1,11 @@
+{
+    "id": "vett_vettweiss_da10_beta_3km",
+    "sites": [
+        "vett"
+    ],
+    "instruments": [
+        "dial_kit1"
+    ],
+    "description": "",
+    "path": "/data/obs/campaigns/vital2/site/vettweiss/dial/l1/%Y/%m/%d/%Y%m%d_vettweiss_da10-beta_3km.png"
+}

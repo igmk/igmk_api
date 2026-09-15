@@ -11,5 +11,5 @@
     "paths": {
         "daily": "/data/obs/campaigns/vital2/site/juelich/sounding/plots/"
     },
-    "pattern": "vitII_jue_rs41_comp_v00_%Y%m%d*_skewt.png"
+    "pattern": "vitII_joy_rs41_comp_v00_%Y%m%d*_skewt.png"
 }

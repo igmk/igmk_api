@@ -1,0 +1,13 @@
+{
+    "name": "meteo_erft",
+    "description": "Meteo Station Erftstadt GWU",
+    "locations": [
+        {
+            "site": "gwu",
+            "dates": [
+                ["2026-06-01"]
+            ]
+        }
+    ],
+    "wiki":""
+}
