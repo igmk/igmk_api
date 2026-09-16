@@ -1,0 +1,20 @@
+sites: gwu
+instruments: icehat
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/mwr/level1/%Y/%m/%d/
+
+plots:
+  icehat_elaz: '%Y%m%d_erftstadt_sen.png'
+  icehat_eqpot_t: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/mwr/level2/%Y/%m/%d/%Y%m%d_erftstadt_equivalent_potential_temperature.png
+  icehat_flag: '%Y%m%d_erftstadt_quality_flag.png'
+  icehat_hkd: '%Y%m%d_erftstadt_hkd.png'
+  icehat_irt: '%Y%m%d_erftstadt_irt.png'
+  icehat_iwv: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/mwr/level2/%Y/%m/%d/%Y%m%d_erftstadt_iwv.png
+  icehat_lwp: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/mwr/level2/%Y/%m/%d/%Y%m%d_erftstadt_lwp.png
+  icehat_met_dyn: '%Y%m%d_erftstadt_met2.png'
+  icehat_met_tq: '%Y%m%d_erftstadt_met.png'
+  icehat_pot_t: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/mwr/level2/%Y/%m/%d/%Y%m%d_erftstadt_potential_temperature.png
+  icehat_q: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/mwr/level2/%Y/%m/%d/%Y%m%d_erftstadt_absolute_humidity.png
+  icehat_rh: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/mwr/level2/%Y/%m/%d/%Y%m%d_erftstadt_relative_humidity.png
+  icehat_t: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/mwr/level2/%Y/%m/%d/%Y%m%d_erftstadt_temperature.png
+  icehat_tb: '%Y%m%d_erftstadt_tb.png'
+  icehat_tb_spec: '%Y%m%d_erftstadt_tb_spectrum.png'

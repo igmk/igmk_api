@@ -1,0 +1,22 @@
+sites: sint
+instruments: kithat2
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/mwr/level2/%Y/%m/%d/
+
+plots:
+  kithat2_elaz: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/mwr/level1/%Y/%m/%d/%Y%m%d_sinthern_sen.png
+  kithat2_eqpot_t: '%Y%m%d_sinthern_equivalent_potential_temperature.png'
+  kithat2_flag: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/mwr/level1/%Y/%m/%d/%Y%m%d_sinthern_quality_flag.png
+  kithat2_hkd: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/mwr/level1/%Y/%m/%d/%Y%m%d_sinthern_hkd.png
+  kithat2_irt: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/mwr/level1/%Y/%m/%d/%Y%m%d_sinthern_irt.png
+  kithat2_iwv: '%Y%m%d_sinthern_iwv.png'
+  kithat2_iwv_scan: '%Y%m%d_sinthern_iwv_scan.png'
+  kithat2_lwp: '%Y%m%d_sinthern_lwp.png'
+  kithat2_lwp_scan: '%Y%m%d_sinthern_lwp_scan.png'
+  kithat2_met_dyn: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/mwr/level1/%Y/%m/%d/%Y%m%d_sinthern_met2.png
+  kithat2_met_tq: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/mwr/level1/%Y/%m/%d/%Y%m%d_sinthern_met.png
+  kithat2_pot_t: '%Y%m%d_sinthern_potential_temperature.png'
+  kithat2_q: '%Y%m%d_sinthern_absolute_humidity.png'
+  kithat2_rh: '%Y%m%d_sinthern_relative_humidity.png'
+  kithat2_t: '%Y%m%d_sinthern_temperature.png'
+  kithat2_tb: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/mwr/level1/%Y/%m/%d/%Y%m%d_sinthern_tb.png
+  kithat2_tb_spec: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/sinthern/mwr/level1/%Y/%m/%d/%Y%m%d_sinthern_tb_spectrum.png

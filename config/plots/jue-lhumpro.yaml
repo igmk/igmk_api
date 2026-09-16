@@ -1,0 +1,15 @@
+sites: jue
+instruments: lhumpro
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/lhumpro/actris/level1/%Y/%m/%d/
+
+plots:
+  lhumpro_elaz: '%Y%m%d_lhumpro_sen.png'
+  lhumpro_flag: '%Y%m%d_lhumpro_quality_flag.png'
+  lhumpro_hkd: '%Y%m%d_lhumpro_hkd.png'
+  lhumpro_iwv: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/lhumpro/actris/level2/%Y/%m/%d/%Y%m%d_lhumpro_iwv.png
+  lhumpro_lwp: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/lhumpro/actris/level2/%Y/%m/%d/%Y%m%d_lhumpro_lwp.png
+  lhumpro_met_dyn: '%Y%m%d_lhumpro_met2.png'
+  lhumpro_met_tq: '%Y%m%d_lhumpro_met.png'
+  lhumpro_q: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/lhumpro/actris/level2/%Y/%m/%d/%Y%m%d_lhumpro_absolute_humidity.png
+  lhumpro_tb: '%Y%m%d_lhumpro_tb.png'
+  lhumpro_tb_spec: '%Y%m%d_lhumpro_tb_spectrum.png'

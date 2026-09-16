@@ -1,0 +1,9 @@
+sites: sint
+instruments: rs_sint
+
+plots:
+  rs_sint_skewt:
+    description: Radiosonde Skew-T
+    multi: true
+    pattern: vitII_sin_rs41_comp_v00_%Y%m%d*_skewt.png
+    daily: /data/obs/campaigns/vital2/site/sinthern/sounding/plots/

@@ -1,0 +1,19 @@
+sites: jue
+instruments: tsi
+base: https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/data/%Y/%m/plot/
+
+plots:
+  tsi_08utc: https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img/%Y/%m/%d/%y%m%d_080000.jpg
+  tsi_12utc: https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img/%Y/%m/%d/%y%m%d_120000.jpg
+  tsi_16utc: https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img/%Y/%m/%d/%y%m%d_160000.jpg
+  tsi_cld_cov_30: tsi_cld_cov_30_%y%m%d.png
+  tsi_cld_cov_45: tsi_cld_cov_45_%y%m%d.png
+  tsi_iwv-30: tsi_t_azi_IWV_030_%y%m%d.png
+  tsi_lwp-30: tsi_t_azi_LWP_030_%y%m%d.png
+  tsi_lwp_in_rb_plane: LWP_in_rb_plane_030_%y%m%d.png
+  tsi_lwp_vs_red_blue: LWP_vs_red_blue_030_%y%m%d.png
+  tsi_mask_t_azi_30: tsi_mask_t_azi_030_%y%m%d.png
+  tsi_mask_t_azi_45: tsi_mask_t_azi_045_%y%m%d.png
+  tsi_noon: https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img/%Y/%m/%d/%y%m%d113800.jpg
+  tsi_t_azi_30: tsi_t_azi_030_%y%m%d.png
+  tsi_t_azi_45: tsi_t_azi_045_%y%m%d.png

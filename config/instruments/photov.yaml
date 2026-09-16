@@ -1,0 +1,7 @@
+description: Photovoltaic modules
+wiki: https://obs.meteo.uni-koeln.de/doku.php?id=pvm
+locations:
+  - site: jue
+    dates:
+      - ['2016-10-05', '2017-01-02']
+      - ['2020-06-10']

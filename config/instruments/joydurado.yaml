@@ -1,0 +1,6 @@
+description: Dual-frequency cloud radar
+wiki: https://obs.meteo.uni-koeln.de/doku.php?id=joydurado
+locations:
+  - site: jue
+    dates:
+      - ['2024-06-20']

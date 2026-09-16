@@ -1,9 +1,6 @@
 """Instrument listing, detail, and per-site deployment queries."""
 
-from flask import send_file
-
-from igmk_api.config import config_path, load_configs
-from igmk_api.settings import settings
+from igmk_api.index import instrument_index
 
 
 def _currently_on_site(dates: list) -> bool:
@@ -12,24 +9,16 @@ def _currently_on_site(dates: list) -> bool:
 
 
 def _instruments_at_site(siteID: str, *, include_historic: bool) -> dict[str, dict]:
-    """Map instrument ``name`` -> description/timespans for one site.
-
-    Keys by the config's ``name`` field, while :func:`instruments` and
-    :func:`instrument_details` key by filename stem; the two differ for a
-    handful of instruments. See CLAUDE.md.
-    """
+    """Map instrument id -> description/timespans for one site."""
     instruments = {}
-    for _stem, config in load_configs(settings.instruments_dir):
-        name = config.get("name")
-        if not name:
-            continue
-        for location in config.get("locations") or []:
-            if not isinstance(location, dict) or location.get("site") != siteID:
+    for instrument_id, record in instrument_index().items():
+        for location in record["locations"]:
+            if location.get("site") != siteID:
                 continue
             dates = location.get("dates") or []
             if include_historic or _currently_on_site(dates):
-                instruments[name] = {
-                    "description": config.get("description", ""),
+                instruments[instrument_id] = {
+                    "description": record["description"],
                     "timespans": dates,
                 }
     return instruments
@@ -44,12 +33,19 @@ def site_instruments_history(siteID: str) -> dict[str, dict]:
 
 
 def instruments() -> list[str]:
-    """Filename stems of every usable instrument config."""
-    return [stem for stem, _config in load_configs(settings.instruments_dir)]
+    """Every instrument id, which is its filename stem."""
+    return list(instrument_index())
 
 
 def instrument_details(instrumentID: str):
-    path = config_path(settings.instruments_dir, instrumentID)
-    if path is None:
+    record = instrument_index().get(instrumentID)
+    if record is None:
         return {"error": f"No instrument '{instrumentID}'"}, 404
-    return send_file(path)
+    return {
+        # `name` is the wire spelling of what the file now expresses as its
+        # filename; one identifier, two names for it.
+        "name": record["id"],
+        "description": record["description"],
+        "locations": record["locations"],
+        "wiki": record["wiki"],
+    }, 200

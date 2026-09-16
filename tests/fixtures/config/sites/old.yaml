@@ -1,0 +1,5 @@
+name: Decommissioned Site
+description: Fixture site with only historic deployments.
+lat: 51.0
+lon: 7.0
+altitude: 200

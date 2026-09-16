@@ -5,10 +5,11 @@ must be set *before* anything imports the package. pytest imports conftest
 first, which makes this the right place for it.
 """
 
-import json
 import os
 import socket
 from pathlib import Path
+
+import yaml
 
 FIXTURE_CONFIG = Path(__file__).parent / "fixtures" / "config"
 # Assigned, not setdefault: a developer with IGMK_CONFIG_ROOT exported (which
@@ -22,25 +23,24 @@ from igmk_api.app import app  # noqa: E402
 from igmk_api.config import clear_cache  # noqa: E402
 from igmk_api.settings import settings  # noqa: E402
 
-GOOD_SITE = {"siteID": "good", "siteHumanReadable": "Good Site", "lat": 1, "lon": 2}
+# Ids are filenames now, so these carry no id field of their own.
+GOOD_SITE = {"name": "Good Site", "lat": 1, "lon": 2}
 GOOD_INSTRUMENT = {
-    "name": "goodinst",
     "description": "A good instrument",
     "locations": [{"site": "good", "dates": [["2020-01-01"]]}],
 }
+#: A plot *group* file holding one plot, `goodplot`.
 GOOD_PLOT = {
-    "id": "goodplot",
     "sites": ["good"],
     "instruments": ["goodinst"],
-    "description": "A good plot",
-    "path": "/nonexistent/%Y%m%d.png",
+    "plots": {"goodplot": {"description": "A good plot", "daily": "/nonexistent/%Y%m%d.png"}},
 }
 
 
 def write(directory, name, content):
     """Write a config file; `content` may be a dict or raw text."""
     path = directory / name
-    path.write_text(content if isinstance(content, str) else json.dumps(content))
+    path.write_text(content if isinstance(content, str) else yaml.safe_dump(content))
     return path
 
 
@@ -94,7 +94,7 @@ def config_root(tmp_path):
 @pytest.fixture
 def populated(config_root):
     """One good config in each directory, ready for junk to be added."""
-    write(config_root / "sites", "good.json", GOOD_SITE)
-    write(config_root / "instruments", "goodinst.json", GOOD_INSTRUMENT)
-    write(config_root / "plots", "goodplot.json", GOOD_PLOT)
+    write(config_root / "sites", "good.yaml", GOOD_SITE)
+    write(config_root / "instruments", "goodinst.yaml", GOOD_INSTRUMENT)
+    write(config_root / "plots", "goodplot.yaml", GOOD_PLOT)
     return config_root

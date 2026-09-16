@@ -1,0 +1,7 @@
+sites: jue
+instruments: [parsivel_jue, pluvio_jue, mrr_jue]
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/parsivel/l1/%Y/%m/%d/
+
+plots:
+  parsivel_pluvio_mrr_accumulated_precipitation: accum_pars_plu_mrr_%Y%m%d.png
+  parsivel_pluvio_mrr_precipitation_rate: rr_pars_plu_mrr_%Y%m%d.png

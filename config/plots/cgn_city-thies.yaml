@@ -1,0 +1,10 @@
+sites: cgn_city
+instruments: thies
+base: /data/obs/site/cgn/thies/l2/%Y/%m/
+
+plots:
+  niederschlag:
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/thies/l2/%Y/%m/%d/%Y%m%dthies.png
+    monthly: '%Y%mthies.png'
+    seasonal: seasonal_thies.png
+    yearly: /data/obs/site/cgn/thies/l2/%Y/%Ythies.png

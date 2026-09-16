@@ -1,0 +1,26 @@
+sites: vett
+instruments: wls_vett
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/dwl/l1/%Y/%m/%d/plot/
+
+plots:
+  vett-dwl-TKE:
+    description: Time height sections of TKE (top) and the contribution from vertical wind speed (bottom).
+    daily: TKE_cont_%Y%m%d.png
+  vett-dwl-beta-40sec: beta_cont_instant_%Y%m%d.png
+  vett-dwl-beta-60min: beta_cont_%Y%m%d.png
+  vett-dwl-covar:
+    description: Time height sections of the six unique components of the reynolds stress tensor from the turbulence retrieval of the 6beam scan (Sathe et al. 2014).
+    daily: wind_v_cov_cont_%Y%m%d.png
+  vett-dwl-dir-40sec: wind_dir_cont_instant_%Y%m%d.png
+  vett-dwl-dir-60min: wind_dir_cont_%Y%m%d.png
+  vett-dwl-env: env_vettweiss_%Y%m%d.png
+  vett-dwl-spd-40sec: wind_spd_cont_instant_%Y%m%d.png
+  vett-dwl-spd-60min: wind_spd_cont_%Y%m%d.png
+  vett-dwl-uw-abs:
+    description: Time height section of the absolutum of the (uw,vw) vector from the turbulence retrieval of the 6beam scan (Sathe et al. 2014).
+    daily: uw_abs_cont_%Y%m%d.png
+  vett-dwl-vec-40sec:
+    description: Time height section of wind speed (gray shading) and horizontal wind vectors from every single 6Beam scan.
+    daily: wind_vector_instant_%Y%m%d.png
+  vett-dwl-vert-40sec: wind_w_cont_instant_%Y%m%d.png
+  vett-dwl-vert-60min: wind_w_cont_%Y%m%d.png

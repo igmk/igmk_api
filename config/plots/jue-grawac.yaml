@@ -1,0 +1,8 @@
+sites: jue
+instruments: grawac
+base: /data/obs/site/jue/grawac/l1/%Y/%m/%d/
+
+plots:
+  grawac_metstation: '%Y%m%d_GRaWAC_metstation.png'
+  grawac_moments_overview: '%Y%m%d_GRaWAC_moments_overview.png'
+  grawac_status: '%Y%m%d_GRaWAC_status.png'

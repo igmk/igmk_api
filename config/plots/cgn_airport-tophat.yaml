@@ -1,0 +1,22 @@
+sites: cgn_airport
+instruments: tophat
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/mwr/level2/%Y/%m/%d/
+
+plots:
+  tophat_elaz: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/mwr/level1/%Y/%m/%d/%Y%m%d_airport_sen.png
+  tophat_eqpot_t: '%Y%m%d_airport_equivalent_potential_temperature.png'
+  tophat_flag: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/mwr/level1/%Y/%m/%d/%Y%m%d_airport_quality_flag.png
+  tophat_hkd: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/mwr/level1/%Y/%m/%d/%Y%m%d_airport_hkd.png
+  tophat_irt: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/mwr/level1/%Y/%m/%d/%Y%m%d_airport_irt.png
+  tophat_iwv: '%Y%m%d_airport_iwv.png'
+  tophat_iwv_scan: '%Y%m%d_airport_iwv_scan.png'
+  tophat_lwp: '%Y%m%d_airport_lwp.png'
+  tophat_lwp_scan: '%Y%m%d_airport_lwp_scan.png'
+  tophat_met_dyn: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/mwr/level1/%Y/%m/%d/%Y%m%d_airport_met2.png
+  tophat_met_tq: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/mwr/level1/%Y/%m/%d/%Y%m%d_airport_met.png
+  tophat_pot_t: '%Y%m%d_airport_potential_temperature.png'
+  tophat_q: '%Y%m%d_airport_absolute_humidity.png'
+  tophat_rh: '%Y%m%d_airport_relative_humidity.png'
+  tophat_t: '%Y%m%d_airport_temperature.png'
+  tophat_tb: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/mwr/level1/%Y/%m/%d/%Y%m%d_airport_tb.png
+  tophat_tb_spec: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/mwr/level1/%Y/%m/%d/%Y%m%d_airport_tb_spectrum.png

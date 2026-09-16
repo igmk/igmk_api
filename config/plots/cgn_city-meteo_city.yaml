@@ -1,0 +1,54 @@
+sites: cgn_city
+instruments: meteo_city
+base: /data/obs/site/cgn/meteo_sport/l2/%Y/%m/
+
+plots:
+  albedo:
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dAlbedo_Avg.png
+    monthly: '%Y%mAlbedo_Avg.png'
+    seasonal: seasonal_Albedo_Avg.png
+    yearly: /data/obs/site/cgn/meteo_sport/l2/%Y/%YAlbedo_Avg.png
+  bodentemperatur:
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dProfile_Temp5_Avg.png
+    monthly: '%Y%mProfile_Temp5_Avg.png'
+    seasonal: seasonal_Profile_Temp5_Avg.png
+    yearly: /data/obs/site/cgn/meteo_sport/l2/%Y/%YProfile_Temp5_Avg.png
+  druck:
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dBP_mbar_sl_Avg.png
+    monthly: '%Y%mBP_mbar_sl_Avg.png'
+    seasonal: seasonal_BP_mbar_sl_Avg.png
+    yearly: /data/obs/site/cgn/meteo_sport/l2/%Y/%YBP_mbar_sl_Avg.png
+  feuchte:
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dRH_2.png
+    monthly: '%Y%mRH_2.png'
+    seasonal: seasonal_RH_2.png
+    yearly: /data/obs/site/cgn/meteo_sport/l2/%Y/%YRH_2.png
+  strahlung:
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dSWUpper_Avg.png
+    monthly: '%Y%mRn_Avg.png'
+    seasonal: seasonal_Rn_Avg.png
+    yearly: /data/obs/site/cgn/meteo_sport/l2/%Y/%YRn_Avg.png
+  temperatur:
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dAirTC_2_Avg.png
+    monthly: '%Y%mAirTC_2_Avg.png'
+    seasonal: seasonal_AirTC_2_Avg.png
+    yearly: /data/obs/site/cgn/meteo_sport/l2/%Y/%YAirTC_2_Avg.png
+  uv-index:
+    description: UV Index
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dUVind_Avg.png
+    monthly: '%Y%mUVind_Avg.png'
+    seasonal: seasonal_UVind_Avg.png
+    yearly: /data/obs/site/cgn/meteo_sport/l2/%Y/%YUVind_Avg.png
+  windgeschwindigkeit:
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dwind_maximums.png
+    monthly: '%Y%mwind_maximums.png'
+    seasonal: seasonal_wind_maximums.png
+    yearly: /data/obs/site/cgn/meteo_sport/l2/%Y/%Ywind_maximums.png
+  windrichtung:
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dWindDir_D1_WVT.png
+    monthly: '%Y%mWindDir_D1_WVT.png'
+  windrose:
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sport/l2/%Y/%m/%d/%Y%m%dwindrose.png
+    monthly: '%Y%mwindrose.png'
+    seasonal: seasonal_windrose.png
+    yearly: /data/obs/site/cgn/meteo_sport/l2/%Y/%Ywindrose.png

@@ -1,0 +1,5 @@
+sites: [aac, sint, cgn_city, cgn_airport]
+instruments: [meteo_aac, meteo_sint, thies, meteo_airport]
+
+plots:
+  multi_precip_cumulative: /data/obs/site/cgn/meteo_multi/l2/%Y/%m/%d/%Y%m%dprecip_cumulative.png

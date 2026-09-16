@@ -1,0 +1,6 @@
+description: AERI
+wiki: https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:aeri:aeri
+locations:
+  - site: jue
+    dates:
+      - ['2011-05-13']

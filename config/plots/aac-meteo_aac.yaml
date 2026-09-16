@@ -1,0 +1,10 @@
+sites: aac
+instruments: meteo_aac
+base: /data/obs/site/aac/meteo_orsbach_dwd/l2/%Y/%m/%d/
+
+plots:
+  aac_RH: '%Y%m%dRH.png'
+  aac_precip: '%Y%m%dprecip.png'
+  aac_pressure_sl: '%Y%m%dpressure_sl.png'
+  aac_radiation_global: '%Y%m%dradiation_global.png'
+  aac_temperature_air_mean_2m: '%Y%m%dtemperature_air_mean_2m.png'

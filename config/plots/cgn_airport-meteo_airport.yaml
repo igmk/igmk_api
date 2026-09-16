@@ -1,0 +1,10 @@
+sites: cgn_airport
+instruments: meteo_airport
+base: /data/obs/site/cgn/meteo_airport_dwd/l2/%Y/%m/%d/
+
+plots:
+  cgn_airport_RH: '%Y%m%dRH.png'
+  cgn_airport_precip: '%Y%m%dprecip.png'
+  cgn_airport_pressure_sl: '%Y%m%dpressure_sl.png'
+  cgn_airport_radiation_global: '%Y%m%dradiation_global.png'
+  cgn_airport_temperature_air_mean_2m: '%Y%m%dtemperature_air_mean_2m.png'

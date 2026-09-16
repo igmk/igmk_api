@@ -1,0 +1,6 @@
+description: Test Radiosonde
+locations:
+  - site: tst
+    dates:
+      # Unquoted: the loader must keep this a string, not a datetime.date.
+      - [2021-03-01]

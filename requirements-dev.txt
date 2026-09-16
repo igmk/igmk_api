@@ -2,7 +2,6 @@
 
 pytest==9.1.1
 httpx==0.28.1                    # starlette.testclient
-PyYAML==6.0.3                    # tests/test_spec.py reads openapi.yaml
 responses==0.26.3                # mock upstream plot/live-data HTTP
 openapi-spec-validator==0.7.2    # tests/test_spec.py validates the contract
 ruff==0.16.7

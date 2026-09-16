@@ -37,15 +37,9 @@ def test_cors_headers_on_every_response_class(client, url, expected_status):
 
 @pytest.fixture
 def live_site(config_root):
-    write(config_root / "sites", "live.json", {
-        "siteID": "live", "siteHumanReadable": "Live Site", "liveDataPath": LIVE_URL,
-    })
-    write(config_root / "sites", "nofeed.json", {
-        "siteID": "nofeed", "siteHumanReadable": "No Feed",
-    })
-    write(config_root / "sites", "badurl.json", {
-        "siteID": "badurl", "siteHumanReadable": "Bad URL", "liveDataPath": "not-a-url",
-    })
+    write(config_root / "sites", "live.yaml", {"name": "Live Site", "live_data": LIVE_URL})
+    write(config_root / "sites", "nofeed.yaml", {"name": "No Feed"})
+    write(config_root / "sites", "badurl.yaml", {"name": "Bad URL", "live_data": "not-a-url"})
     return config_root
 
 

@@ -1,0 +1,9 @@
+sites: vett
+instruments: dial_kit1
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/dial/l1/%Y/%m/%d/
+
+plots:
+  dial_wv_vett: /data/obs/campaigns/vital2/site/vettweiss/dial/l2/%Y/%m/%d/vettweiss_WV-DIAL_wv_%Y%m%d.png
+  vett_vettweiss_da10_beta: '%Y%m%d_vettweiss_da10-beta.png'
+  vett_vettweiss_da10_beta_3km: /data/obs/campaigns/vital2/site/vettweiss/dial/l1/%Y/%m/%d/%Y%m%d_vettweiss_da10-beta_3km.png
+  vett_vettweiss_da10_ceiloclass: '%Y%m%d_vettweiss_da10-ceiloclass.png'

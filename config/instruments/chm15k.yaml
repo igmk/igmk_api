@@ -1,0 +1,6 @@
+description: Ceilometer CHM15k
+wiki: https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:ceilo:ceilometer_jen
+locations:
+  - site: jue
+    dates:
+      - ['2013-03-01']

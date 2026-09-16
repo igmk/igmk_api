@@ -1,0 +1,5 @@
+description: HALO Doppler Wind Lidar (DWD)
+locations:
+  - site: cgn_airport
+    dates:
+      - ['2026-06-01']

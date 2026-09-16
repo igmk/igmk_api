@@ -1,0 +1,12 @@
+sites: jue
+instruments: chm15k
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/chm15k/l0/%Y/%m/%d/
+
+plots:
+  ceilo_chm15k_alpha_aerosol: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/chm15k/aerosol/%Y/%Y%m%d_aerosol_extinction.png
+  ceilo_chm15k_ceiloclass: /data/obs/site/jue/cloudnet/clu_processing/classification/%Y/%Y%m%d_juelich_ceiloclass.png
+  ceilo_chm15k_pulses: '%Y%m%d_JOYCE_CHM120109_000.nc_raw_sig.png'
+  ceilo_chm15k_raw: '%Y%m%d_JOYCE_CHM120109_000.nc.png'
+  ceilo_chm15k_snr: '%Y%m%d_Jenoptik_ceilo_SNR_version1.png'
+  ceilo_chm15k_status: '%Y%m%d_JOYCE_CHM120109_000.nc_status.png'
+  ceilo_chm15k_uncalibrated: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/chm15k/l1/%Y/%m/%d/%Y%m%d_Jenoptik_ceilo_beta_version1.png

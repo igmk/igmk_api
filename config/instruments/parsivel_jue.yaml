@@ -1,0 +1,6 @@
+description: OTT Parsivel 2
+wiki: https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:parzivel:parzivel
+locations:
+  - site: jue
+    dates:
+      - ['2013-08-01']

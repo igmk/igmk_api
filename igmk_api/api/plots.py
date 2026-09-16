@@ -1,9 +1,9 @@
 """Plot image serving and plot metadata.
 
-A plot config carries either a single ``path`` (legacy, treated as daily) or a
-``paths`` object keyed by granularity. Templates are Python ``strftime``
-templates resolved against the requested date, and resolve to either a local
-file or an ``http(s)://`` URL.
+Plot configs are grouped into files; :mod:`igmk_api.index` flattens them into
+one record per plot id, with ``base`` already applied. So everything here works
+with a resolved ``paths`` mapping of granularity -> strftime template, where a
+template resolves to either a local file or an ``http(s)://`` URL.
 """
 
 import datetime
@@ -16,17 +16,9 @@ from pathlib import Path
 import requests
 from flask import send_file
 
-from igmk_api.config import load_configs, read_config
-from igmk_api.settings import settings
+from igmk_api.index import GRANULARITY_FORMATS, granularities, is_remote, plot_index
 
 log = logging.getLogger(__name__)
-
-GRANULARITY_FORMATS = {
-    "daily": "%Y%m%d",
-    "monthly": "%Y%m",
-    "seasonal": "%Y%m",
-    "yearly": "%Y",
-}
 
 #: (connect, read) seconds for fetching a remote plot image.
 IMAGE_TIMEOUT = (5, 30)
@@ -51,43 +43,18 @@ class _PlotError(Exception):
         return {"error": self.message}, self.status, {"Content-Type": "application/json"}
 
 
-def _is_remote(path: str) -> bool:
-    return path.startswith(("http://", "https://"))
-
-
-def _plot_paths(config: dict) -> dict[str, str]:
-    """Granularity -> strftime template, normalising legacy single-``path`` configs.
-
-    Unknown granularities are dropped, so any key that survives is safe to look
-    up in ``GRANULARITY_FORMATS``.
-    """
-    paths = config.get("paths")
-    if not isinstance(paths, dict):
-        path = config.get("path")
-        paths = {"daily": path} if isinstance(path, str) else {}
-    return {g: p for g, p in paths.items() if g in GRANULARITY_FORMATS and isinstance(p, str)}
-
-
-def _plot_granularities(config: dict) -> list[str]:
-    paths = _plot_paths(config)
-    return [g for g in GRANULARITY_FORMATS if g in paths]
-
-
 def _resolve_plot(
     visID: str, granularity: str, dateString: str
 ) -> tuple[dict, datetime.datetime, str]:
-    """Load the plot config and resolve its template for the requested date.
+    """Load the plot record and resolve its template for the requested date.
 
-    Returns ``(config, date, target)``, where *target* is a local path or a URL.
+    Returns ``(record, date, target)``, where *target* is a local path or a URL.
     Raises :class:`_PlotError` on any failure.
     """
-    config = read_config(settings.plots_dir, visID)
-    if config is None:
+    record = plot_index().get(visID)
+    if record is None:
         raise _PlotError(f"No plot '{visID}'", 404)
-    paths = _plot_paths(config)
-    if not paths:
-        log.warning("plot config %r declares no usable 'path' or 'paths'", visID)
-        raise _PlotError(f"Plot '{visID}' declares no image paths", 404)
+    paths = record["paths"]
     if granularity not in paths:
         raise _PlotError(f"Plot '{visID}' does not support granularity '{granularity}'", 404)
     date_format = GRANULARITY_FORMATS[granularity]
@@ -99,12 +66,12 @@ def _resolve_plot(
             f"'{date_format}' for granularity '{granularity}'",
             400,
         ) from exc
-    return config, date, date.strftime(paths[granularity])
+    return record, date, date.strftime(paths[granularity])
 
 
 def _send_image(image_path: str):
     """Serve a plot image from a local path or an upstream URL."""
-    if _is_remote(image_path):
+    if is_remote(image_path):
         try:
             response = _http.get(image_path, timeout=IMAGE_TIMEOUT)
         except requests.RequestException as exc:
@@ -125,8 +92,8 @@ def _send_image(image_path: str):
 
 def _serve_plot(visID: str, granularity: str, dateString: str):
     try:
-        config, _date, target = _resolve_plot(visID, granularity, dateString)
-        if config.get("multi"):
+        record, _date, target = _resolve_plot(visID, granularity, dateString)
+        if record["multi"]:
             raise _PlotError(
                 f"Plot '{visID}' has multiple items per date; use "
                 f"/visualizations/byID/{visID}/{granularity}/{dateString}/items instead",
@@ -151,12 +118,12 @@ def plot_image_today(visID: str):
 
 def _multi_items(visID: str, granularity: str, dateString: str) -> tuple[str, list[str]]:
     """Return (directory, sorted item filenames) for a multi-item plot date."""
-    config, date, directory = _resolve_plot(visID, granularity, dateString)
-    if not config.get("multi"):
+    record, date, directory = _resolve_plot(visID, granularity, dateString)
+    if not record["multi"]:
         raise _PlotError(f"Plot '{visID}' is not a multi-item plot", 400)
-    if _is_remote(directory):
+    if is_remote(directory):
         raise _PlotError("Listing items is not supported for remote plot sources", 501)
-    pattern = date.strftime(config.get("pattern", "*.png"))
+    pattern = date.strftime(record["pattern"] or "*.png")
     try:
         filenames = sorted(fnmatch.filter(os.listdir(directory), pattern))
     except OSError:
@@ -190,14 +157,12 @@ def plot_item_image(visID: str, granularity: str, dateString: str, itemIndex: in
 
 def plots_by_instrument(instrumentID: str) -> list[dict]:
     """Every plot that lists *instrumentID*, as [{id, granularities, multi}]."""
-    plots = []
-    for _stem, config in load_configs(settings.plots_dir):
-        plot_id = config.get("id")
-        if not plot_id or instrumentID not in (config.get("instruments") or []):
-            continue
-        plots.append({
-            "id": plot_id,
-            "granularities": _plot_granularities(config),
-            "multi": bool(config.get("multi")),
-        })
-    return plots
+    return [
+        {
+            "id": record["id"],
+            "granularities": granularities(record),
+            "multi": record["multi"],
+        }
+        for record in plot_index().values()
+        if instrumentID in record["instruments"]
+    ]

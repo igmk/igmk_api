@@ -1,0 +1,9 @@
+sites: jue
+instruments: photov
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/pvm/l1/%Y/%m/%d/
+
+plots:
+  pvm_amorph: '%Y-%m-%d_Amorph.png'
+  pvm_cumulativeenergy: '%Y-%m-%d_CumulativeEnergy.png'
+  pvm_irradiance: '%Y-%m-%d_Irradiance.png'
+  pvm_polycrystalline: '%Y-%m-%d_Polycrystalline.png'

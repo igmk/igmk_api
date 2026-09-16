@@ -1,0 +1,12 @@
+sites: aac
+instruments: dial_aac
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/dial/l1/%Y/%m/%d/
+
+plots:
+  aac_aachen_da10_beta: '%Y%m%d_aachen_da10-beta.png'
+  aac_aachen_da10_beta_3km: /data/obs/campaigns/vital2/site/aachen/dial/l1/%Y/%m/%d/%Y%m%d_aachen_da10-beta_3km.png
+  aac_aachen_da10_ceiloclass: '%Y%m%d_aachen_da10-ceiloclass.png'
+  aac_aachen_da10_wv: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/dial/l2/%Y/%m/%d/aachen_da10_wv_%Y%m%d.png
+  dial_wv_aac:
+    description: Water Vapor Differential Absorption Lidar
+    daily: /data/obs/campaigns/vital2/site/aachen/dial/l2/%Y/%m/%d/aachen_WV-DIAL_wv_%Y%m%d.png

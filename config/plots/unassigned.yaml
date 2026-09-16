@@ -1,0 +1,8 @@
+sites: []
+instruments: []
+base: http://atmos.meteo.uni-koeln.de/~hatpro/jue/data_space/%Y/%m/%d/
+
+plots:
+  data_obs_space: space_obs_%Y%m%d.png
+  data_space: space_%Y%m%d.png
+  data_space_multi: space_multi_%Y%m%d.png

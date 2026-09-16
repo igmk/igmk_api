@@ -1,0 +1,6 @@
+description: Multi filter rotating shadow-band radiometer
+wiki: https://obs.meteo.uni-koeln.de/doku.php?id=mfrsr
+locations:
+  - site: jue
+    dates:
+      - ['2015-07-06']

@@ -1,0 +1,10 @@
+sites: tst
+instruments: tstsonde
+
+plots:
+  tstsonde_skewt:
+    description: Multi-item Skew-T
+    multi: true
+    pattern: tst_rs_%Y%m%d*_skewt.png
+    # A multi-item plot's path is a directory, listed against `pattern`.
+    daily: /data/obs/tst/sounding/plots/

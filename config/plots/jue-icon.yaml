@@ -1,0 +1,9 @@
+sites: jue
+instruments: icon
+base: https://atmos.meteo.uni-koeln.de/~hatpro/icon_lem/joyce/
+
+plots:
+  icon_2km_classification: '%Y-%m-%d_r2f13_Classification.png'
+  icon_lem_classification: '%Y-%m-%d_Classification.png'
+  icon_lem_integrated_values: '%Y-%m-%d_integrated_values.png'
+  icon_meteogram: METEOGRAM_r600f2_%Y%m%d.png

@@ -1,0 +1,12 @@
+sites: gwu
+instruments: meteo_erft
+base: /data/obs/site/cgn/meteo_erft/l2/%Y/%m/%d/
+
+plots:
+  gwu_RH: '%Y%m%dRH.png'
+  gwu_WindDir_D1_WVT: '%Y%m%dWindDir_D1_WVT.png'
+  gwu_precip: '%Y%m%dprecip.png'
+  gwu_pressure_sl: '%Y%m%dpressure_sl.png'
+  gwu_temp: '%Y%m%dtemp.png'
+  gwu_wind_maximums: '%Y%m%dwind_maximums.png'
+  gwu_windrose: '%Y%m%dwindrose.png'

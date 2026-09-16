@@ -1,0 +1,8 @@
+sites: jue
+instruments: cloudnet
+base: https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/classification/%y%m/
+
+plots:
+  cloudnet_classification: '%Y%m%d_juelich_classification.png'
+  cloudnet_cloud_height: '%Y%m%d_juelich_cloud-height.png'
+  cloudnet_measurements: https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/measurements/%y%m/%Y%m%d_juelich_measurements.png

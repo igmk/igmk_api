@@ -1,0 +1,15 @@
+sites: tst
+instruments: tstrad
+base: https://example.invalid/plots/%Y/%m/%d/
+
+plots:
+  tstrad_granular:
+    description: Multi-granularity plot
+    daily: '%Y%m%d_gran.png'
+    # Absolute paths ignore `base`, so one plot can mix hosts and local disk.
+    monthly: /data/obs/tst/%Y/%m/%Y%m_gran.png
+    seasonal: /data/obs/tst/%Y/%m/seasonal_gran.png
+    yearly: /data/obs/tst/%Y/%Y_gran.png
+  tstrad_legacy:
+    description: Legacy single-path plot
+    daily: '%Y%m%d_tstrad.png'

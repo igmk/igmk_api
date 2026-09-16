@@ -1,0 +1,18 @@
+name: Köln Biozentrum
+description: TODO
+lat: 50.927432
+lon: 6.935088
+altitude: 18
+instruments:
+  bcohat2:
+    availability:
+    - - '2025-01-01'
+    description: ''
+  foghat:
+    availability:
+    - - '2025-01-01'
+    description: ''
+  windcube:
+    description: ''
+    operatingTimes:
+    - - '2025-01-01'

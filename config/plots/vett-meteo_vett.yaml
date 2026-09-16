@@ -1,0 +1,11 @@
+sites: vett
+instruments: meteo_vett
+base: /data/obs/site/cgn/meteo_vett/l2/%Y/%m/%d/
+
+plots:
+  vett_RH: '%Y%m%dRH.png'
+  vett_WindDir_D1_WVT: '%Y%m%dWindDir_D1_WVT.png'
+  vett_pressure_sl: '%Y%m%dpressure_sl.png'
+  vett_temp: '%Y%m%dtemp.png'
+  vett_wind_maximums: '%Y%m%dwind_maximums.png'
+  vett_windrose: '%Y%m%dwindrose.png'

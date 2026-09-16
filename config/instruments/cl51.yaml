@@ -1,0 +1,6 @@
+description: Ceilometer CL51
+wiki: https://obs.meteo.uni-koeln.de/doku.php?id=citystation#ceilometer
+locations:
+  - site: cgn_city
+    dates:
+      - ['2022-08-16']

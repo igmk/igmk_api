@@ -1,0 +1,9 @@
+# A derived product driven by two instruments at once -- there is no single
+# owning instrument, which is why plot files group by defaults rather than by
+# instrument.
+sites: tst
+instruments: [tstlidar, tstrad]
+base: /data/obs/tst/combined/%Y/%m/%d/
+
+plots:
+  tst_combined: '%Y%m%d_combined.png'

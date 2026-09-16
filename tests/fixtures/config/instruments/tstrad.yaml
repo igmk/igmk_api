@@ -1,0 +1,9 @@
+description: Test Radiometer
+wiki: https://example.invalid/wiki/tstrad
+locations:
+  - site: tst
+    dates:
+      - ['2020-01-01']
+  - site: old
+    dates:
+      - ['2015-01-01', '2019-12-31']

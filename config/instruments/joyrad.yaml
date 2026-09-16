@@ -1,0 +1,6 @@
+description: JOYRAD-10
+wiki: https://obs.meteo.uni-koeln.de/doku.php?id=joyrad10
+locations:
+  - site: jue
+    dates:
+      - ['2018-10-01', '2023-10-16']

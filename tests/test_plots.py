@@ -19,15 +19,16 @@ def plots(config_root):
     """A remote plot, a local multi-item plot, and a remote multi-item plot."""
     items = config_root / "items"
     items.mkdir()
-    write(config_root / "plots", "remote.json", {"id": "remote", "path": REMOTE})
-    write(config_root / "plots", "multi.json", {
-        "id": "multi",
-        "multi": True,
-        "paths": {"daily": f"{items}/%Y%m%d"},
-        "pattern": "rs_%Y%m%d*_skewt.png",
-    })
-    write(config_root / "plots", "multiremote.json", {
-        "id": "multiremote", "multi": True, "paths": {"daily": REMOTE},
+    write(config_root / "plots", "group.yaml", {
+        "plots": {
+            "remote": REMOTE,
+            "multi": {
+                "multi": True,
+                "daily": f"{items}/%Y%m%d",
+                "pattern": "rs_%Y%m%d*_skewt.png",
+            },
+            "multiremote": {"multi": True, "daily": REMOTE},
+        }
     })
     return items
 

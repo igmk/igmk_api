@@ -1,0 +1,5 @@
+sites: jue
+instruments: fieldmeter
+
+plots:
+  fieldmeter: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/fieldmeter/l0/%Y/%m/%d/fieldmeter_%Y%m%d_efield_status.png

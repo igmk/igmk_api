@@ -1,0 +1,22 @@
+sites: cgn_bio
+instruments: foghat
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/cgn/foghat/actris/level2/%Y/%m/%d/
+
+plots:
+  foghat_elaz: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/cgn/foghat/actris/level1/%Y/%m/%d/%Y%m%d_cologne_sen.png
+  foghat_eqpot_t: '%Y%m%d_cologne_equivalent_potential_temperature.png'
+  foghat_flag: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/cgn/foghat/actris/level1/%Y/%m/%d/%Y%m%d_cologne_quality_flag.png
+  foghat_hkd: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/cgn/foghat/actris/level1/%Y/%m/%d/%Y%m%d_cologne_hkd.png
+  foghat_irt: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/cgn/foghat/actris/level1/%Y/%m/%d/%Y%m%d_cologne_irt.png
+  foghat_iwv: '%Y%m%d_cologne_iwv.png'
+  foghat_iwv_scan: '%Y%m%d_cologne_iwv_scan.png'
+  foghat_lwp: '%Y%m%d_cologne_lwp.png'
+  foghat_lwp_scan: '%Y%m%d_cologne_lwp_scan.png'
+  foghat_met_dyn: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/cgn/foghat/actris/level1/%Y/%m/%d/%Y%m%d_cologne_met2.png
+  foghat_met_tq: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/cgn/foghat/actris/level1/%Y/%m/%d/%Y%m%d_cologne_met.png
+  foghat_pot_t: '%Y%m%d_cologne_potential_temperature.png'
+  foghat_q: '%Y%m%d_cologne_absolute_humidity.png'
+  foghat_rh: '%Y%m%d_cologne_relative_humidity.png'
+  foghat_t: '%Y%m%d_cologne_temperature.png'
+  foghat_tb: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/cgn/foghat/actris/level1/%Y/%m/%d/%Y%m%d_cologne_tb.png
+  foghat_tb_spec: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/cgn/foghat/actris/level1/%Y/%m/%d/%Y%m%d_cologne_tb_spectrum.png

@@ -1,0 +1,5 @@
+sites: jue
+instruments: bbrad
+
+plots:
+  radiation_downwelling_fluxes: https://atmos.meteo.uni-koeln.de/~hatpro/jue/radiation/%Y/%Y%m%d_jue_radiation_v00.png

@@ -1,0 +1,13 @@
+sites: sint
+instruments: meteo_sint
+base: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/cgn/meteo_sinthern/l2/%Y/%m/%d/
+
+plots:
+  sint_AirTC_Avg: '%Y%m%dAirTC_Avg.png'
+  sint_BP_mbar_sl_Avg: '%Y%m%dBP_mbar_sl_Avg.png'
+  sint_RH: '%Y%m%dRH.png'
+  sint_SWUpper_Avg: '%Y%m%dSWUpper_Avg.png'
+  sint_WindDir_D1_WVT: '%Y%m%dWindDir_D1_WVT.png'
+  sint_precip: '%Y%m%dprecip.png'
+  sint_wind_maximums: '%Y%m%dwind_maximums.png'
+  sint_windrose: '%Y%m%dwindrose.png'

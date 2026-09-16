@@ -1,0 +1,5 @@
+description: Doppler Wind LIDAR WLS200
+locations:
+  - site: sint
+    dates:
+      - ['2026-06-01']

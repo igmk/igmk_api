@@ -1,0 +1,5 @@
+description: Meteo Tower Vettweiß
+locations:
+  - site: vett
+    dates:
+      - ['2026-06-01']

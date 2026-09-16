@@ -1,0 +1,8 @@
+description: HALO Doppler Wind Lidar
+wiki: https://obs.meteo.uni-koeln.de/doku.php?id=windlidar
+locations:
+  - site: jue
+    dates:
+      - ['2011-11-07', '2012-07-26']
+      - ['2012-09-12', '2025-01-22']
+      - ['2026-06-01']

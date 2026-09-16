@@ -1,0 +1,9 @@
+sites: jue
+instruments: rs_vaisala
+
+plots:
+  rs_jue_skewt:
+    description: Radiosonde Skew-T
+    multi: true
+    pattern: vitII_joy_rs41_comp_v00_%Y%m%d*_skewt.png
+    daily: /data/obs/campaigns/vital2/site/juelich/sounding/plots/

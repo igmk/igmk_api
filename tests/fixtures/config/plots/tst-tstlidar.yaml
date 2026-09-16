@@ -1,0 +1,7 @@
+sites: tst
+instruments: tstlidar
+base: /data/obs/tst/lidar/%Y/%m/%d/
+
+plots:
+  # The shorthand form: "<id>: <daily path>", which is most of the real tree.
+  tstlidar_beta: '%Y%m%d_beta.png'

@@ -1,0 +1,7 @@
+sites: jue
+instruments: mrr_jue
+base: https://atmos.meteo.uni-koeln.de/~hatpro/jue/mrr/level1/%Y/%m/
+
+plots:
+  mrr_avedata: '%Y%m%d_jue_mrr_ave.png'
+  mrr_improtoo: '%Y%m%d_jue_mrr_improtoo.png'

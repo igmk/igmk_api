@@ -1,0 +1,6 @@
+description: Raman Lidar
+wiki: https://obs.meteo.uni-koeln.de/doku.php?id=ramanlidar
+locations:
+  - site: jue
+    dates:
+      - ['2024-04-01']

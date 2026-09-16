@@ -1,0 +1,22 @@
+sites: aac
+instruments: aahat
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level2/%Y/%m/%d/
+
+plots:
+  aahat_elaz: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level1/%Y/%m/%d/%Y%m%d_aachen_sen.png
+  aahat_eqpot_t: '%Y%m%d_aachen_equivalent_potential_temperature.png'
+  aahat_flag: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level1/%Y/%m/%d/%Y%m%d_aachen_quality_flag.png
+  aahat_hkd: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level1/%Y/%m/%d/%Y%m%d_aachen_hkd.png
+  aahat_irt: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level1/%Y/%m/%d/%Y%m%d_aachen_irt.png
+  aahat_iwv: '%Y%m%d_aachen_iwv.png'
+  aahat_iwv_scan: '%Y%m%d_aachen_iwv_scan.png'
+  aahat_lwp: '%Y%m%d_aachen_lwp.png'
+  aahat_lwp_scan: '%Y%m%d_aachen_lwp_scan.png'
+  aahat_met_dyn: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level1/%Y/%m/%d/%Y%m%d_aachen_met2.png
+  aahat_met_tq: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level1/%Y/%m/%d/%Y%m%d_aachen_met.png
+  aahat_pot_t: '%Y%m%d_aachen_potential_temperature.png'
+  aahat_q: '%Y%m%d_aachen_absolute_humidity.png'
+  aahat_rh: '%Y%m%d_aachen_relative_humidity.png'
+  aahat_t: '%Y%m%d_aachen_temperature.png'
+  aahat_tb: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level1/%Y/%m/%d/%Y%m%d_aachen_tb.png
+  aahat_tb_spec: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/mwr/level1/%Y/%m/%d/%Y%m%d_aachen_tb_spectrum.png

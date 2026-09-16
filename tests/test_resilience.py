@@ -2,7 +2,7 @@
 
 The config tree is operational data: files get hand-edited, half-written and
 occasionally deleted while the service runs. Before this, one malformed file
-among the 445 in ``plots/`` 500'd ``/search`` and
+in ``plots/`` 500'd ``/search`` and
 ``/visualizations/byInstrument/*`` for every input, and a date with no image on
 disk 500'd rather than 404'd -- on the normal path.
 
@@ -10,19 +10,21 @@ These tests use the ``config_root`` fixture, which repoints the app at a
 throwaway tree, so they are independent of ``tests/fixtures/config``.
 """
 
-import json
-
 import pytest
 from conftest import GOOD_INSTRUMENT, write
 
 # --- one bad file must not hide the good ones -------------------------------
 
+#: YAML accepts much more than JSON did: only the first two of these are parse
+#: errors, and the rest are perfectly valid documents that simply are not
+#: mappings. Both routes to "unusable" have to be survivable.
 BAD_FILES = [
-    ("truncated.json", "{"),
-    ("empty.json", ""),
-    ("notobject.json", "[1, 2, 3]"),
-    ("null.json", "null"),
-    ("text.json", "this is not json at all"),
+    ("truncated.yaml", "{"),
+    ("badindent.yaml", "a: b\n  c: d\n"),
+    ("empty.yaml", ""),
+    ("notmapping.yaml", "[1, 2, 3]"),
+    ("null.yaml", "null"),
+    ("text.yaml", "this is just a string\n"),
 ]
 
 
@@ -64,20 +66,27 @@ def test_search_survives_a_bad_file_in_any_directory(client, populated, name, co
     }
 
 
-def test_non_json_files_are_ignored(client, populated):
-    """A stray README used to become a phantom `READ` instrument."""
+def test_non_yaml_files_are_ignored(client, populated):
+    """A stray README used to become a phantom `READ` instrument.
+
+    ``.json`` is listed because the tree used to be JSON: a file left behind by
+    the migration must stay inert rather than quietly outvote its replacement.
+    """
     write(populated / "instruments", "README.md", "# notes")
-    write(populated / "instruments", "goodinst.json.bak", json.dumps(GOOD_INSTRUMENT))
+    write(populated / "instruments", "goodinst.yaml.bak", GOOD_INSTRUMENT)
+    write(populated / "instruments", "goodinst.yml", GOOD_INSTRUMENT)
+    write(populated / "instruments", "stale.json", '{"description": "from before"}')
     assert client.get("/instruments").json() == ["goodinst"]
 
 
 def test_missing_required_keys_are_skipped(client, populated):
-    write(populated / "sites", "nameless.json", {"lat": 1})
-    write(populated / "instruments", "nameless.json", {"description": "no name"})
-    write(populated / "plots", "idless.json", {"instruments": ["goodinst"]})
+    write(populated / "sites", "nameless.yaml", {"lat": 1})
+    write(populated / "instruments", "nameless.yaml", {"description": "no name"})
+    write(populated / "plots", "plotless.yaml", {"instruments": ["goodinst"]})
+    # No `name`, so nothing to label the tile with.
     assert client.get("/sites").json() == {"good": "Good Site"}
-    # /instruments keys by filename stem, so a config with no `name` is still
-    # listed -- it is /sites/{id}/instruments that needs the name.
+    # An instrument's id is its filename, so it is listed even with an empty
+    # body; it just has no deployments to show up under a site.
     assert sorted(client.get("/instruments").json()) == ["goodinst", "nameless"]
     assert set(client.get("/sites/good/instruments").json()) == {"goodinst"}
     assert [p["id"] for p in client.get("/visualizations/byInstrument/goodinst").json()] == [
@@ -85,13 +94,43 @@ def test_missing_required_keys_are_skipped(client, populated):
     ]
 
 
+def test_unusable_plot_entries_do_not_take_out_their_neighbours(client, populated):
+    """A group file is many plots, so one bad entry must cost only that entry."""
+    write(populated / "plots", "mixed.yaml", {
+        "instruments": ["goodinst"],
+        "plots": {
+            "fine": "/nonexistent/%Y%m%d.png",
+            "nopath": {"description": "no image path at all"},
+            "notamapping": 42,
+            "typo": {"dialy": "/nonexistent/%Y%m%d.png"},
+        },
+    })
+    ids = [p["id"] for p in client.get("/visualizations/byInstrument/goodinst").json()]
+    assert ids == ["fine", "goodplot"]
+
+
+def test_a_duplicate_plot_id_does_not_shadow_the_whole_file(client, populated):
+    """Ids are unique across the tree, not per file; validate_config.py rejects
+    a duplicate, but the running service still has to do something sane."""
+    write(populated / "plots", "aaa.yaml", {
+        "instruments": ["goodinst"],
+        "plots": {"dup": "/first/%Y%m%d.png", "only_in_first": "/x/%Y%m%d.png"},
+    })
+    write(populated / "plots", "zzz.yaml", {
+        "instruments": ["goodinst"],
+        "plots": {"dup": "/second/%Y%m%d.png", "only_in_second": "/y/%Y%m%d.png"},
+    })
+    ids = [p["id"] for p in client.get("/visualizations/byInstrument/goodinst").json()]
+    assert ids == ["dup", "goodplot", "only_in_first", "only_in_second"]
+
+
 def test_malformed_instrument_locations_are_skipped(client, populated):
-    write(populated / "instruments", "weird.json", {"name": "weird", "locations": "nonsense"})
-    write(populated / "instruments", "weird2.json", {"name": "weird2", "locations": [None, 3]})
+    write(populated / "instruments", "weird.yaml", {"locations": "nonsense"})
+    write(populated / "instruments", "weird2.yaml", {"locations": [None, 3]})
     write(
         populated / "instruments",
-        "weird3.json",
-        {"name": "weird3", "locations": [{"site": "good", "dates": "nope"}]},
+        "weird3.yaml",
+        {"locations": [{"site": "good", "dates": "nope"}]},
     )
     r = client.get("/sites/good/instruments")
     assert r.status_code == 200
@@ -145,14 +184,14 @@ def test_unknown_id_is_404(client, populated, url):
 
 
 def test_malformed_config_for_a_known_id_is_404_not_500(client, populated):
-    write(populated / "plots", "broken.json", "{")
-    write(populated / "sites", "broken.json", "{")
+    write(populated / "plots", "broken.yaml", "{")
+    write(populated / "sites", "broken.yaml", "{")
     assert client.get("/visualizations/byID/broken/daily/20250101").status_code == 404
     assert client.get("/live/broken").status_code == 404
 
 
 def test_plot_without_any_path_is_404(client, populated):
-    write(populated / "plots", "pathless.json", {"id": "pathless", "instruments": []})
+    write(populated / "plots", "pathless.yaml", {"plots": {"pathless": {"description": "x"}}})
     assert client.get("/visualizations/byID/pathless/daily/20250101").status_code == 404
 
 

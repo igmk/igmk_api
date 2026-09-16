@@ -1,0 +1,6 @@
+description: OTT Pluvio 2
+wiki: https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:pluvio:pluvio
+locations:
+  - site: jue
+    dates:
+      - ['2014-06-01']

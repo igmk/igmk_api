@@ -1,0 +1,55 @@
+sites: jue
+instruments: halo
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l0/%Y/%m/%d/
+
+plots:
+  jue-dwl-TKE:
+    description: Time height sections of TKE (top) and the contribution from vertical wind speed (bottom).
+    daily: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/TKE_cont_%Y%m%d.png
+  jue-dwl-beta-40sec: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/beta_cont_instant_%Y%m%d.png
+  jue-dwl-beta-60min: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/beta_cont_%Y%m%d.png
+  jue-dwl-covar:
+    description: Time height sections of the six unique components of the reynolds stress tensor from the turbulence retrieval of the 6beam scan (Sathe et al. 2014).
+    daily: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/wind_v_cov_cont_%Y%m%d.png
+  jue-dwl-dir-40sec: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/wind_dir_cont_instant_%Y%m%d.png
+  jue-dwl-dir-60min: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/wind_dir_cont_%Y%m%d.png
+  jue-dwl-spd-40sec: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/wind_spd_cont_instant_%Y%m%d.png
+  jue-dwl-spd-60min: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/wind_spd_cont_%Y%m%d.png
+  jue-dwl-uw-abs:
+    description: Time height section of the absolutum of the (uw,vw) vector from the turbulence retrieval of the 6beam scan (Sathe et al. 2014).
+    daily: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/uw_abs_cont_%Y%m%d.png
+  jue-dwl-vec-40sec:
+    description: Time height section of wind speed (gray shading) and horizontal wind vectors from every single 6Beam scan.
+    daily: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/wind_vector_instant_%Y%m%d.png
+  jue-dwl-vert-40sec: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/wind_w_cont_instant_%Y%m%d.png
+  jue-dwl-vert-60min: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/juelich/dwl/l1/%Y/%m/%d/plot/wind_w_cont_%Y%m%d.png
+  wind_ppi_dl_only: https://atmos.meteo.uni-koeln.de/~hatpro/VAPs/mira_ppi/%y%m/%Y%m%d_windprofile_lidar.png
+  windlidar_ablclassification: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/bl-classification/ABLclassification/%Y/%Y%m%d_juelich_halo-doppler-lidar-04-17-ABLclassification.png
+  windlidar_background: bkgnd_%Y%m%d.png
+  windlidar_beta: b_mean_w_sdev_%Y%m%d.png
+  windlidar_beta_12utc: log_beta_cont_%Y%m%d_12.png
+  windlidar_beta_9km_12utc: log_beta_%Y%m%d_12.png
+  windlidar_bkgnd_pulse: bkgnd_pulse_%Y%m%d.png
+  windlidar_bkgnd_vs_t: bkgnd_vs_t_%Y%m%d.png
+  windlidar_colorplot: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l1/%Y/%m/%d/wind_color_%Y%m%d.png
+  windlidar_l_corr: L_corr_%Y%m%d.png
+  windlidar_mean_w: w_mean_%Y%m%d.png
+  windlidar_noise_vs_snr_12utc: noise_vs_snr_%Y%m%d_12.png
+  windlidar_overview: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l1/%Y/%m/%d/vad_%Y%m%d.png
+  windlidar_rhi_12utc: rhi_contour_%Y%m%d_12.png
+  windlidar_shear: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/bl-classification/shear/%Y/%Y%m%d_juelich_halo-doppler-lidar-04-17-windshear.png
+  windlidar_sigma_w: w_sdev_b_mean_%Y%m%d.png
+  windlidar_skew_w: w_skew_%Y%m%d.png
+  windlidar_system_para: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l0/%Y/%m/system_log_%Y%m.png
+  windlidar_t_corr: T_corr_%Y%m%d.png
+  windlidar_tke: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/bl-classification/epsilon/%Y/%Y%m%d_juelich_halo-doppler-lidar-04-17-TKE.png
+  windlidar_trajectories: trajy_%Y%m%d.png
+  windlidar_u_prof_12utc: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l1/%Y/%m/%d/wind_from_scan_VAD_prof_%Y%m%d_12.png
+  windlidar_vad: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/bl-classification/windvad_ele75/%Y/%Y%m%d_juelich_halo-doppler-lidar-04-17-windvad.png
+  windlidar_vad_from_dbs: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l1/%Y/%m/%d/vad_dbs_%Y%m%d.png
+  windlidar_vad_from_scan: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_lidar/l1/%Y/%m/%d/vad_scan_%Y%m%d.png
+  windlidar_w_12utc: doppler_cont_%Y%m%d_12.png
+  windlidar_w_9km_12utc: doppler_%Y%m%d_12.png
+  windlidar_w_moments_12utc: doppler_moments_%Y%m%d_12.png
+  windlidar_w_prof_12utc: doppler_profile_%Y%m%d_12.png
+  windlidar_wstats: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/bl-classification/wstats/%Y/%Y%m%d_juelich_halo-doppler-lidar-04-17-wstats.png

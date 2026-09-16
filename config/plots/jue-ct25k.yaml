@@ -1,0 +1,11 @@
+sites: jue
+instruments: ct25k
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/ct25k/l0/%Y/%m/%d/
+
+plots:
+  ceilo_ct25k_backscatter: '%y%m%d_ct25k_jue_l0b.png'
+  ceilo_ct25k_boundarylayer_height: '%y%m%d_ct25k_jue_l0b_blh.png'
+  ceilo_ct25k_calibrated: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/ct25k/l1/%Y/%m/%d/%Y%m%d_jue_ceilo_readin_ceilo_version1.png
+  ceilo_ct25k_cloud_cover: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/ct25k/l1/%Y/%m/%d/%y%m%d_cloudcov.png
+  ceilo_ct25k_instrument_status: '%y%m%d_ct25k_jue_l0b_v3.png'
+  ceilo_ct25k_strat_blh: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/ct25k/l1/strat/%Y/%m/%d/_MLDlr_%Y%m%d_30min.png

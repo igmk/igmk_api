@@ -1,0 +1,25 @@
+sites: cgn_bio
+instruments: halo2
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/cologne/dwl/l1/%Y/%m/%d/plot/
+
+plots:
+  cgn_bio-dwl-TKE:
+    description: Time height sections of TKE (top) and the contribution from vertical wind speed (bottom).
+    daily: TKE_cont_%Y%m%d.png
+  cgn_bio-dwl-beta-40sec: beta_cont_instant_%Y%m%d.png
+  cgn_bio-dwl-beta-60min: beta_cont_%Y%m%d.png
+  cgn_bio-dwl-covar:
+    description: Time height sections of the six unique components of the reynolds stress tensor from the turbulence retrieval of the 6beam scan (Sathe et al. 2014).
+    daily: wind_v_cov_cont_%Y%m%d.png
+  cgn_bio-dwl-dir-40sec: wind_dir_cont_instant_%Y%m%d.png
+  cgn_bio-dwl-dir-60min: wind_dir_cont_%Y%m%d.png
+  cgn_bio-dwl-spd-40sec: wind_spd_cont_instant_%Y%m%d.png
+  cgn_bio-dwl-spd-60min: wind_spd_cont_%Y%m%d.png
+  cgn_bio-dwl-uw-abs:
+    description: Time height section of the absolutum of the (uw,vw) vector from the turbulence retrieval of the 6beam scan (Sathe et al. 2014).
+    daily: uw_abs_cont_%Y%m%d.png
+  cgn_bio-dwl-vec-40sec:
+    description: Time height section of wind speed (gray shading) and horizontal wind vectors from every single 6Beam scan.
+    daily: wind_vector_instant_%Y%m%d.png
+  cgn_bio-dwl-vert-40sec: wind_w_cont_instant_%Y%m%d.png
+  cgn_bio-dwl-vert-60min: wind_w_cont_%Y%m%d.png

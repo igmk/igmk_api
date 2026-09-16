@@ -1,0 +1,6 @@
+description: Meteorological Tower at Jülich
+wiki: https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:tower:tower
+locations:
+  - site: jue_tower
+    dates:
+      - ['2006-01-01']

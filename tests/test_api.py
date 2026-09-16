@@ -55,13 +55,16 @@ def test_site_instruments_history_includes_departed(client):
     assert set(r.json()) == {"tstrad", "tstlidar", "tstsonde"}
 
 
-def test_instrument_list_is_filename_stems(client):
-    """Note the two identifiers in play: this route keys by *filename stem*
-    while /sites/{id}/instruments keys by the `name` field. tstsonde_v2.json
-    has name 'tstsonde', mirroring _halo_rpg / raman_lidar in the real config."""
+def test_instrument_list_and_site_instruments_share_one_id_space(client):
+    """There used to be two: this route keyed by filename stem while
+    /sites/{id}/instruments keyed by a `name` field, and they disagreed for
+    _halo_rpg / joyrad_10 / raman_lidar. The `name` field is gone -- an
+    instrument's id is its filename -- so the two agree by construction, and an
+    id from one route is guaranteed to work on the other."""
     r = client.get("/instruments")
     assert r.status_code == 200
-    assert sorted(r.json()) == ["tstlidar", "tstrad", "tstsonde_v2"]
+    assert sorted(r.json()) == ["tstlidar", "tstrad", "tstsonde"]
+    assert set(client.get("/sites/tst/instruments/history").json()) <= set(r.json())
 
 
 def test_instrument_detail(client):
@@ -85,7 +88,7 @@ def test_plots_by_instrument_shape(client):
     data = r.json()
     assert isinstance(data, list)
     by_id = {p["id"]: p for p in data}
-    assert set(by_id) == {"tstrad_legacy", "tstrad_granular"}
+    assert set(by_id) == {"tstrad_legacy", "tstrad_granular", "tst_combined"}
     # A legacy `path` config advertises daily only.
     assert by_id["tstrad_legacy"]["granularities"] == ["daily"]
     assert by_id["tstrad_legacy"]["multi"] is False
@@ -94,6 +97,15 @@ def test_plots_by_instrument_shape(client):
     assert by_id["tstrad_granular"]["granularities"] == [
         "daily", "monthly", "seasonal", "yearly",
     ]
+
+
+def test_plot_can_be_driven_by_several_instruments(client):
+    """A derived product has no single owning instrument, so it has to appear
+    under each one that feeds it -- which is why plot group files express
+    `instruments` as an overridable list rather than owning their plots."""
+    for instrument in ("tstrad", "tstlidar"):
+        ids = [p["id"] for p in client.get(f"/visualizations/byInstrument/{instrument}").json()]
+        assert "tst_combined" in ids, instrument
 
 
 def test_plots_by_instrument_flags_multi(client):

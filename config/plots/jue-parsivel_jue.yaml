@@ -1,0 +1,5 @@
+sites: jue
+instruments: parsivel_jue
+
+plots:
+  parsivel_overview: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/parsivel/l1/%Y/%m/%d/parsivel_overview_%Y%m%d.png

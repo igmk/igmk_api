@@ -1,0 +1,22 @@
+sites: vett
+instruments: kithat1
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level2/%Y/%m/%d/
+
+plots:
+  kithat1_elaz: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level1/%Y/%m/%d/%Y%m%d_vettweiss_sen.png
+  kithat1_eqpot_t: '%Y%m%d_vettweiss_equivalent_potential_temperature.png'
+  kithat1_flag: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level1/%Y/%m/%d/%Y%m%d_vettweiss_quality_flag.png
+  kithat1_hkd: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level1/%Y/%m/%d/%Y%m%d_vettweiss_hkd.png
+  kithat1_irt: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level1/%Y/%m/%d/%Y%m%d_vettweiss_irt.png
+  kithat1_iwv: '%Y%m%d_vettweiss_iwv.png'
+  kithat1_iwv_scan: '%Y%m%d_vettweiss_iwv_scan.png'
+  kithat1_lwp: '%Y%m%d_vettweiss_lwp.png'
+  kithat1_lwp_scan: '%Y%m%d_vettweiss_lwp_scan.png'
+  kithat1_met_dyn: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level1/%Y/%m/%d/%Y%m%d_vettweiss_met2.png
+  kithat1_met_tq: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level1/%Y/%m/%d/%Y%m%d_vettweiss_met.png
+  kithat1_pot_t: '%Y%m%d_vettweiss_potential_temperature.png'
+  kithat1_q: '%Y%m%d_vettweiss_absolute_humidity.png'
+  kithat1_rh: '%Y%m%d_vettweiss_relative_humidity.png'
+  kithat1_t: '%Y%m%d_vettweiss_temperature.png'
+  kithat1_tb: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level1/%Y/%m/%d/%Y%m%d_vettweiss_tb.png
+  kithat1_tb_spec: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/mwr/level1/%Y/%m/%d/%Y%m%d_vettweiss_tb_spectrum.png

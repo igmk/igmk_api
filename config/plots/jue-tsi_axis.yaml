@@ -1,0 +1,15 @@
+sites: jue
+instruments: tsi_axis
+base: https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img_axis/%Y/%m/%d/
+
+plots:
+  tsi_axis_cld_amount: cld_amount_%Y%m%d.png
+  tsi_axis_cloud: cld_%Y%m%d_113800.png
+  tsi_axis_exp_gain_brr: exp_113000/test_axis_exposure_br_ratio_exp_gain.png
+  tsi_axis_exp_gain_rgb: exp_113000/test_axis_exposure_exp_gain.png
+  tsi_axis_exp_time_brr: exp_113000/test_axis_exposure_br_ratio_exp_time.png
+  tsi_axis_exp_time_rgb: exp_113000/test_axis_exposure_exp_time.png
+  tsi_axis_noon: '%Y%m%d_113800.jpg'
+  tsi_axis_stereo_contour: https://atmos.meteo.uni-koeln.de/~hatpro/jue/tsi/img_axis/stereo/stp/%Y/%m/%d/contour_%Y%m%d_113800.jpg
+  tsi_axis_stereo_stripe: http://atmos.meteo.uni-koeln.de/~jschween/tsi/test_axis/stereo/stripe_%Y%m%d.png
+  tsi_axis_stripe: stripe_%Y%m%d.png

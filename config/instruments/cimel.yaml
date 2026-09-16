@@ -1,0 +1,6 @@
+description: CIMEL Sun Photometer
+wiki: https://obs.meteo.uni-koeln.de/doku.php?id=cimel
+locations:
+  - site: jue
+    dates:
+      - ['2012-06-04']

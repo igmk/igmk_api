@@ -1,0 +1,12 @@
+sites: jue
+instruments: aeri
+base: https://atmos.meteo.uni-koeln.de/~hatpro/jue/aeri/%Y/%m/%d/
+
+plots:
+  aeri_indices: aerioe.%Y%m%d.fig06_indices.png
+  aeri_rh_dewpt: aerioe.%Y%m%d.fig05_rh_dewpt.png
+  aeri_spectrum1: AERI_jue_%y%m%d_1.png
+  aeri_spectrum2: AERI_jue_%y%m%d_2.png
+  aeri_status: AERI_jue_%y%m%d_3.png
+  aeri_temp_wvmr: aerioe.%Y%m%d.fig02_temp_wvmr.png
+  aeri_tq_uncerts: aerioe.%Y%m%d.fig03_tq_uncerts.png

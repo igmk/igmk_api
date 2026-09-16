@@ -1,0 +1,40 @@
+sites: jue
+instruments: meteo_joyce
+base: /data/obs/site/jue/meteo_joyce/l2/%Y/%m/
+
+plots:
+  weatherstation_humidity:
+    description: Humidity
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dRH.png
+    monthly: '%Y%mRH.png'
+    seasonal: seasonal_RH.png
+    yearly: /data/obs/site/jue/meteo_joyce/l2/%Y/%YRH.png
+  weatherstation_pressure:
+    description: Pressure
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dBV_BP_SL_Avg.png
+    monthly: '%Y%mBV_BP_SL_Avg.png'
+    seasonal: seasonal_BV_BP_SL_Avg.png
+    yearly: /data/obs/site/jue/meteo_joyce/l2/%Y/%YBV_BP_SL_Avg.png
+  weatherstation_temperature:
+    description: Temperature
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dAirTC_Avg.png
+    monthly: '%Y%mAirTC_Avg.png'
+    seasonal: seasonal_AirTC_Avg.png
+    yearly: /data/obs/site/jue/meteo_joyce/l2/%Y/%YAirTC_Avg.png
+  weatherstation_wind_direction:
+    description: Wind Direction
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dWindDir_D1_WVT.png
+    monthly: '%Y%mWindDir_D1_WVT.png'
+    seasonal: seasonal_WindDir_D1_WVT.png
+  weatherstation_wind_speed:
+    description: Wind Speed
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dwind_maximums.png
+    monthly: '%Y%mwind_maximums.png'
+    seasonal: seasonal_wind_maximums.png
+    yearly: /data/obs/site/jue/meteo_joyce/l2/%Y/%Ywind_maximums.png
+  weatherstation_windrose:
+    description: Windrose
+    daily: https://atmos.meteo.uni-koeln.de/~citystation/plots/site/jue/meteo_joyce/l2/%Y/%m/%d/%Y%m%dwindrose.png
+    monthly: '%Y%mwindrose.png'
+    seasonal: seasonal_windrose.png
+    yearly: /data/obs/site/jue/meteo_joyce/l2/%Y/%Ywindrose.png

@@ -1,0 +1,22 @@
+sites: jue
+instruments: joyhat
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level2/%Y/%m/%d/
+
+plots:
+  joyhat_elaz: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level1/%Y/%m/%d/%Y%m%d_joyhat_sen.png
+  joyhat_eqpot_t: '%Y%m%d_joyhat_equivalent_potential_temperature.png'
+  joyhat_flag: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level1/%Y/%m/%d/%Y%m%d_joyhat_quality_flag.png
+  joyhat_hkd: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level1/%Y/%m/%d/%Y%m%d_joyhat_hkd.png
+  joyhat_irt: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level1/%Y/%m/%d/%Y%m%d_joyhat_irt.png
+  joyhat_iwv: '%Y%m%d_joyhat_iwv.png'
+  joyhat_iwv_scan: '%Y%m%d_joyhat_iwv_scan.png'
+  joyhat_lwp: '%Y%m%d_joyhat_lwp.png'
+  joyhat_lwp_scan: '%Y%m%d_joyhat_lwp_scan.png'
+  joyhat_met_dyn: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level1/%Y/%m/%d/%Y%m%d_joyhat_met2.png
+  joyhat_met_tq: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level1/%Y/%m/%d/%Y%m%d_joyhat_met.png
+  joyhat_pot_t: '%Y%m%d_joyhat_potential_temperature.png'
+  joyhat_q: '%Y%m%d_joyhat_absolute_humidity.png'
+  joyhat_rh: '%Y%m%d_joyhat_relative_humidity.png'
+  joyhat_t: '%Y%m%d_joyhat_temperature.png'
+  joyhat_tb: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level1/%Y/%m/%d/%Y%m%d_joyhat_tb.png
+  joyhat_tb_spec: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joyhat/actris/level1/%Y/%m/%d/%Y%m%d_joyhat_tb_spectrum.png

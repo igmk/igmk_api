@@ -1,0 +1,7 @@
+sites: aac
+instruments: wls_aac
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/aachen/dwl/l2/%Y/%m/%d/
+
+plots:
+  aac_aachen_dwl-l2a_vad-chart: aachen_dwl-l2a_vad-chart_%Y%m%d.png
+  aac_aachen_dwl-l2a_vad-chart-dw: aachen_dwl-l2a_vad-chart-dw_%Y%m%d.png

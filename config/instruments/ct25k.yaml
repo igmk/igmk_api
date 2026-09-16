@@ -1,0 +1,6 @@
+description: Vaisala CT25k Ceilometer
+wiki: https://obs.meteo.uni-koeln.de/doku.php?id=ct25k
+locations:
+  - site: jue
+    dates:
+      - ['2010-10-01']

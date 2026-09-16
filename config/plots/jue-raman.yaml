@@ -1,0 +1,15 @@
+sites: jue
+instruments: raman
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/raman_lidar/l2/%Y/%m/%d/
+
+plots:
+  raman_lidar_355_alpha_raman: '%Y%m%d_alpha355raman.png'
+  raman_lidar_355_beta_klett: '%Y%m%d_beta355klett.png'
+  raman_lidar_355_beta_raman: '%Y%m%d_beta355raman.png'
+  raman_lidar_355_pldr: '%Y%m%d_355pldr.png'
+  raman_lidar_355_rcs: '%Y%m%d_rcs355.png'
+  raman_lidar_iwv: /data/obs/site/jue/raman_lidar/l3/%Y/%m/%d/%Y%m%d_iwv.png
+  raman_lidar_status: '%Y%m%d_status.png'
+  raman_lidar_temperature_analog_error_filtered: '%Y%m%d_temperatureAnalogErrorFiltered.png'
+  raman_lidar_temperature_glued: '%Y%m%d_temperatureGlued.png'
+  raman_lidar_water_vapor: '%Y%m%d_wv.png'

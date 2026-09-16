@@ -1,0 +1,16 @@
+sites: jue_tower
+instruments: meteo_tower
+base: https://atmos.meteo.uni-koeln.de/~hatpro/jue/met/ec_station/%Y/%m/%d/plot/
+
+plots:
+  meteo_tower_cov: ec_data_day_uw_%Y%m%d.png
+  meteo_tower_ec_aw_flux_spectrum_lin: ec_data_day_pow_aH2O_%Y%m%d.png
+  meteo_tower_ec_aw_flux_spectrum_log: ec_data_day_pow_aH2O_log_%Y%m%d.png
+  meteo_tower_ec_data: ec_data_day_%Y%m%d.png
+  meteo_tower_ec_dir: ec_data_day_dir_%Y%m%d.png
+  meteo_tower_ec_fluxes: ec_data_rawflx_day_%Y%m%d.png
+  meteo_tower_ec_spectra: ec_data_day_pow_%Y%m%d.png
+  meteo_tower_ec_w: ec_data_day_w_%Y%m%d.png
+  meteo_tower_ops: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue-tower1/aerosol/ops/l1/%Y/%m/%d/%Y%m%d_tower_ops.png
+  meteo_tower_sds011: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue-tower1/sds011/l1/%Y/%m/%d/%Y%m%d_tower_sds011.png
+  meteo_tower_us_compare: ec_data_day_ustar_compare_%Y%m%d.png

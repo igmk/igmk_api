@@ -1,0 +1,13 @@
+sites: jue
+instruments: [joyrad_35, halo]
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/wind_profiles/l3/%Y/%m/%d/
+
+plots:
+  wind_ppi_radar_lidar: https://atmos.meteo.uni-koeln.de/~hatpro/VAPs/mira_ppi/%y%m/%Y%m%d_radarlidar_combined.png
+  wind_ppi_radar_lidar_bl: https://atmos.meteo.uni-koeln.de/~hatpro/VAPs/mira_ppi/%y%m/%Y%m%d_radarlidar_combined_BL.png
+  wind_radar_lidar_wind_data_coverage_all: coverageHeightPlot_fullheight_%Y%m%d.png
+  wind_radar_lidar_wind_data_coverage_bl: coverageHeightPlot_boundarylayer_%Y%m%d.png
+  wind_radar_lidar_wind_direction_all: merge_winddirection_fullheight_%Y%m%d.png
+  wind_radar_lidar_wind_direction_bl: merge_winddirection_boundarylayer_%Y%m%d.png
+  wind_radar_lidar_windspeed_all: merge_windspeed_fullheight_%Y%m%d.png
+  wind_radar_lidar_windspeed_bl: merge_windspeed_boundarylayer_%Y%m%d.png

@@ -1,0 +1,21 @@
+sites: jue
+instruments: joyrad_35
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/joydurado/%Y/%m/%d/
+
+plots:
+  joydurad_35_metstation: '%Y%m%d_Joydurado_35_metstation.png'
+  joydurad_35_overview: '%Y%m%d_Joydurado_35_moments_overview.png'
+  joydurad_35_status: '%Y%m%d_Joydurado_35_status.png'
+  joyrad35_cn_classification: https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/classification/%y%m/%Y%m%d_juelich_classification.png
+  joyrad35_cn_drizzle: https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/drizzle/%y%m/%Y%m%d_juelich_drizzle.png
+  joyrad35_cn_drizzle_status: https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/drizzle/%y%m/%Y%m%d_juelich_drizzle_status.png
+  joyrad35_cn_iwc_z_t_method: https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/iwc-Z-T-method/%y%m/%Y%m%d_juelich_iwc-Z-T-method.png
+  joyrad35_cn_iwc_z_t_method_status: https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/iwc-Z-T-method/%y%m/%Y%m%d_juelich_iwc-Z-T-method_status.png
+  joyrad35_cn_measurements: https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/measurements/%y%m/%Y%m%d_juelich_measurements.png
+  joyrad35_cn_scaled_adiabatic: https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/lwc-scaled-adiabatic/%y%m/%Y%m%d_juelich_lwc-scaled-adiabatic.png
+  joyrad35_cn_scaled_adiabatic_status: https://atmos.meteo.uni-koeln.de/~hatpro/jue/VAPs/cloudnet/lwc-scaled-adiabatic/%y%m/%Y%m%d_juelich_lwc-scaled-adiabatic_status.png
+  joyrad35_mimo_co: https://atmos.meteo.uni-koeln.de/~hatpro/jue/mimo/%y%m/%y%m%d_jue_mimo_co.png
+  joyrad35_mimo_cocx: https://atmos.meteo.uni-koeln.de/~hatpro/jue/mimo/%y%m/%y%m%d_jue_mimo_cocx.png
+  joyrad35_mimo_cx: https://atmos.meteo.uni-koeln.de/~hatpro/jue/mimo/%y%m/%y%m%d_jue_mimo_cx.png
+  joyrad35_overview: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/tophat/l2/%Y/%m/%d/%y%m%d_jue_l2_radar.png
+  joyrad35_wind_ppi: https://atmos.meteo.uni-koeln.de/~hatpro/VAPs/mira_ppi/%y%m/%Y%m%d_joyrad35_wind_profile.png

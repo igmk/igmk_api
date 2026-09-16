@@ -1,0 +1,8 @@
+sites: jue
+instruments: mfrsr
+base: https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/site/jue/mfrsr/l1/%Y/%m/%d/
+
+plots:
+  mfrsr_broadband: '%Y%m%d_mfrsr_jue_l1_broadband.png'
+  mfrsr_narrowband: '%Y%m%d_mfrsr_jue_l1_narrowband.png'
+  mfrsr_other: '%Y%m%d_mfrsr_jue_other.png'

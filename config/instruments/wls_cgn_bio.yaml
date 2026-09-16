@@ -1,0 +1,5 @@
+description: Doppler Wind LIDAR WLS400
+locations:
+  - site: cgn_bio
+    dates:
+      - ['2026-06-01']

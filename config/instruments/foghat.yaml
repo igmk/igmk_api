@@ -1,0 +1,10 @@
+description: FOGHAT HATPRO
+wiki: https://atmos.meteo.uni-koeln.de/ag_crewell/doku.php?id=instruments:foghat:foghat
+locations:
+  - site: iqu
+    dates:
+      - ['2018-03-01', '2019-03-31']
+  - site: cgn_bio
+    dates:
+      - ['2021-03-01', '2024-06-30']
+      - ['2026-06-01']

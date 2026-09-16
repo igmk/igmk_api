@@ -1,0 +1,6 @@
+name: UniSport
+description: TODO
+live_data: https://atmos.meteo.uni-koeln.de/~citystation/webDashboard/data.json
+lat: 50.929671
+lon: 6.932507
+altitude: 50

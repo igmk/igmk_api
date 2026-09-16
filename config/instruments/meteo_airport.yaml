@@ -1,0 +1,5 @@
+description: DWD Station 2667 - CGN Airport
+locations:
+  - site: cgn_airport
+    dates:
+      - ['2026-06-01']

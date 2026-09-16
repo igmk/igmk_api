@@ -509,13 +509,34 @@ paths:
                 type: object
                 properties:
                   name:
+                    description: >-
+                      The instrument id, which is its config filename. The same
+                      id keys /sites/{siteID}/instruments and addresses
+                      /visualizations/byInstrument/{instrumentID}.
                     type: string
                   description:
                     type: string
+                  wiki:
+                    description: Documentation URL, or an empty string.
+                    type: string
                   locations:
+                    description: Where the instrument has been deployed.
                     type: array
                     items:
                       type: object
+                      properties:
+                        site:
+                          type: string
+                        dates:
+                          description: >-
+                            Deployment timespans as [start, end] pairs, oldest
+                            first. A one-element [start] entry means still
+                            deployed, and can only be the last entry.
+                          type: array
+                          items:
+                            type: array
+                            items:
+                              type: string
         '404':
           $ref: '#/components/responses/NotFound'
         '400':
