@@ -1,7 +1,0 @@
-{
-  "id": "vett-dwl-env",
-  "sites": [ "vett" ],
-  "instruments": [ "wls_vett" ],
-  "description": "",
-  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/vettweiss/dwl/l1/%Y/%m/%d/plot/env_vettweiss_%Y%m%d.png"
-}

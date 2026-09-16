@@ -1,7 +1,0 @@
-{
-  "id": "rpg-dwl-vert-60min",
-  "sites": [ "rpg" ],
-  "instruments": [ "halo_rpg" ],
-  "description": "",
-  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/meckenheim/dwl/l1/%Y/%m/%d/plot/wind_w_cont_%Y%m%d.png"
-}

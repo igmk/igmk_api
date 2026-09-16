@@ -1,7 +1,0 @@
-{
-  "id": "cgn_airport-dwl-uw-abs",
-  "sites": [ "cgn_airport" ],
-  "instruments": [ "halo_dwd" ],
-  "description": "Time height section of the absolutum of the (uw,vw) vector from the turbulence retrieval of the 6beam scan (Sathe et al. 2014).",
-  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/airport/dwl/l1/%Y/%m/%d/plot/uw_abs_cont_%Y%m%d.png"
-}

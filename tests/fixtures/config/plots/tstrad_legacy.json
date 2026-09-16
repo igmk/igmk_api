@@ -1,7 +1,0 @@
-{
-    "id": "tstrad_legacy",
-    "sites": ["tst"],
-    "instruments": ["tstrad"],
-    "description": "Legacy single-path plot",
-    "path": "https://example.invalid/plots/%Y/%m/%d/%Y%m%d_tstrad.png"
-}

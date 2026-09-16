@@ -1,8 +1,0 @@
-{
-    "name": "tstlidar",
-    "description": "Test Lidar",
-    "locations": [
-        { "site": "tst", "dates": [ ["2018-01-01", "2019-06-30"] ] }
-    ],
-    "wiki": ""
-}

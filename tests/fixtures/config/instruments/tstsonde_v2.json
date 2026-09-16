@@ -1,8 +1,0 @@
-{
-    "name": "tstsonde",
-    "description": "Test Radiosonde",
-    "locations": [
-        { "site": "tst", "dates": [ ["2021-03-01"] ] }
-    ],
-    "wiki": ""
-}

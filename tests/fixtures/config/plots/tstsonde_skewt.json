@@ -1,9 +1,0 @@
-{
-    "id": "tstsonde_skewt",
-    "sites": ["tst"],
-    "instruments": ["tstsonde"],
-    "description": "Multi-item Skew-T",
-    "multi": true,
-    "paths": { "daily": "/data/obs/tst/sounding/plots/" },
-    "pattern": "tst_rs_%Y%m%d*_skewt.png"
-}

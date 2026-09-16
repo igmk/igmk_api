@@ -1,9 +1,0 @@
-{
-    "name": "tstrad",
-    "description": "Test Radiometer",
-    "locations": [
-        { "site": "tst", "dates": [ ["2020-01-01"] ] },
-        { "site": "old", "dates": [ ["2015-01-01", "2019-12-31"] ] }
-    ],
-    "wiki": "https://example.invalid/wiki/tstrad"
-}

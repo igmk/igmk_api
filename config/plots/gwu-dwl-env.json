@@ -1,7 +1,0 @@
-{
-  "id": "gwu-dwl-env",
-  "sites": [ "gwu" ],
-  "instruments": [ "wls_gwu" ],
-  "description": "",
-  "path": "https://atmos.meteo.uni-koeln.de/~hatpro/quicklooks/obs/campaigns/vital2/site/erftstadt/dwl/l1/%Y/%m/%d/plot/env_erftstadt_%Y%m%d.png"
-}
